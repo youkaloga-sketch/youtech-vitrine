@@ -8,938 +8,585 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
-    /* ───────────────────────────────────────────
-       RESET & BASE
-    ─────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy:   #1e3a5f;
-      --navy-dark: #152c4a;
+      --navy:       #1e3a5f;
+      --navy-dark:  #152c4a;
       --navy-light: #254972;
-      --orange: #f97316;
-      --orange-dark: #ea6d0e;
-      --white:  #ffffff;
-      --gray-50: #f8fafc;
-      --gray-100: #f1f5f9;
-      --gray-300: #cbd5e1;
-      --gray-500: #64748b;
-      --gray-700: #334155;
-      --text:   #1e293b;
-      --radius: 14px;
-      --shadow: 0 4px 24px rgba(30,58,95,.10);
-      --shadow-lg: 0 12px 40px rgba(30,58,95,.16);
+      --orange:     #f97316;
+      --orange-dark:#ea6d0e;
+      --white:      #ffffff;
+      --gray-50:    #f8fafc;
+      --gray-100:   #f1f5f9;
+      --gray-300:   #cbd5e1;
+      --gray-500:   #64748b;
+      --gray-700:   #334155;
+      --text:       #1e293b;
+      --radius:     14px;
+      --shadow:     0 4px 24px rgba(30,58,95,.10);
+      --shadow-lg:  0 12px 40px rgba(30,58,95,.16);
     }
 
     html { scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }
+    img  { max-width: 100%; display: block; }
+    a    { text-decoration: none; color: inherit; }
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      color: var(--text);
-      background: var(--white);
-      overflow-x: hidden;
-    }
-
-    img { max-width: 100%; display: block; }
-    a { text-decoration: none; color: inherit; }
-
-    /* ───────────────────────────────────────────
-       ANIMATIONS SCROLL
-    ─────────────────────────────────────────── */
+    /* ── FADE-UP SCROLL ── */
     .fade-up {
       opacity: 0;
       transform: translateY(36px);
-      transition: opacity .65s ease, transform .65s ease;
+      transition: opacity .7s ease, transform .7s ease;
     }
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
     .fade-up.delay-1 { transition-delay: .1s; }
     .fade-up.delay-2 { transition-delay: .2s; }
     .fade-up.delay-3 { transition-delay: .3s; }
     .fade-up.delay-4 { transition-delay: .4s; }
+    .fade-up.delay-5 { transition-delay: .5s; }
 
-    /* ───────────────────────────────────────────
-       NAVBAR
-    ─────────────────────────────────────────── */
+    /* ── NAVBAR ── */
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 1000;
-      background: rgba(30,58,95,.95);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(21,44,74,.92);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid rgba(255,255,255,.08);
-      transition: background .3s;
+      transition: background .3s, box-shadow .3s;
     }
+    nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,.28); }
 
     .nav-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-      height: 68px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      max-width: 1200px; margin: 0 auto; padding: 0 24px;
+      height: 68px; display: flex; align-items: center; justify-content: space-between;
     }
-
-    .nav-logo {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-    }
+    .nav-logo { display: inline-flex; align-items: center; gap: 10px; }
     .nav-logo-wordmark { line-height: 1; }
-    .nav-logo-wordmark strong {
-      display: block;
-      font-size: 1.15rem;
-      font-weight: 800;
-      letter-spacing: -.5px;
-      color: var(--white);
-    }
-    .nav-logo-wordmark small {
-      display: block;
-      font-size: .54rem;
-      font-weight: 600;
-      letter-spacing: .22em;
-      color: rgba(255,255,255,.52);
-      margin-top: 4px;
-      text-transform: uppercase;
-    }
+    .nav-logo-wordmark strong { display: block; font-size: 1.15rem; font-weight: 800; letter-spacing: -.5px; color: var(--white); }
+    .nav-logo-wordmark small { display: block; font-size: .54rem; font-weight: 600; letter-spacing: .22em; color: rgba(255,255,255,.5); margin-top: 4px; text-transform: uppercase; }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 36px;
-      list-style: none;
-    }
-    .nav-links a {
-      font-size: .9rem;
-      font-weight: 500;
-      color: rgba(255,255,255,.82);
-      transition: color .2s;
-    }
+    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    .nav-links a { font-size: .9rem; font-weight: 500; color: rgba(255,255,255,.82); transition: color .2s; }
     .nav-links a:hover { color: var(--white); }
 
     .nav-cta {
-      background: var(--orange);
-      color: var(--white) !important;
-      padding: 9px 22px;
-      border-radius: 8px;
-      font-weight: 600 !important;
-      font-size: .88rem !important;
-      transition: background .2s, transform .15s !important;
+      background: var(--orange); color: var(--white) !important;
+      padding: 9px 22px; border-radius: 8px;
+      font-weight: 600 !important; font-size: .88rem !important;
+      transition: background .2s, transform .15s, box-shadow .2s !important;
+      box-shadow: 0 0 0 0 rgba(249,115,22,.4);
     }
     .nav-cta:hover {
       background: var(--orange-dark) !important;
-      transform: translateY(-1px);
+      transform: translateY(-1px) !important;
+      box-shadow: 0 4px 16px rgba(249,115,22,.35) !important;
     }
 
-    /* Hamburger */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 4px;
-    }
-    .hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--white);
-      border-radius: 2px;
-      transition: transform .3s, opacity .3s;
-    }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: transform .3s, opacity .3s; }
     .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-    .mobile-menu {
-      display: none;
-      flex-direction: column;
-      background: var(--navy-dark);
-      padding: 20px 24px 28px;
-      gap: 18px;
-    }
+    .mobile-menu { display: none; flex-direction: column; background: var(--navy-dark); padding: 20px 24px 28px; gap: 18px; }
     .mobile-menu.open { display: flex; }
-    .mobile-menu a {
-      font-size: .95rem;
-      font-weight: 500;
-      color: rgba(255,255,255,.85);
-      padding: 6px 0;
-      border-bottom: 1px solid rgba(255,255,255,.08);
-    }
+    .mobile-menu a { font-size: .95rem; font-weight: 500; color: rgba(255,255,255,.85); padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
     .mobile-menu a:last-child { border: none; }
-    .mobile-menu .nav-cta {
-      display: inline-block;
-      text-align: center;
-      margin-top: 4px;
+    .mobile-menu .nav-cta { display: inline-block; text-align: center; margin-top: 4px; }
+
+    /* ── SECTION UTILS ── */
+    section { padding: 96px 24px; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .section-label { font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--orange); margin-bottom: 12px; }
+    .section-title { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; color: var(--navy); line-height: 1.2; letter-spacing: -.5px; margin-bottom: 16px; }
+    .section-sub { font-size: 1.05rem; color: var(--gray-500); max-width: 580px; line-height: 1.7; }
+    .section-header { margin-bottom: 56px; }
+
+    /* ── HERO (section autonome) ── */
+    .slide-hero {
+      position: relative; overflow: hidden;
+      height: 580px;
     }
 
-    /* ───────────────────────────────────────────
-       HERO
-    ─────────────────────────────────────────── */
-    .hero {
-      min-height: 100vh;
-      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 55%, #1a4a7a 100%);
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      padding: 100px 24px 80px;
+    /* Canvas particules */
+    .slide-hero .hero-canvas {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 2;
     }
 
-    /* Geometric decorations */
-    .hero::before {
-      content: '';
-      position: absolute;
-      width: 600px;
-      height: 600px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(249,115,22,.18) 0%, transparent 70%);
-      top: -100px; right: -150px;
-      pointer-events: none;
-    }
-    .hero::after {
-      content: '';
-      position: absolute;
-      width: 400px;
-      height: 400px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(249,115,22,.10) 0%, transparent 70%);
-      bottom: -80px; left: -100px;
-      pointer-events: none;
-    }
-
-    .hero-grid {
-      position: absolute;
-      inset: 0;
+    /* Grille géométrique */
+    .slide-hero .hero-grid {
+      position: absolute; inset: 0; z-index: 2;
       background-image:
-        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+        linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.022) 1px, transparent 1px);
       background-size: 50px 50px;
       pointer-events: none;
     }
 
-    .hero-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      width: 100%;
-      position: relative;
-      z-index: 2;
+    /* Photo de fond */
+    .slide-hero img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center 30%;
+      z-index: 1;
     }
 
-    .hero-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 28px;
+    /* Overlay gradient navy */
+    .slide-hero-overlay {
+      position: absolute; inset: 0; z-index: 3;
+      background: linear-gradient(135deg, rgba(21,44,74,.68) 0%, rgba(30,58,95,.58) 52%, rgba(26,74,122,.54) 100%);
     }
+
+    /* Halos orange */
+    .slide-hero::before {
+      content: ''; position: absolute; width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(249,115,22,.12) 0%, transparent 70%);
+      top: -100px; right: -150px; pointer-events: none; z-index: 2;
+    }
+    .slide-hero::after {
+      content: ''; position: absolute; width: 400px; height: 400px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(249,115,22,.07) 0%, transparent 70%);
+      bottom: -80px; left: -100px; pointer-events: none; z-index: 2;
+    }
+
+    /* Contenu hero */
+    .slide-hero-content {
+      position: absolute; inset: 0; z-index: 5;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 44px 24px 72px;
+    }
+    .slide-hero-inner { max-width: 1200px; margin: 0 auto; width: 100%; }
+
+    /* Attribution Pexels */
+    .hero-attribution {
+      position: absolute; bottom: 14px; right: 20px; font-size: .68rem;
+      color: rgba(255,255,255,.22); z-index: 6;
+    }
+    .hero-attribution a { color: rgba(255,255,255,.28); text-decoration: underline; text-underline-offset: 2px; }
+
+    /* Badges */
+    .hero-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
     .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(249,115,22,.18);
-      border: 1px solid rgba(249,115,22,.35);
-      color: #fdb07a;
-      font-size: .82rem;
-      font-weight: 600;
-      padding: 6px 16px;
-      border-radius: 100px;
-      letter-spacing: .5px;
-      text-transform: uppercase;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(249,115,22,.2); border: 1px solid rgba(249,115,22,.4);
+      color: #fdb07a; font-size: .82rem; font-weight: 600;
+      padding: 6px 16px; border-radius: 100px; letter-spacing: .5px; text-transform: uppercase;
     }
-    .hero-badge::before {
-      content: '⚡';
-      font-size: .9rem;
-    }
-    .hero-badge-cisco {
-      background: rgba(27,160,216,.18);
-      border-color: rgba(27,160,216,.35);
-      color: #7dd3f8;
-    }
-    .hero-badge-cisco::before {
-      content: '🎓';
-    }
+    .hero-badge::before { content: '⚡'; font-size: .9rem; }
+    .hero-badge-cisco { background: rgba(27,160,216,.18); border-color: rgba(27,160,216,.35); color: #7dd3f8; }
+    .hero-badge-cisco::before { content: '🎓'; }
 
-    .hero h1 {
-      font-size: clamp(2.4rem, 6vw, 4.2rem);
-      font-weight: 800;
-      line-height: 1.12;
-      color: var(--white);
-      margin-bottom: 12px;
-      letter-spacing: -1px;
+    /* Ligne typée rotative */
+    .hero-rotator {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 12px; height: 36px;
     }
-    .hero h1 .highlight {
-      color: var(--orange);
-      position: relative;
+    .rotator-prefix {
+      font-size: .95rem; font-weight: 500; color: rgba(255,255,255,.55);
+      white-space: nowrap;
     }
-    .hero h1 .highlight::after {
-      content: '';
-      position: absolute;
-      left: 0; bottom: -4px;
-      width: 100%;
-      height: 3px;
-      background: var(--orange);
-      border-radius: 2px;
-      opacity: .5;
+    .rotator-word-wrap {
+      display: flex; align-items: center; gap: 3px;
+    }
+    #typed-word {
+      font-size: 1rem; font-weight: 700; color: var(--orange);
+      letter-spacing: .01em;
+    }
+    .typed-cursor {
+      display: inline-block; width: 2px; height: 1.1em;
+      background: var(--orange); border-radius: 1px;
+      animation: blink .75s step-end infinite;
+      vertical-align: middle; margin-left: 2px;
+    }
+    @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0; } }
+
+    /* Titre principal */
+    .slide-hero-content h1 {
+      font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 800;
+      line-height: 1.15; color: var(--white);
+      margin-bottom: 12px; letter-spacing: -.5px;
+    }
+    .slide-hero-content h1 .highlight {
+      color: var(--orange); position: relative;
+    }
+    .slide-hero-content h1 .highlight::after {
+      content: ''; position: absolute; left: 0; bottom: -4px;
+      width: 100%; height: 3px; background: var(--orange); border-radius: 2px; opacity: .45;
     }
 
     .hero-sub {
-      font-size: clamp(1rem, 2.5vw, 1.3rem);
-      color: rgba(255,255,255,.7);
-      font-weight: 400;
-      margin-bottom: 40px;
-      max-width: 580px;
-      line-height: 1.65;
+      font-size: clamp(.95rem, 2vw, 1.08rem); color: rgba(255,255,255,.78);
+      font-weight: 400; margin-bottom: 28px; max-width: 560px; line-height: 1.65;
     }
 
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      align-items: center;
-    }
+    /* Boutons */
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
 
     .btn-primary {
-      background: var(--orange);
-      color: var(--white);
-      font-weight: 700;
-      font-size: 1rem;
-      padding: 15px 32px;
-      border-radius: 10px;
-      border: none;
-      cursor: pointer;
+      background: var(--orange); color: var(--white); font-weight: 700; font-size: 1rem;
+      padding: 15px 32px; border-radius: 10px; border: none; cursor: pointer;
       transition: background .2s, transform .15s, box-shadow .2s;
       box-shadow: 0 4px 20px rgba(249,115,22,.35);
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      display: inline-flex; align-items: center; gap: 8px;
+      position: relative; overflow: hidden;
     }
-    .btn-primary:hover {
-      background: var(--orange-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(249,115,22,.45);
+    .btn-primary::after {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at center, rgba(255,255,255,.25) 0%, transparent 70%);
+      opacity: 0; transition: opacity .3s;
     }
+    .btn-primary:hover { background: var(--orange-dark); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(249,115,22,.45); }
+    .btn-primary:hover::after { opacity: 1; }
 
     .btn-secondary {
-      background: transparent;
-      color: var(--white);
-      font-weight: 600;
-      font-size: 1rem;
-      padding: 14px 30px;
-      border-radius: 10px;
-      border: 2px solid rgba(255,255,255,.3);
-      cursor: pointer;
-      transition: border-color .2s, background .2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      background: transparent; color: var(--white); font-weight: 600; font-size: 1rem;
+      padding: 14px 30px; border-radius: 10px; border: 2px solid rgba(255,255,255,.35);
+      cursor: pointer; transition: border-color .2s, background .2s;
+      display: inline-flex; align-items: center; gap: 8px;
     }
-    .btn-secondary:hover {
-      border-color: rgba(255,255,255,.7);
-      background: rgba(255,255,255,.08);
+    .btn-secondary:hover { border-color: rgba(255,255,255,.7); background: rgba(255,255,255,.08); }
+
+    /* Stats animées */
+    .hero-stats { margin-top: 32px; display: flex; gap: 40px; flex-wrap: wrap; }
+    .hero-stat { display: flex; flex-direction: column; }
+    .hero-stat strong { font-size: 2rem; font-weight: 800; color: var(--white); line-height: 1; }
+    .hero-stat strong .stat-val { color: var(--white); }
+    .hero-stat strong .stat-suf { color: var(--orange); }
+    .hero-stat small { font-size: .82rem; color: rgba(255,255,255,.52); margin-top: 4px; font-weight: 400; }
+
+    /* Séparateur stat */
+    .hero-stat-divider {
+      width: 1px; background: rgba(255,255,255,.14); align-self: stretch; margin: 4px 0;
     }
 
-    .hero-stats {
-      margin-top: 64px;
-      display: flex;
-      gap: 40px;
-      flex-wrap: wrap;
-    }
-    .hero-stat {
-      display: flex;
-      flex-direction: column;
-    }
-    .hero-stat strong {
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--white);
-      line-height: 1;
-    }
-    .hero-stat strong span { color: var(--orange); }
-    .hero-stat small {
-      font-size: .82rem;
-      color: rgba(255,255,255,.55);
-      margin-top: 4px;
-      font-weight: 400;
-    }
-
-    /* ───────────────────────────────────────────
-       SECTION UTILS
-    ─────────────────────────────────────────── */
-    section { padding: 96px 24px; }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .section-label {
-      font-size: .78rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--orange);
-      margin-bottom: 12px;
-    }
-
-    .section-title {
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 800;
-      color: var(--navy);
-      line-height: 1.2;
-      letter-spacing: -.5px;
-      margin-bottom: 16px;
-    }
-
-    .section-sub {
-      font-size: 1.05rem;
-      color: var(--gray-500);
-      max-width: 580px;
-      line-height: 1.7;
-    }
-
-    .section-header { margin-bottom: 56px; }
-
-    /* ───────────────────────────────────────────
-       PRODUITS
-    ─────────────────────────────────────────── */
+    /* ── PRODUITS ── */
     #produits { background: var(--gray-50); }
 
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 28px;
-    }
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; }
 
     .product-card {
-      background: var(--white);
-      border-radius: var(--radius);
-      padding: 36px 32px;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(30,58,95,.07);
-      display: flex;
-      flex-direction: column;
-      transition: box-shadow .25s, transform .25s;
-      position: relative;
-      overflow: hidden;
+      background: var(--white); border-radius: var(--radius);
+      box-shadow: var(--shadow); border: 1px solid rgba(30,58,95,.07);
+      display: flex; flex-direction: column;
+      transition: box-shadow .3s, transform .3s;
+      position: relative; overflow: hidden;
+      transform-style: preserve-3d;
     }
     .product-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 4px;
-      background: var(--orange);
-      border-radius: var(--radius) var(--radius) 0 0;
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 4px; background: var(--orange);
+      border-radius: var(--radius) var(--radius) 0 0; z-index: 2;
     }
-    .product-card.coming-soon::before {
-      background: var(--gray-300);
+    .product-card.coming-soon::before { background: var(--gray-300); }
+    .product-card.cisco::before { background: linear-gradient(90deg, #1ba0d8, #049fd9); }
+    .product-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-6px); }
+
+    /* Lueur au survol */
+    .product-card::after {
+      content: ''; position: absolute; inset: 0; border-radius: var(--radius);
+      box-shadow: inset 0 0 0 1.5px rgba(249,115,22,.0);
+      transition: box-shadow .3s; pointer-events: none; z-index: 3;
     }
-    .product-card.cisco::before {
-      background: linear-gradient(90deg, #1ba0d8, #049fd9);
-    }
-    .product-card:hover {
-      box-shadow: var(--shadow-lg);
-      transform: translateY(-4px);
+    .product-card:hover::after { box-shadow: inset 0 0 0 1.5px rgba(249,115,22,.25); }
+
+    .product-card-image { position: relative; height: 190px; overflow: hidden; flex-shrink: 0; }
+    .product-card-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; display: block; }
+    .product-card:hover .product-card-image img { transform: scale(1.07); }
+    .product-card-image-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(21,44,74,.1) 0%, rgba(21,44,74,.55) 100%); }
+    .product-card-image-label {
+      position: absolute; bottom: 14px; left: 18px;
+      display: flex; align-items: center; gap: 8px;
+      background: rgba(249,115,22,.92); color: white;
+      font-size: .75rem; font-weight: 700; padding: 5px 14px;
+      border-radius: 100px; letter-spacing: .5px; text-transform: uppercase;
     }
 
-    .product-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 14px;
-      background: rgba(249,115,22,.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 24px;
-      font-size: 1.6rem;
-    }
-    .product-card.coming-soon .product-icon {
-      background: var(--gray-100);
-    }
+    .product-card-body { padding: 28px 32px 36px; display: flex; flex-direction: column; flex: 1; }
 
-    .product-badge {
-      display: inline-block;
-      font-size: .72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .8px;
-      padding: 4px 12px;
-      border-radius: 100px;
-      margin-bottom: 14px;
-    }
-    .badge-live {
-      background: rgba(34,197,94,.12);
-      color: #16a34a;
-    }
-    .badge-soon {
-      background: var(--gray-100);
-      color: var(--gray-500);
-    }
-    .badge-cisco {
-      background: rgba(27,160,216,.12);
-      color: #0e7aad;
-    }
+    .product-icon { width: 56px; height: 56px; border-radius: 14px; background: rgba(249,115,22,.1); display: flex; align-items: center; justify-content: center; margin-bottom: 24px; font-size: 1.6rem; }
+    .product-card.coming-soon .product-icon { background: var(--gray-100); }
 
-    .product-card h3 {
-      font-size: 1.45rem;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 12px;
-    }
+    .product-badge { display: inline-block; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; }
+    .badge-live { background: rgba(34,197,94,.12); color: #16a34a; }
+    .badge-soon { background: var(--gray-100); color: var(--gray-500); }
+    .badge-cisco { background: rgba(27,160,216,.12); color: #0e7aad; }
 
-    .product-card p {
-      font-size: .95rem;
-      color: var(--gray-500);
-      line-height: 1.7;
-      flex: 1;
-      margin-bottom: 28px;
-    }
+    .product-card h3 { font-size: 1.45rem; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
+    .product-card p { font-size: .95rem; color: var(--gray-500); line-height: 1.7; flex: 1; margin-bottom: 28px; }
 
-    .product-features {
-      list-style: none;
-      margin-bottom: 28px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .product-features li {
-      font-size: .88rem;
-      color: var(--gray-700);
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-    }
-    .product-features li::before {
-      content: '✓';
-      color: var(--orange);
-      font-weight: 700;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
+    .product-features { list-style: none; margin-bottom: 28px; display: flex; flex-direction: column; gap: 8px; }
+    .product-features li { font-size: .88rem; color: var(--gray-700); display: flex; align-items: flex-start; gap: 10px; }
+    .product-features li::before { content: '✓'; color: var(--orange); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
 
-    .product-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 600;
-      font-size: .92rem;
-      color: var(--navy);
-      transition: color .2s, gap .2s;
-    }
+    .product-link { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: .92rem; color: var(--navy); transition: color .2s, gap .2s; }
     .product-link .arrow { transition: transform .2s; }
     .product-link:hover { color: var(--orange); }
-    .product-link:hover .arrow { transform: translateX(4px); }
+    .product-link:hover .arrow { transform: translateX(5px); }
+    .product-link.disabled { color: var(--gray-300); cursor: default; pointer-events: none; }
 
-    .product-link.disabled {
-      color: var(--gray-300);
-      cursor: default;
-      pointer-events: none;
+    .cisco-badge-logo { display: flex; align-items: center; gap: 8px; margin-top: 20px; padding: 10px 14px; background: rgba(27,160,216,.08); border: 1px solid rgba(27,160,216,.2); border-radius: 9px; font-size: .8rem; color: #0e7aad; font-weight: 600; }
+    .ccna-chip { display: inline-flex; align-items: center; gap: 6px; background: rgba(34,197,94,.1); border: 1px solid rgba(34,197,94,.25); color: #16a34a; font-size: .75rem; font-weight: 700; padding: 3px 10px; border-radius: 100px; margin-bottom: 6px; }
+
+    /* ── SECTION SAAS VISUELLE ── */
+    #saas-visual { padding: 0; overflow: hidden; }
+    .saas-inner { display: grid; grid-template-columns: 1fr 1fr; min-height: 460px; }
+    .saas-image-panel { position: relative; overflow: hidden; min-height: 380px; }
+    .saas-image-panel img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 8s ease; }
+    .saas-image-panel:hover img { transform: scale(1.04); }
+    .saas-image-panel::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(21,44,74,.5) 0%, rgba(30,58,95,.3) 100%); }
+    .saas-text-panel { background: var(--navy); padding: 64px 56px; display: flex; flex-direction: column; justify-content: center; }
+    .saas-text-panel .section-label { color: #fdb07a; }
+    .saas-text-panel .section-title { color: var(--white); font-size: clamp(1.6rem, 3vw, 2.4rem); margin-bottom: 20px; }
+    .saas-text-panel p { color: rgba(255,255,255,.68); font-size: .97rem; line-height: 1.8; margin-bottom: 36px; }
+
+    .saas-pills { display: flex; flex-wrap: wrap; gap: 10px; }
+    .saas-pill {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12);
+      color: rgba(255,255,255,.85); font-size: .82rem; font-weight: 600;
+      padding: 7px 16px; border-radius: 100px;
+      transition: background .2s, border-color .2s;
     }
+    .saas-pill:hover { background: rgba(249,115,22,.15); border-color: rgba(249,115,22,.35); }
+    .saas-pill-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--orange); flex-shrink: 0; }
 
-    /* Cisco Netacad logo badge */
-    .cisco-badge-logo {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 20px;
-      padding: 10px 14px;
-      background: rgba(27,160,216,.08);
-      border: 1px solid rgba(27,160,216,.2);
-      border-radius: 9px;
-      font-size: .8rem;
-      color: #0e7aad;
-      font-weight: 600;
-    }
-    .cisco-badge-logo span { font-size: 1rem; }
-
-    .ccna-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(34,197,94,.1);
-      border: 1px solid rgba(34,197,94,.25);
-      color: #16a34a;
-      font-size: .75rem;
-      font-weight: 700;
-      padding: 3px 10px;
-      border-radius: 100px;
-      margin-bottom: 6px;
-    }
-
-    /* ───────────────────────────────────────────
-       POURQUOI NOUS
-    ─────────────────────────────────────────── */
+    /* ── POURQUOI NOUS ── */
     #pourquoi { background: var(--white); }
-
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 28px;
-    }
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; }
 
     .why-card {
-      padding: 36px 28px;
-      border-radius: var(--radius);
+      padding: 36px 28px; border-radius: var(--radius);
       border: 1.5px solid var(--gray-100);
       transition: border-color .25s, box-shadow .25s, transform .25s;
-      position: relative;
+      position: relative; cursor: default;
     }
-    .why-card:hover {
-      border-color: rgba(249,115,22,.3);
-      box-shadow: var(--shadow);
-      transform: translateY(-3px);
-    }
+    .why-card:hover { border-color: rgba(249,115,22,.35); box-shadow: var(--shadow); transform: translateY(-4px); }
 
-    .why-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--navy), var(--navy-light));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      margin-bottom: 20px;
+    /* Indicateur couleur au survol */
+    .why-card::before {
+      content: ''; position: absolute; left: 0; top: 24px; bottom: 24px;
+      width: 3px; border-radius: 0 3px 3px 0;
+      background: var(--orange); opacity: 0; transition: opacity .25s;
     }
+    .why-card:hover::before { opacity: 1; }
 
-    .why-card h3 {
-      font-size: 1.08rem;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 10px;
-    }
+    .why-icon { width: 52px; height: 52px; border-radius: 12px; background: linear-gradient(135deg, var(--navy), var(--navy-light)); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 20px; transition: transform .3s; }
+    .why-card:hover .why-icon { transform: scale(1.1) rotate(-4deg); }
+    .why-card h3 { font-size: 1.08rem; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+    .why-card p { font-size: .9rem; color: var(--gray-500); line-height: 1.7; }
 
-    .why-card p {
-      font-size: .9rem;
-      color: var(--gray-500);
-      line-height: 1.7;
-    }
+    /* ── À PROPOS ── */
+    #apropos { background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%); position: relative; overflow: hidden; }
+    #apropos::before { content: ''; position: absolute; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(249,115,22,.10) 0%, transparent 70%); top: -100px; right: -100px; pointer-events: none; }
 
-    /* ───────────────────────────────────────────
-       À PROPOS
-    ─────────────────────────────────────────── */
-    #apropos {
-      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
-      position: relative;
-      overflow: hidden;
-    }
-    #apropos::before {
-      content: '';
-      position: absolute;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(249,115,22,.12) 0%, transparent 70%);
-      top: -100px; right: -100px;
-      pointer-events: none;
-    }
-
-    .apropos-inner {
-      position: relative;
-      z-index: 2;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
-    }
-
+    .apropos-inner { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
     .apropos-text .section-label { color: #fdb07a; }
     .apropos-text .section-title { color: var(--white); }
-    .apropos-text .section-sub {
-      color: rgba(255,255,255,.65);
-      max-width: 480px;
-    }
+    .apropos-text .section-sub { color: rgba(255,255,255,.65); max-width: 480px; }
+    .apropos-text p { font-size: .97rem; color: rgba(255,255,255,.7); line-height: 1.8; margin-top: 20px; }
 
-    .apropos-text p {
-      font-size: .97rem;
-      color: rgba(255,255,255,.7);
-      line-height: 1.8;
-      margin-top: 20px;
-    }
+    .apropos-image-panel { position: relative; border-radius: 18px; overflow: hidden; min-height: 440px; box-shadow: 0 24px 64px rgba(0,0,0,.38); }
+    .apropos-image-panel img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 440px; transition: transform 8s ease; }
+    .apropos-image-panel:hover img { transform: scale(1.04); }
+    .apropos-image-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(21,44,74,.18) 0%, rgba(21,44,74,.88) 65%, rgba(21,44,74,.98) 100%); }
+    .apropos-values-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 28px 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; z-index: 2; }
 
-    .apropos-values {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
+    .apropos-value { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); border-radius: 11px; padding: 18px 16px; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); transition: background .2s, transform .2s; }
+    .apropos-value:hover { background: rgba(255,255,255,.13); transform: translateY(-2px); }
+    .apropos-value .icon { font-size: 1.3rem; margin-bottom: 8px; }
+    .apropos-value h4 { font-size: .88rem; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+    .apropos-value p { font-size: .76rem; color: rgba(255,255,255,.5); line-height: 1.5; margin: 0; }
 
-    .apropos-value {
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.1);
-      border-radius: 12px;
-      padding: 24px 22px;
-      transition: background .2s;
-    }
-    .apropos-value:hover { background: rgba(255,255,255,.10); }
-
-    .apropos-value .icon {
-      font-size: 1.5rem;
-      margin-bottom: 12px;
-    }
-    .apropos-value h4 {
-      font-size: .95rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 6px;
-    }
-    .apropos-value p {
-      font-size: .82rem;
-      color: rgba(255,255,255,.55);
-      line-height: 1.6;
-      margin: 0;
-    }
-
-    /* ───────────────────────────────────────────
-       CONTACT
-    ─────────────────────────────────────────── */
+    /* ── CONTACT ── */
     #contact { background: var(--gray-50); }
-
-    .contact-layout {
-      display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: 64px;
-      align-items: start;
-    }
-
-    .contact-info h3 {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 8px;
-    }
-    .contact-info p {
-      font-size: .95rem;
-      color: var(--gray-500);
-      line-height: 1.7;
-      margin-bottom: 36px;
-    }
-
-    .contact-items {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-    }
-
-    .contact-item-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
-      background: rgba(249,115,22,.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      flex-shrink: 0;
-    }
-
-    .contact-item-text strong {
-      display: block;
-      font-size: .85rem;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 3px;
-    }
-    .contact-item-text span {
-      font-size: .9rem;
-      color: var(--gray-500);
-    }
-    .contact-item-text a {
-      color: var(--orange);
-      font-weight: 500;
-      transition: color .2s;
-    }
+    .contact-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; align-items: start; }
+    .contact-info h3 { font-size: 1.25rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .contact-info p { font-size: .95rem; color: var(--gray-500); line-height: 1.7; margin-bottom: 36px; }
+    .contact-items { display: flex; flex-direction: column; gap: 20px; }
+    .contact-item { display: flex; align-items: flex-start; gap: 16px; }
+    .contact-item-icon { width: 44px; height: 44px; border-radius: 10px; background: rgba(249,115,22,.1); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; transition: background .2s, transform .2s; }
+    .contact-item:hover .contact-item-icon { background: rgba(249,115,22,.18); transform: scale(1.08); }
+    .contact-item-text strong { display: block; font-size: .85rem; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+    .contact-item-text span { font-size: .9rem; color: var(--gray-500); }
+    .contact-item-text a { color: var(--orange); font-weight: 500; transition: color .2s; }
     .contact-item-text a:hover { color: var(--orange-dark); }
 
-    /* Form */
-    .contact-form {
-      background: var(--white);
-      border-radius: var(--radius);
-      padding: 40px 36px;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(30,58,95,.06);
-    }
-
-    .contact-form h3 {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 28px;
-    }
-
+    .contact-form { background: var(--white); border-radius: var(--radius); padding: 40px 36px; box-shadow: var(--shadow); border: 1px solid rgba(30,58,95,.06); transition: box-shadow .3s; }
+    .contact-form:focus-within { box-shadow: var(--shadow-lg); }
+    .contact-form h3 { font-size: 1.2rem; font-weight: 700; color: var(--navy); margin-bottom: 28px; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      margin-bottom: 16px;
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+    .form-group label { font-size: .82rem; font-weight: 600; color: var(--navy); }
+    .form-group input, .form-group textarea, .form-group select {
+      padding: 12px 16px; border: 1.5px solid var(--gray-100); border-radius: 9px;
+      font-family: 'Poppins', sans-serif; font-size: .9rem; color: var(--text);
+      background: var(--gray-50); transition: border-color .2s, background .2s, box-shadow .2s; outline: none;
     }
-    .form-group label {
-      font-size: .82rem;
-      font-weight: 600;
-      color: var(--navy);
-    }
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      padding: 12px 16px;
-      border: 1.5px solid var(--gray-100);
-      border-radius: 9px;
-      font-family: 'Poppins', sans-serif;
-      font-size: .9rem;
-      color: var(--text);
-      background: var(--gray-50);
-      transition: border-color .2s, background .2s;
-      outline: none;
-    }
-    .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus {
-      border-color: var(--orange);
-      background: var(--white);
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+      border-color: var(--orange); background: var(--white);
+      box-shadow: 0 0 0 3px rgba(249,115,22,.12);
     }
     .form-group textarea { resize: vertical; min-height: 110px; }
-
     .form-submit {
-      width: 100%;
-      background: var(--navy);
-      color: var(--white);
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: .98rem;
-      padding: 14px 28px;
-      border-radius: 10px;
-      border: none;
-      cursor: pointer;
-      transition: background .2s, transform .15s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 8px;
+      width: 100%; background: var(--navy); color: var(--white);
+      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: .98rem;
+      padding: 14px 28px; border-radius: 10px; border: none; cursor: pointer;
+      transition: background .2s, transform .15s, box-shadow .2s;
+      display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 8px;
     }
-    .form-submit:hover {
-      background: var(--navy-light);
-      transform: translateY(-1px);
-    }
+    .form-submit:hover { background: var(--navy-light); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(30,58,95,.25); }
 
-    /* ───────────────────────────────────────────
-       FOOTER
-    ─────────────────────────────────────────── */
-    footer {
-      background: var(--navy-dark);
-      color: rgba(255,255,255,.6);
-      padding: 60px 24px 32px;
-    }
-
-    .footer-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .footer-top {
-      display: grid;
-      grid-template-columns: 1.8fr 1fr 1fr 1fr;
-      gap: 48px;
-      padding-bottom: 48px;
-      border-bottom: 1px solid rgba(255,255,255,.08);
-    }
-
-    .footer-brand .logo {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      margin-bottom: 14px;
-    }
+    /* ── FOOTER ── */
+    footer { background: var(--navy-dark); color: rgba(255,255,255,.6); padding: 60px 24px 32px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 1.8fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .footer-brand .logo { display: flex; align-items: center; gap: 11px; margin-bottom: 14px; }
     .footer-logo-wordmark { line-height: 1; }
-    .footer-logo-wordmark strong {
-      display: block;
-      font-size: 1.15rem;
-      font-weight: 800;
-      letter-spacing: -.5px;
-      color: var(--white);
-    }
-    .footer-logo-wordmark small {
-      display: block;
-      font-size: .48rem;
-      font-weight: 700;
-      letter-spacing: 2.5px;
-      color: rgba(255,255,255,.4);
-      margin-top: 3px;
-      text-transform: uppercase;
-    }
-
-    .footer-brand p {
-      font-size: .88rem;
-      line-height: 1.7;
-      max-width: 280px;
-    }
-
-    .footer-domain {
-      display: inline-block;
-      margin-top: 16px;
-      font-size: .82rem;
-      font-weight: 600;
-      color: var(--orange);
-      border: 1px solid rgba(249,115,22,.3);
-      padding: 4px 12px;
-      border-radius: 6px;
-    }
-
-    .footer-col h4 {
-      font-size: .88rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 18px;
-      text-transform: uppercase;
-      letter-spacing: .8px;
-    }
-
-    .footer-col ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .footer-col ul a {
-      font-size: .88rem;
-      transition: color .2s;
-    }
+    .footer-logo-wordmark strong { display: block; font-size: 1.15rem; font-weight: 800; letter-spacing: -.5px; color: var(--white); }
+    .footer-logo-wordmark small { display: block; font-size: .48rem; font-weight: 700; letter-spacing: 2.5px; color: rgba(255,255,255,.4); margin-top: 3px; text-transform: uppercase; }
+    .footer-brand p { font-size: .88rem; line-height: 1.7; max-width: 280px; }
+    .footer-domain { display: inline-block; margin-top: 16px; font-size: .82rem; font-weight: 600; color: var(--orange); border: 1px solid rgba(249,115,22,.3); padding: 4px 12px; border-radius: 6px; }
+    .footer-col h4 { font-size: .88rem; font-weight: 700; color: var(--white); margin-bottom: 18px; text-transform: uppercase; letter-spacing: .8px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul a { font-size: .88rem; transition: color .2s; }
     .footer-col ul a:hover { color: var(--white); }
-
-    .footer-bottom {
-      padding-top: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
+    .footer-bottom { padding-top: 28px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
     .footer-bottom p { font-size: .82rem; }
-    .footer-bottom .made-with {
-      font-size: .82rem;
-      color: rgba(255,255,255,.4);
-    }
+    .footer-bottom .made-with { font-size: .82rem; color: rgba(255,255,255,.4); }
     .footer-bottom .made-with span { color: var(--orange); }
 
-    /* ───────────────────────────────────────────
-       RESPONSIVE
-    ─────────────────────────────────────────── */
+    /* ── SCROLL TOP ── */
+    #scrollTop {
+      position: fixed; bottom: 28px; right: 28px; width: 44px; height: 44px;
+      border-radius: 50%; background: var(--orange); color: var(--white);
+      border: none; cursor: pointer; font-size: 1.1rem;
+      box-shadow: 0 4px 16px rgba(249,115,22,.4);
+      transition: opacity .3s, transform .3s; opacity: 0; pointer-events: none;
+      display: flex; align-items: center; justify-content: center; z-index: 900;
+    }
+    #scrollTop.show { opacity: 1; pointer-events: all; }
+    #scrollTop:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(249,115,22,.5); }
+
+    /* ── CARROUSEL / SLIDER (fusionné avec hero) ── */
+    #slider {
+      margin-top: 68px;
+      padding: 0;
+      overflow: hidden;
+      position: relative;
+      background: var(--navy-dark);
+    }
+
+    .slider-track {
+      display: flex;
+      transition: transform .7s cubic-bezier(.77,0,.18,1);
+      will-change: transform;
+    }
+
+    .slide {
+      min-width: 100%;
+      height: 294px;
+      position: relative;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    /* Slide standard (2-5) */
+    .slide img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center center; display: block;
+      transform: scale(1.06);
+      transition: transform 6s ease;
+    }
+    .slide.active img { transform: scale(1); }
+
+    /* Slide hero — surcharge pour l'image positionnée en absolute */
+    .slide-hero { position: relative; overflow: hidden; }
+    .slide-hero img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center 30%;
+      z-index: 1;
+      transform: none;
+    }
+    .slide-hero.active img { transform: none; }
+
+    .slide-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(21,44,74,.78) 0%, rgba(21,44,74,.42) 60%, transparent 100%);
+    }
+
+    .slide-caption {
+      position: absolute; bottom: 0; left: 0;
+      padding: 48px 56px;
+      max-width: 620px;
+      transform: translateY(10px); opacity: 0;
+      transition: transform .6s ease .2s, opacity .6s ease .2s;
+    }
+    .slide.active .slide-caption { transform: translateY(0); opacity: 1; }
+
+    .slide-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(249,115,22,.88); color: white;
+      font-size: .72rem; font-weight: 700; letter-spacing: .8px;
+      text-transform: uppercase; padding: 5px 14px; border-radius: 100px;
+      margin-bottom: 16px;
+    }
+
+    .slide-caption h3 {
+      font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800;
+      color: white; line-height: 1.2; margin-bottom: 10px;
+      letter-spacing: -.3px;
+    }
+
+    .slide-caption p {
+      font-size: .95rem; color: rgba(255,255,255,.75); line-height: 1.65;
+    }
+
+    /* Flèches */
+    .slider-arrow {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 48px; height: 48px; border-radius: 50%;
+      background: rgba(255,255,255,.12); border: 1.5px solid rgba(255,255,255,.22);
+      color: white; font-size: 1.1rem;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; z-index: 10;
+      transition: background .2s, border-color .2s, transform .2s;
+      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    }
+    .slider-arrow:hover { background: rgba(249,115,22,.7); border-color: transparent; transform: translateY(-50%) scale(1.08); }
+    .slider-prev { left: 24px; }
+    .slider-next { right: 24px; }
+
+    /* Points de navigation */
+    .slider-dots {
+      position: absolute; bottom: 20px; right: 56px;
+      display: flex; gap: 8px; z-index: 10;
+    }
+    .slider-dot {
+      width: 8px; height: 8px; border-radius: 100px;
+      background: rgba(255,255,255,.35); cursor: pointer;
+      transition: background .3s, width .3s;
+      border: none;
+    }
+    .slider-dot.active { background: var(--orange); width: 24px; }
+
+    /* Barre de progression */
+    .slider-progress {
+      position: absolute; bottom: 0; left: 0; height: 3px;
+      background: var(--orange); width: 0%;
+      transition: width linear; z-index: 10;
+    }
+
+    /* ── RESPONSIVE ── */
     @media (max-width: 960px) {
-      .apropos-inner { grid-template-columns: 1fr; gap: 48px; }
+      .saas-inner { grid-template-columns: 1fr; }
+      .saas-image-panel { min-height: 300px; }
+      .saas-text-panel { padding: 48px 36px; }
+      .apropos-inner { grid-template-columns: 1fr; gap: 40px; }
+      .apropos-image-panel { min-height: 360px; }
       .footer-top { grid-template-columns: 1fr 1fr; gap: 36px; }
       .contact-layout { grid-template-columns: 1fr; gap: 40px; }
     }
-
     @media (max-width: 768px) {
       section { padding: 72px 20px; }
       .nav-links { display: none; }
@@ -947,51 +594,28 @@
       .products-grid { grid-template-columns: 1fr; }
       .why-grid { grid-template-columns: 1fr; }
       .footer-top { grid-template-columns: 1fr; gap: 28px; }
-      .apropos-values { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
       .hero-stats { gap: 24px; }
+      .slide { height: 224px; }
+      .slide-hero { height: 520px; }
+      .slide-caption { padding: 28px 24px; }
+      .slider-arrow { width: 38px; height: 38px; font-size: .9rem; }
+      .slider-prev { left: 12px; }
+      .slider-next { right: 12px; }
+      .slider-dots { right: 24px; }
+      .slide-hero-content { padding: 36px 20px 60px; }
     }
-
     @media (max-width: 480px) {
       .hero-actions { flex-direction: column; align-items: stretch; }
       .btn-primary, .btn-secondary { text-align: center; justify-content: center; }
       .contact-form { padding: 28px 20px; }
+      .apropos-values-overlay { grid-template-columns: 1fr; }
     }
-
-    /* ───────────────────────────────────────────
-       SCROLL TOP BUTTON
-    ─────────────────────────────────────────── */
-    #scrollTop {
-      position: fixed;
-      bottom: 28px;
-      right: 28px;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: var(--orange);
-      color: var(--white);
-      border: none;
-      cursor: pointer;
-      font-size: 1.1rem;
-      box-shadow: 0 4px 16px rgba(249,115,22,.4);
-      transition: opacity .3s, transform .3s;
-      opacity: 0;
-      pointer-events: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 900;
-    }
-    #scrollTop.show {
-      opacity: 1;
-      pointer-events: all;
-    }
-    #scrollTop:hover { transform: translateY(-3px); }
   </style>
 </head>
 <body>
 
-  <!-- ── NAVBAR ─────────────────────────────── -->
+  <!-- ── NAVBAR ── -->
   <nav id="navbar">
     <div class="nav-inner">
       <a href="#" class="nav-logo">
@@ -1019,144 +643,246 @@
     </div>
   </nav>
 
-  <!-- ── HERO ───────────────────────────────── -->
-  <section class="hero" id="accueil">
-    <div class="hero-grid"></div>
-    <div class="hero-inner">
-      <div class="hero-badges fade-up">
-        <div class="hero-badge">Le choix des professionnels</div>
-        <div class="hero-badge hero-badge-cisco">Académie Cisco Agréée</div>
-      </div>
-      <h1 class="fade-up delay-1">
-        Logiciels SaaS &amp;<br />
-        formations certifiantes<br />
-        <span class="highlight">pour l'Afrique de demain</span>
-      </h1>
-      <p class="hero-sub fade-up delay-2">
-        YOU TECHNOLOGY développe des solutions SaaS modernes et forme les talents tech africains via la plateforme officielle Cisco Networking Academy — depuis Conakry, pour les professionnels d'Afrique de l'Ouest.
-      </p>
-      <div class="hero-actions fade-up delay-3">
-        <a href="#produits" class="btn-primary">Découvrir nos produits <span>→</span></a>
-        <a href="#produits" class="btn-secondary">Nos formations Cisco</a>
-      </div>
-      <div class="hero-stats fade-up delay-4">
-        <div class="hero-stat">
-          <strong>100<span>%</span></strong>
-          <small>Made in Guinea</small>
-        </div>
-        <div class="hero-stat">
-          <strong>CCNA<span>+</span></strong>
-          <small>Certif. Cisco dispo.</small>
-        </div>
-        <div class="hero-stat">
-          <strong>24<span>/7</span></strong>
-          <small>Support dédié</small>
+  <!-- ── CARROUSEL ── -->
+  <section id="slider">
+    <div class="slider-track" id="sliderTrack">
+
+      <!-- Slide 1 : EcoleGN -->
+      <div class="slide">
+        <img src="https://images.pexels.com/photos/5427868/pexels-photo-5427868.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&dpr=1" alt="EcoleGN - Gestion scolaire numérique" loading="lazy" />
+        <div class="slide-overlay"></div>
+        <div class="slide-caption">
+          <span class="slide-tag">🎓 EcoleGN</span>
+          <h3>La gestion scolaire,<br />simplifiée et modernisée</h3>
+          <p>De l'inscription au bulletin, tout se gère depuis un seul outil — accessible depuis n'importe quel appareil.</p>
         </div>
       </div>
+
+      <!-- Slide 2 : Plateformes -->
+      <div class="slide">
+        <img src="https://images.pexels.com/photos/12969403/pexels-photo-12969403.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&dpr=1" alt="Interface logicielle professionnelle" loading="lazy" />
+        <div class="slide-overlay"></div>
+        <div class="slide-caption">
+          <span class="slide-tag">💻 Nos plateformes</span>
+          <h3>Des interfaces pensées<br />pour la performance</h3>
+          <p>Rapides, intuitives et robustes — nos logiciels s'adaptent à votre contexte sans compromis sur la qualité.</p>
+        </div>
+      </div>
+
+      <!-- Slide 3 : Cisco -->
+      <div class="slide">
+        <img src="https://images.pexels.com/photos/9301305/pexels-photo-9301305.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&dpr=1" alt="Formation et accompagnement professionnel" loading="lazy" />
+        <div class="slide-overlay"></div>
+        <div class="slide-caption">
+          <span class="slide-tag">📡 Cisco Academy</span>
+          <h3>Formez vos équipes<br />aux standards internationaux</h3>
+          <p>Certifications Cisco reconnues partout dans le monde, dispensées en ligne depuis Conakry.</p>
+        </div>
+      </div>
+
+      <!-- Slide 4 : Innovation -->
+      <div class="slide">
+        <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&dpr=1" alt="Collaboration et innovation digitale" loading="lazy" />
+        <div class="slide-overlay"></div>
+        <div class="slide-caption">
+          <span class="slide-tag">🚀 Innovation</span>
+          <h3>Conçu ici,<br />utilisé partout</h3>
+          <p>YOU TECHNOLOGY, c'est l'expertise locale avec les standards des meilleures boîtes tech du monde.</p>
+        </div>
+      </div>
+
     </div>
+    <button class="slider-arrow slider-prev" id="sliderPrev" aria-label="Slide précédente">&#8592;</button>
+    <button class="slider-arrow slider-next" id="sliderNext" aria-label="Slide suivante">&#8594;</button>
+    <div class="slider-dots" id="sliderDots"></div>
+    <div class="slider-progress" id="sliderProgress"></div>
   </section>
 
-  <!-- ── PRODUITS ───────────────────────────── -->
+  <!-- ── HERO ── -->
+  <section id="accueil" class="slide-hero">
+    <canvas id="heroCanvas" class="hero-canvas" aria-hidden="true"></canvas>
+    <div class="hero-grid"></div>
+    <img src="https://images.pexels.com/photos/3894378/pexels-photo-3894378.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1" alt="" aria-hidden="true" />
+    <div class="slide-hero-overlay"></div>
+    <div class="slide-hero-content">
+      <div class="slide-hero-inner">
+
+        <div class="hero-badges fade-up visible">
+          <div class="hero-badge">Le choix des professionnels</div>
+          <div class="hero-badge hero-badge-cisco">Académie Cisco Agréée</div>
+        </div>
+
+        <div class="hero-rotator fade-up delay-1 visible">
+          <span class="rotator-prefix">Nous construisons</span>
+          <div class="rotator-word-wrap">
+            <span id="typed-word"></span>
+            <span class="typed-cursor" aria-hidden="true"></span>
+          </div>
+        </div>
+
+        <h1 class="fade-up delay-2 visible">
+          Logiciels en ligne &amp; formations certifiantes<br />
+          <span class="highlight">des solutions qui font la différence</span>
+        </h1>
+
+        <p class="hero-sub fade-up delay-3 visible">Logiciels accessibles depuis n'importe quel appareil, formations Cisco certifiantes — depuis Conakry, pour des professionnels qui exigent le meilleur.</p>
+
+        <div class="hero-actions fade-up delay-4 visible">
+          <a href="#produits" class="btn-primary">Découvrir nos produits <span>→</span></a>
+          <a href="#produits" class="btn-secondary">Nos formations Cisco</a>
+        </div>
+
+        <div class="hero-stats fade-up delay-5 visible">
+          <div class="hero-stat">
+            <strong><span class="stat-val" data-target="100" data-suffix="%">0</span><span class="stat-suf">%</span></strong>
+            <small>Made in Guinea</small>
+          </div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat">
+            <strong><span class="stat-val" data-target="3" data-suffix="">0</span><span class="stat-suf">+</span></strong>
+            <small>Ans d'expertise</small>
+          </div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat">
+            <strong><span class="stat-val" data-target="24" data-suffix="">0</span><span class="stat-suf">/7</span></strong>
+            <small>Support dédié</small>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <p class="hero-attribution">Photo : <a href="https://www.pexels.com/photo/3894378/" target="_blank" rel="noopener">Pexels</a></p>
+  </section>
+
+  <!-- ── PRODUITS ── -->
   <section id="produits">
     <div class="container">
       <div class="section-header fade-up">
         <p class="section-label">Nos produits</p>
-        <h2 class="section-title">Des outils qui transforment<br />votre quotidien</h2>
-        <p class="section-sub">Chaque solution est conçue avec une connaissance profonde des réalités du terrain africain.</p>
+        <h2 class="section-title">Des outils numériques qui transforment<br />votre quotidien</h2>
+        <p class="section-sub">Chaque solution est conçue avec une connaissance profonde du terrain et des usages réels.</p>
       </div>
       <div class="products-grid">
-        <!-- EcoleGN -->
+
         <div class="product-card fade-up delay-1">
-          <div class="product-icon">🎓</div>
-          <span class="product-badge badge-live">Disponible</span>
-          <h3>EcoleGN</h3>
-          <p>La plateforme SaaS complète de gestion scolaire pour les établissements privés de Guinée — de la maternelle à l'université. Simplifiez l'administration, la pédagogie et la communication avec les familles.</p>
-          <ul class="product-features">
-            <li>Gestion des inscriptions &amp; dossiers élèves</li>
-            <li>Notes, bulletins &amp; relevés automatisés</li>
-            <li>Suivi des paiements de scolarité</li>
-            <li>Communication parent–école intégrée</li>
-            <li>Emplois du temps &amp; absences</li>
-          </ul>
-          <a href="https://ecole.youtec.tech" target="_blank" rel="noopener" class="product-link">
-            Accéder à EcoleGN <span class="arrow">→</span>
-          </a>
-        </div>
-        <!-- Boutique -->
-        <div class="product-card coming-soon fade-up delay-2">
-          <div class="product-icon">🛒</div>
-          <span class="product-badge badge-soon">Bientôt disponible</span>
-          <h3>Boutique</h3>
-          <p>Notre solution e-commerce clé en main pour les entrepreneurs et PME africains. Créez votre boutique en ligne, gérez vos stocks et encaissez vos paiements en quelques clics — sans compétences techniques requises.</p>
-          <ul class="product-features">
-            <li>Boutique en ligne personnalisable</li>
-            <li>Gestion des commandes &amp; stocks</li>
-            <li>Intégration paiements mobiles locaux</li>
-            <li>Tableau de bord analytics</li>
-            <li>Livraison &amp; suivi des colis</li>
-          </ul>
-          <span class="product-link disabled">
-            Bientôt disponible <span class="arrow">→</span>
-          </span>
+          <div class="product-card-image">
+            <img src="https://images.pexels.com/photos/5427868/pexels-photo-5427868.jpeg?auto=compress&cs=tinysrgb&w=800&h=500&dpr=1" alt="Gestion scolaire numérique" loading="lazy" />
+            <div class="product-card-image-overlay"></div>
+            <div class="product-card-image-label">🎓 Disponible</div>
+          </div>
+          <div class="product-card-body">
+            <h3>EcoleGN</h3>
+            <p>La plateforme complète de gestion scolaire pour les établissements privés de Guinée — de la maternelle à l'université. Accessible depuis n'importe quel téléphone ou ordinateur, sans installation.</p>
+            <ul class="product-features">
+              <li>Gestion des inscriptions &amp; dossiers élèves</li>
+              <li>Notes, bulletins &amp; relevés automatisés</li>
+              <li>Suivi des paiements de scolarité</li>
+              <li>Communication parent–école intégrée</li>
+              <li>Emplois du temps &amp; absences</li>
+            </ul>
+            <a href="https://ecole.youtech.tech" target="_blank" rel="noopener" class="product-link">
+              Accéder à EcoleGN <span class="arrow">→</span>
+            </a>
+          </div>
         </div>
 
-        <!-- Académie Cisco -->
-        <div class="product-card cisco fade-up delay-3">
-          <div class="product-icon" style="background:rgba(27,160,216,.1);">🎓</div>
-          <span class="product-badge badge-cisco">Académie Cisco Agréée</span>
-          <h3>YOU TECHNOLOGY Academy</h3>
-          <p>YOU TECHNOLOGY est une académie Cisco agréée. Formations certifiantes en réseaux et cybersécurité, dispensées en ligne via la plateforme officielle Cisco Networking Academy (Netacad). Obtenez des certifications reconnues mondialement depuis Conakry.</p>
-          <ul class="product-features">
-            <li><span class="ccna-chip">✓ Disponible</span> CCNA — Cisco Certified Network Associate</li>
-            <li>Cours 100 % en ligne sur Netacad</li>
-            <li>Instructeurs certifiés Cisco</li>
-            <li>Labs pratiques et simulations Packet Tracer</li>
-            <li>Certification reconnue à l'international</li>
-          </ul>
-          <div class="cisco-badge-logo">
-            <span>🔵</span> Cisco Networking Academy — Partenaire officiel
+        <div class="product-card coming-soon fade-up delay-2">
+          <div class="product-card-body" style="padding-top:36px;">
+            <div class="product-icon">🛒</div>
+            <span class="product-badge badge-soon">Bientôt disponible</span>
+            <h3>Boutique</h3>
+            <p>Notre solution e-commerce clé en main pour les entrepreneurs et PME. Créez votre boutique en ligne, gérez vos stocks et encaissez vos paiements en quelques clics — sans compétences techniques.</p>
+            <ul class="product-features">
+              <li>Boutique en ligne personnalisable</li>
+              <li>Gestion des commandes &amp; stocks</li>
+              <li>Intégration paiements mobiles locaux</li>
+              <li>Tableau de bord analytics</li>
+              <li>Livraison &amp; suivi des colis</li>
+            </ul>
+            <span class="product-link disabled">Bientôt disponible <span class="arrow">→</span></span>
           </div>
-          <a href="https://www.netacad.com" target="_blank" rel="noopener" class="product-link" style="margin-top:20px;">
-            Accéder à Netacad <span class="arrow">→</span>
-          </a>
+        </div>
+
+        <div class="product-card cisco fade-up delay-3">
+          <div class="product-card-body" style="padding-top:36px;">
+            <div class="product-icon" style="background:rgba(27,160,216,.1);">🎓</div>
+            <span class="product-badge badge-cisco">Académie Cisco Agréée</span>
+            <h3>YOU TECHNOLOGY Academy</h3>
+            <p>Formations certifiantes en réseaux et cybersécurité, dispensées en ligne via la plateforme officielle Cisco Networking Academy. Des certifications reconnues mondialement, depuis Conakry.</p>
+            <ul class="product-features">
+              <li><span class="ccna-chip">✓ Disponible</span> CCNA — Cisco Certified Network Associate</li>
+              <li>Cours 100 % en ligne sur Netacad</li>
+              <li>Instructeurs certifiés Cisco</li>
+              <li>Labs pratiques et simulations Packet Tracer</li>
+              <li>Certification reconnue à l'international</li>
+            </ul>
+            <div class="cisco-badge-logo">
+              <span>🔵</span> Cisco Networking Academy — Partenaire officiel
+            </div>
+            <a href="https://www.netacad.com" target="_blank" rel="noopener" class="product-link" style="margin-top:20px;">
+              Accéder à Netacad <span class="arrow">→</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION SAAS VISUELLE ── -->
+  <section id="saas-visual">
+    <div class="saas-inner">
+      <div class="saas-image-panel">
+        <img src="https://images.pexels.com/photos/12969403/pexels-photo-12969403.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Interface logicielle sur écran d'ordinateur" loading="lazy" />
+      </div>
+      <div class="saas-text-panel">
+        <p class="section-label">Nos plateformes en ligne</p>
+        <h2 class="section-title">Des interfaces<br />pensées pour durer</h2>
+        <p>Nos logiciels fonctionnent directement depuis votre navigateur — sur téléphone, tablette ou ordinateur — même avec une connexion limitée. Chaque fonctionnalité répond à un besoin concret, pas à une tendance venue d'ailleurs.</p>
+        <div class="saas-pills">
+          <span class="saas-pill"><span class="saas-pill-dot"></span>Multi-établissements</span>
+          <span class="saas-pill"><span class="saas-pill-dot"></span>Mobile-first</span>
+          <span class="saas-pill"><span class="saas-pill-dot"></span>Données sécurisées</span>
+          <span class="saas-pill"><span class="saas-pill-dot"></span>Mises à jour continues</span>
+          <span class="saas-pill"><span class="saas-pill-dot"></span>Support francophone</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── POURQUOI NOUS ─────────────────────── -->
+  <!-- ── POURQUOI NOUS ── -->
   <section id="pourquoi">
     <div class="container">
       <div class="section-header fade-up">
         <p class="section-label">Pourquoi nous choisir</p>
-        <h2 class="section-title">L'expertise locale au service<br />de vos ambitions</h2>
-        <p class="section-sub">Nous combinons maîtrise technologique et connaissance approfondie des marchés africains.</p>
+        <h2 class="section-title">L'expertise technique<br />au service de vos ambitions</h2>
+        <p class="section-sub">Nous combinons rigueur d'ingénierie et connaissance approfondie des besoins de nos clients.</p>
       </div>
       <div class="why-grid">
         <div class="why-card fade-up delay-1">
           <div class="why-icon">🌍</div>
           <h3>Innovation locale</h3>
-          <p>Nos solutions sont conçues depuis la Guinée, pour l'Afrique. Nous comprenons les défis réels du terrain : connectivité, usages mobiles, réalités économiques locales.</p>
+          <p>Nos solutions sont conçues depuis Conakry, avec une compréhension directe des contraintes terrain : connectivité variable, usages mobiles, contextes économiques divers.</p>
         </div>
         <div class="why-card fade-up delay-2">
           <div class="why-icon">⚙️</div>
           <h3>Expertise technique</h3>
-          <p>Une équipe d'ingénieurs passionnés, formés aux meilleures pratiques du développement SaaS, qui livrent des produits robustes, sécurisés et scalables.</p>
+          <p>Une équipe d'ingénieurs passionnés, formés aux meilleures pratiques du développement, qui livrent des produits robustes, sécurisés et maintenables dans la durée.</p>
         </div>
         <div class="why-card fade-up delay-3">
           <div class="why-icon">🤝</div>
           <h3>Support de proximité</h3>
-          <p>Un accompagnement humain, en français et en langues locales. Nous sommes disponibles pour vous aider à chaque étape de votre transformation numérique.</p>
+          <p>Un accompagnement humain, en français. Nous sommes disponibles pour vous aider à chaque étape — de la configuration initiale jusqu'à la montée en charge.</p>
         </div>
         <div class="why-card fade-up delay-1">
           <div class="why-icon">☁️</div>
-          <h3>Cloud & fiabilité</h3>
+          <h3>Cloud &amp; fiabilité</h3>
           <p>Infrastructure cloud moderne avec haute disponibilité. Vos données sont sécurisées, sauvegardées et accessibles de n'importe où, depuis n'importe quel appareil.</p>
         </div>
         <div class="why-card fade-up delay-2">
           <div class="why-icon">💰</div>
           <h3>Tarification accessible</h3>
-          <p>Des abonnements flexibles adaptés au contexte économique africain. Commencez petit, évoluez à votre rythme — sans frais cachés ni engagement long terme.</p>
+          <p>Des abonnements flexibles, pensés pour démarrer sereinement et évoluer à votre rythme — sans frais cachés ni engagement long terme.</p>
         </div>
         <div class="why-card fade-up delay-3">
           <div class="why-icon">🚀</div>
@@ -1167,43 +893,47 @@
     </div>
   </section>
 
-  <!-- ── À PROPOS ───────────────────────────── -->
+  <!-- ── À PROPOS ── -->
   <section id="apropos">
     <div class="container">
       <div class="apropos-inner">
         <div class="apropos-text fade-up">
           <p class="section-label">À propos</p>
-          <h2 class="section-title">Construire le numérique africain depuis Conakry</h2>
-          <p class="section-sub">YOU TECHNOLOGY est une entreprise tech guinéenne fondée avec une mission simple : rendre les entreprises africaines plus performantes grâce au digital.</p>
-          <p>Basée à Conakry, nous développons des logiciels SaaS pensés pour les réalités du marché africain — disponibles sur mobile, simples à prendre en main, et conçus pour durer. Académie Cisco agréée, nous formons également la prochaine génération de talents tech africains aux certifications réseaux et cybersécurité via la plateforme Netacad. Notre ambition : devenir le partenaire technologique de référence pour les acteurs économiques d'Afrique de l'Ouest.</p>
+          <h2 class="section-title">Un studio tech sérieux,<br />basé à Conakry</h2>
+          <p class="section-sub">YOU TECHNOLOGY est une entreprise guinéenne fondée avec une ambition claire : construire des logiciels de qualité professionnelle qui durent.</p>
+          <p>Nous développons des logiciels accessibles depuis le web, simples à prendre en main et conçus pour des environnements exigeants. Académie Cisco agréée, nous formons également la prochaine génération d'ingénieurs réseau via la plateforme officielle Netacad. Notre objectif : être le partenaire tech de référence pour toute organisation qui veut passer à la vitesse supérieure.</p>
         </div>
-        <div class="apropos-values fade-up delay-2">
-          <div class="apropos-value">
-            <div class="icon">🎯</div>
-            <h4>Notre mission</h4>
-            <p>Accélérer la transformation digitale des organisations africaines avec des outils adaptés.</p>
-          </div>
-          <div class="apropos-value">
-            <div class="icon">👁️</div>
-            <h4>Notre vision</h4>
-            <p>Un écosystème tech africain autonome, innovant et reconnu à l'échelle internationale.</p>
-          </div>
-          <div class="apropos-value">
-            <div class="icon">⭐</div>
-            <h4>Nos valeurs</h4>
-            <p>Excellence, transparence, impact social positif et engagement envers nos clients.</p>
-          </div>
-          <div class="apropos-value">
-            <div class="icon">📍</div>
-            <h4>Notre ancrage</h4>
-            <p>Fièrement basés à Conakry, connectés à toute l'Afrique de l'Ouest francophone.</p>
+        <div class="apropos-image-panel fade-up delay-2">
+          <img src="https://images.pexels.com/photos/9301305/pexels-photo-9301305.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Professionnels au travail" loading="lazy" />
+          <div class="apropos-image-overlay"></div>
+          <div class="apropos-values-overlay">
+            <div class="apropos-value">
+              <div class="icon">🎯</div>
+              <h4>Notre mission</h4>
+              <p>Construire des outils numériques fiables qui font gagner du temps.</p>
+            </div>
+            <div class="apropos-value">
+              <div class="icon">👁️</div>
+              <h4>Notre vision</h4>
+              <p>Des produits tech reconnus pour leur robustesse et leur pertinence.</p>
+            </div>
+            <div class="apropos-value">
+              <div class="icon">⭐</div>
+              <h4>Nos valeurs</h4>
+              <p>Excellence, transparence et impact social positif.</p>
+            </div>
+            <div class="apropos-value">
+              <div class="icon">📍</div>
+              <h4>Notre ancrage</h4>
+              <p>Fièrement basés à Conakry, ouverts sur le monde.</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── CONTACT ────────────────────────────── -->
+  <!-- ── CONTACT ── -->
   <section id="contact">
     <div class="container">
       <div class="section-header fade-up">
@@ -1214,13 +944,13 @@
       <div class="contact-layout">
         <div class="contact-info fade-up delay-1">
           <h3>Nous trouver</h3>
-          <p>Que vous soyez à Conakry ou ailleurs en Afrique de l'Ouest, nous sommes à votre disposition.</p>
+          <p>Que vous soyez à Conakry ou ailleurs, nous sommes à votre disposition.</p>
           <div class="contact-items">
             <div class="contact-item">
               <div class="contact-item-icon">📧</div>
               <div class="contact-item-text">
                 <strong>Email</strong>
-                <span><a href="mailto:contact@youtec.tech">contact@youtec.tech</a></span>
+                <span><a href="mailto:contact@youtech.tech">contact@youtech.tech</a></span>
               </div>
             </div>
             <div class="contact-item">
@@ -1234,14 +964,14 @@
               <div class="contact-item-icon">🌐</div>
               <div class="contact-item-text">
                 <strong>Site web</strong>
-                <span><a href="https://youtec.tech">youtec.tech</a></span>
+                <span><a href="https://youtech.tech">youtech.tech</a></span>
               </div>
             </div>
             <div class="contact-item">
               <div class="contact-item-icon">🎓</div>
               <div class="contact-item-text">
                 <strong>EcoleGN</strong>
-                <span><a href="https://ecole.youtec.tech">ecole.youtec.tech</a></span>
+                <span><a href="https://ecole.youtech.tech">ecole.youtech.tech</a></span>
               </div>
             </div>
           </div>
@@ -1273,16 +1003,14 @@
               <label for="message">Message</label>
               <textarea id="message" placeholder="Décrivez votre besoin ou votre question…" required></textarea>
             </div>
-            <button type="submit" class="form-submit">
-              Envoyer le message <span>✉️</span>
-            </button>
+            <button type="submit" class="form-submit">Envoyer le message <span>✉️</span></button>
           </form>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── FOOTER ─────────────────────────────── -->
+  <!-- ── FOOTER ── -->
   <footer>
     <div class="footer-inner">
       <div class="footer-top">
@@ -1294,13 +1022,13 @@
               <small>Conakry · Guinée</small>
             </div>
           </div>
-          <p>Solutions SaaS modernes et formations certifiantes Cisco, pensées depuis Conakry pour accélérer la transformation digitale en Afrique de l'Ouest.</p>
-          <span class="footer-domain">youtec.tech</span>
+          <p>Logiciels professionnels en ligne et formations certifiantes Cisco — conçus à Conakry, pour des organisations qui veulent performer.</p>
+          <span class="footer-domain">youtech.tech</span>
         </div>
         <div class="footer-col">
           <h4>Produits</h4>
           <ul>
-            <li><a href="https://ecole.youtec.tech">EcoleGN</a></li>
+            <li><a href="https://ecole.youtech.tech">EcoleGN</a></li>
             <li><a href="#produits">Boutique (bientôt)</a></li>
             <li><a href="https://www.netacad.com">YOU TECHNOLOGY Academy</a></li>
           </ul>
@@ -1329,26 +1057,178 @@
     </div>
   </footer>
 
-  <!-- ── SCROLL TOP ─────────────────────────── -->
   <button id="scrollTop" aria-label="Retour en haut">↑</button>
 
-  <!-- ── JS ────────────────────────────────── -->
+  <!-- ════════════════════════════════════════
+       JAVASCRIPT — Effets dynamiques
+  ════════════════════════════════════════ -->
   <script>
-    /* ── Hamburger menu ── */
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('open');
-      mobileMenu.classList.toggle('open');
-    });
-    document.querySelectorAll('.mobile-link').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('open');
-        mobileMenu.classList.remove('open');
-      });
-    });
+  /* ───────────────────────────────────────
+     1. CANVAS — Réseau de particules (hero slide)
+  ─────────────────────────────────────── */
+  (function() {
+    const canvas = document.getElementById('heroCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let W, H, particles, animId;
+    const COUNT = 55, LINK_DIST = 130, SPEED = 0.35;
 
-    /* ── Fade-in on scroll ── */
+    function resize() {
+      W = canvas.width  = canvas.offsetWidth;
+      H = canvas.height = canvas.offsetHeight;
+    }
+
+    function Particle() {
+      this.x  = Math.random() * W;
+      this.y  = Math.random() * H;
+      this.vx = (Math.random() - .5) * SPEED;
+      this.vy = (Math.random() - .5) * SPEED;
+      this.r  = Math.random() * 1.8 + 0.8;
+      this.a  = Math.random() * .35 + .12;
+    }
+
+    function init() {
+      particles = Array.from({length: COUNT}, () => new Particle());
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+
+      // Connexions
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const d  = Math.sqrt(dx*dx + dy*dy);
+          if (d < LINK_DIST) {
+            const alpha = (1 - d / LINK_DIST) * .18;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(249,115,22,${alpha})`;
+            ctx.lineWidth = .9;
+            ctx.stroke();
+          }
+        }
+      }
+
+      // Points
+      particles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0 || p.x > W) p.vx *= -1;
+        if (p.y < 0 || p.y > H) p.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,255,255,${p.a})`;
+        ctx.fill();
+      });
+
+      animId = requestAnimationFrame(draw);
+    }
+
+    function start() {
+      cancelAnimationFrame(animId);
+      resize();
+      init();
+      draw();
+    }
+
+    window.addEventListener('resize', start);
+    start();
+
+    // Pause quand le hero sort de la vue (économie CPU)
+    const heroSection = document.getElementById('accueil');
+    const io = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) { draw(); }
+      else { cancelAnimationFrame(animId); }
+    }, { threshold: 0 });
+    if (heroSection) io.observe(heroSection);
+  })();
+
+
+  /* ───────────────────────────────────────
+     2. TYPED TEXT — Texte rotatif typé
+  ─────────────────────────────────────── */
+  (function() {
+    const el = document.getElementById('typed-word');
+    if (!el) return;
+
+    const words = [
+      'des logiciels sur mesure',
+      'des outils de gestion',
+      'des applications web',
+      'des formations Cisco',
+      'des solutions durables',
+    ];
+    let wi = 0, ci = 0, deleting = false;
+
+    function type() {
+      const word = words[wi];
+      el.textContent = deleting
+        ? word.slice(0, ci - 1)
+        : word.slice(0, ci + 1);
+
+      if (!deleting) ci++;
+      else           ci--;
+
+      let delay = deleting ? 40 : 75;
+
+      if (!deleting && ci === word.length) {
+        deleting = true;
+        delay = 1600;
+      } else if (deleting && ci === 0) {
+        deleting = false;
+        wi = (wi + 1) % words.length;
+        delay = 300;
+      }
+
+      setTimeout(type, delay);
+    }
+
+    // Démarrer après 800ms pour laisser la page charger
+    setTimeout(type, 800);
+  })();
+
+
+  /* ───────────────────────────────────────
+     3. COUNT-UP — Compteurs animés
+     Déclenchés au DOMContentLoaded (stats visibles dès le chargement)
+  ─────────────────────────────────────── */
+  (function() {
+    const statEls = document.querySelectorAll('.stat-val[data-target]');
+    if (!statEls.length) return;
+
+    function countUp(el) {
+      const target = parseInt(el.dataset.target, 10);
+      const duration = 1400;
+      const start = performance.now();
+
+      function update(now) {
+        const elapsed  = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        // Ease out cubic
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(eased * target);
+        if (progress < 1) requestAnimationFrame(update);
+        else el.textContent = target;
+      }
+      requestAnimationFrame(update);
+    }
+
+    // Les stats sont dans la première slide, visible au chargement
+    // On déclenche après 800ms pour laisser la page s'afficher
+    setTimeout(() => {
+      statEls.forEach(el => countUp(el));
+    }, 800);
+  })();
+
+
+  /* ───────────────────────────────────────
+     4. FADE-UP — Apparitions au scroll
+  ─────────────────────────────────────── */
+  (function() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
@@ -1356,37 +1236,159 @@
           observer.unobserve(e.target);
         }
       });
-    }, { threshold: 0.12 });
-
+    }, { threshold: 0.1 });
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  })();
 
-    /* ── Scroll-to-top button ── */
-    const scrollBtn = document.getElementById('scrollTop');
+
+  /* ───────────────────────────────────────
+     5. NAVBAR — Scroll + hamburger
+  ─────────────────────────────────────── */
+  (function() {
+    const navbar    = document.getElementById('navbar');
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
     window.addEventListener('scroll', () => {
-      scrollBtn.classList.toggle('show', window.scrollY > 400);
+      navbar.classList.toggle('scrolled', window.scrollY > 10);
     });
-    scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-    /* ── Navbar shadow on scroll ── */
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
+    });
+  })();
+
+
+  /* ───────────────────────────────────────
+     6. SCROLL-TO-TOP
+  ─────────────────────────────────────── */
+  (function() {
+    const btn = document.getElementById('scrollTop');
     window.addEventListener('scroll', () => {
-      document.getElementById('navbar').style.boxShadow =
-        window.scrollY > 10 ? '0 2px 20px rgba(0,0,0,.25)' : 'none';
+      btn.classList.toggle('show', window.scrollY > 400);
+    });
+    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  })();
+
+
+  /* ───────────────────────────────────────
+     7. CARROUSEL — Défilement d'images
+  ─────────────────────────────────────── */
+  (function() {
+    const track    = document.getElementById('sliderTrack');
+    const slides   = track ? Array.from(track.querySelectorAll('.slide')) : [];
+    const dotsWrap = document.getElementById('sliderDots');
+    const prevBtn  = document.getElementById('sliderPrev');
+    const nextBtn  = document.getElementById('sliderNext');
+    const progBar  = document.getElementById('sliderProgress');
+    if (!slides.length) return;
+
+    const DELAY = 5000; // ms entre chaque slide
+    let current = 0, timer = null, progTimer = null, isPaused = false;
+
+    // Créer les dots
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `Slide ${i + 1}`);
+      dot.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(dot);
     });
 
-    /* ── Contact form ── */
-    function handleSubmit(e) {
-      e.preventDefault();
-      const btn = e.target.querySelector('.form-submit');
-      btn.textContent = 'Message envoyé ✓';
-      btn.style.background = '#16a34a';
-      btn.disabled = true;
-      setTimeout(() => {
-        btn.innerHTML = 'Envoyer le message <span>✉️</span>';
-        btn.style.background = '';
-        btn.disabled = false;
-        e.target.reset();
-      }, 3000);
+    function getDots() { return Array.from(dotsWrap.querySelectorAll('.slider-dot')); }
+
+    function goTo(index) {
+      slides[current].classList.remove('active');
+      getDots()[current].classList.remove('active');
+
+      current = (index + slides.length) % slides.length;
+
+      slides[current].classList.add('active');
+      getDots()[current].classList.add('active');
+      track.style.transform = `translateX(-${current * 100}%)`;
+
+      resetProgress();
     }
+
+    function next() { goTo(current + 1); }
+    function prev() { goTo(current - 1); }
+
+    // Barre de progression
+    function resetProgress() {
+      clearTimeout(progTimer);
+      if (progBar) {
+        progBar.style.transition = 'none';
+        progBar.style.width = '0%';
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            progBar.style.transition = `width ${DELAY}ms linear`;
+            progBar.style.width = '100%';
+          });
+        });
+      }
+    }
+
+    // Auto-play
+    function startAuto() {
+      clearInterval(timer);
+      timer = setInterval(() => { if (!isPaused) next(); }, DELAY);
+    }
+
+    // Pause au survol
+    const section = document.getElementById('slider');
+    if (section) {
+      section.addEventListener('mouseenter', () => { isPaused = true; });
+      section.addEventListener('mouseleave', () => { isPaused = false; });
+    }
+
+    // Flèches
+    prevBtn && prevBtn.addEventListener('click', () => { prev(); });
+    nextBtn && nextBtn.addEventListener('click', () => { next(); });
+
+    // Swipe tactile mobile
+    let touchStartX = 0;
+    track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) > 50) { dx < 0 ? next() : prev(); }
+    }, { passive: true });
+
+    // Clavier (accessibilité)
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft')  prev();
+      if (e.key === 'ArrowRight') next();
+    });
+
+    // Init
+    resetProgress();
+    startAuto();
+  })();
+
+
+  /* ───────────────────────────────────────
+     8. CONTACT FORM
+  ─────────────────────────────────────── */
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = 'Message envoyé ✓';
+    btn.style.background = '#16a34a';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.innerHTML = 'Envoyer le message <span>✉️</span>';
+      btn.style.background = '';
+      btn.disabled = false;
+      e.target.reset();
+    }, 3000);
+  }
   </script>
 </body>
 </html>
