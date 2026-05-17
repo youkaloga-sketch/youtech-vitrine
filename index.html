@@ -3,1393 +3,2011 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>YOU TECHNOLOGY — Le choix des professionnels</title>
+  <title>YOU TECHNOLOGY — Logiciels & Formations Certifiantes</title>
+  <meta name="description" content="YOU TECHNOLOGY conçoit des logiciels professionnels en ligne et des formations Cisco certifiantes depuis Conakry — pour des organisations qui veulent performer à l'ère numérique." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --navy:       #1e3a5f;
-      --navy-dark:  #152c4a;
-      --navy-light: #254972;
-      --orange:     #f97316;
-      --orange-dark:#ea6d0e;
-      --white:      #ffffff;
-      --gray-50:    #f8fafc;
-      --gray-100:   #f1f5f9;
-      --gray-300:   #cbd5e1;
-      --gray-500:   #64748b;
-      --gray-700:   #334155;
-      --text:       #1e293b;
-      --radius:     14px;
-      --shadow:     0 4px 24px rgba(30,58,95,.10);
-      --shadow-lg:  0 12px 40px rgba(30,58,95,.16);
-    }
-
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Poppins', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }
-    img  { max-width: 100%; display: block; }
-    a    { text-decoration: none; color: inherit; }
-
-    /* ── FADE-UP SCROLL ── */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(36px);
-      transition: opacity .7s ease, transform .7s ease;
-    }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
-    .fade-up.delay-1 { transition-delay: .1s; }
-    .fade-up.delay-2 { transition-delay: .2s; }
-    .fade-up.delay-3 { transition-delay: .3s; }
-    .fade-up.delay-4 { transition-delay: .4s; }
-    .fade-up.delay-5 { transition-delay: .5s; }
-
-    /* ── NAVBAR ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      background: rgba(21,44,74,.92);
-      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      transition: background .3s, box-shadow .3s;
-    }
-    nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,.28); }
-
-    .nav-inner {
-      max-width: 1200px; margin: 0 auto; padding: 0 24px;
-      height: 68px; display: flex; align-items: center; justify-content: space-between;
-    }
-    .nav-logo { display: inline-flex; align-items: center; gap: 10px; }
-    .nav-logo-wordmark { line-height: 1; }
-    .nav-logo-wordmark strong { display: block; font-size: 1.15rem; font-weight: 800; letter-spacing: -.5px; color: var(--white); }
-    .nav-logo-wordmark small { display: block; font-size: .54rem; font-weight: 600; letter-spacing: .22em; color: rgba(255,255,255,.5); margin-top: 4px; text-transform: uppercase; }
-
-    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
-    .nav-links a { font-size: .9rem; font-weight: 500; color: rgba(255,255,255,.82); transition: color .2s; }
-    .nav-links a:hover { color: var(--white); }
-
-    .nav-cta {
-      background: var(--orange); color: var(--white) !important;
-      padding: 9px 22px; border-radius: 8px;
-      font-weight: 600 !important; font-size: .88rem !important;
-      transition: background .2s, transform .15s, box-shadow .2s !important;
-      box-shadow: 0 0 0 0 rgba(249,115,22,.4);
-    }
-    .nav-cta:hover {
-      background: var(--orange-dark) !important;
-      transform: translateY(-1px) !important;
-      box-shadow: 0 4px 16px rgba(249,115,22,.35) !important;
-    }
-
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
-    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: transform .3s, opacity .3s; }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    .mobile-menu { display: none; flex-direction: column; background: var(--navy-dark); padding: 20px 24px 28px; gap: 18px; }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a { font-size: .95rem; font-weight: 500; color: rgba(255,255,255,.85); padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
-    .mobile-menu a:last-child { border: none; }
-    .mobile-menu .nav-cta { display: inline-block; text-align: center; margin-top: 4px; }
-
-    /* ── SECTION UTILS ── */
-    section { padding: 96px 24px; }
-    .container { max-width: 1200px; margin: 0 auto; }
-    .section-label { font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--orange); margin-bottom: 12px; }
-    .section-title { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; color: var(--navy); line-height: 1.2; letter-spacing: -.5px; margin-bottom: 16px; }
-    .section-sub { font-size: 1.05rem; color: var(--gray-500); max-width: 580px; line-height: 1.7; }
-    .section-header { margin-bottom: 56px; }
-
-    /* ── HERO (section autonome) ── */
-    .slide-hero {
-      position: relative; overflow: hidden;
-      height: 580px;
-    }
-
-    /* Canvas particules */
-    .slide-hero .hero-canvas {
-      position: absolute; inset: 0; width: 100%; height: 100%;
-      pointer-events: none; z-index: 2;
-    }
-
-    /* Grille géométrique */
-    .slide-hero .hero-grid {
-      position: absolute; inset: 0; z-index: 2;
-      background-image:
-        linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.022) 1px, transparent 1px);
-      background-size: 50px 50px;
-      pointer-events: none;
-    }
-
-    /* Photo de fond */
-    .slide-hero img {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: center 30%;
-      z-index: 1;
-    }
-
-    /* Overlay gradient navy */
-    .slide-hero-overlay {
-      position: absolute; inset: 0; z-index: 3;
-      background: linear-gradient(135deg, rgba(21,44,74,.68) 0%, rgba(30,58,95,.58) 52%, rgba(26,74,122,.54) 100%);
-    }
-
-    /* Halos orange */
-    .slide-hero::before {
-      content: ''; position: absolute; width: 600px; height: 600px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(249,115,22,.12) 0%, transparent 70%);
-      top: -100px; right: -150px; pointer-events: none; z-index: 2;
-    }
-    .slide-hero::after {
-      content: ''; position: absolute; width: 400px; height: 400px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(249,115,22,.07) 0%, transparent 70%);
-      bottom: -80px; left: -100px; pointer-events: none; z-index: 2;
-    }
-
-    /* Contenu hero */
-    .slide-hero-content {
-      position: absolute; inset: 0; z-index: 5;
-      display: flex; flex-direction: column; justify-content: center;
-      padding: 44px 24px 72px;
-    }
-    .slide-hero-inner { max-width: 1200px; margin: 0 auto; width: 100%; }
-
-    /* Attribution Pexels */
-    .hero-attribution {
-      position: absolute; bottom: 14px; right: 20px; font-size: .68rem;
-      color: rgba(255,255,255,.22); z-index: 6;
-    }
-    .hero-attribution a { color: rgba(255,255,255,.28); text-decoration: underline; text-underline-offset: 2px; }
-
-    /* Badges */
-    .hero-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(249,115,22,.2); border: 1px solid rgba(249,115,22,.4);
-      color: #fdb07a; font-size: .82rem; font-weight: 600;
-      padding: 6px 16px; border-radius: 100px; letter-spacing: .5px; text-transform: uppercase;
-    }
-    .hero-badge::before { content: '⚡'; font-size: .9rem; }
-    .hero-badge-cisco { background: rgba(27,160,216,.18); border-color: rgba(27,160,216,.35); color: #7dd3f8; }
-    .hero-badge-cisco::before { content: '🎓'; }
-
-    /* Ligne typée rotative */
-    .hero-rotator {
-      display: flex; align-items: center; gap: 10px;
-      margin-bottom: 12px; height: 36px;
-    }
-    .rotator-prefix {
-      font-size: .95rem; font-weight: 500; color: rgba(255,255,255,.55);
-      white-space: nowrap;
-    }
-    .rotator-word-wrap {
-      display: flex; align-items: center; gap: 3px;
-    }
-    #typed-word {
-      font-size: 1rem; font-weight: 700; color: var(--orange);
-      letter-spacing: .01em;
-    }
-    .typed-cursor {
-      display: inline-block; width: 2px; height: 1.1em;
-      background: var(--orange); border-radius: 1px;
-      animation: blink .75s step-end infinite;
-      vertical-align: middle; margin-left: 2px;
-    }
-    @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0; } }
-
-    /* Titre principal */
-    .slide-hero-content h1 {
-      font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 800;
-      line-height: 1.15; color: var(--white);
-      margin-bottom: 12px; letter-spacing: -.5px;
-    }
-    .slide-hero-content h1 .highlight {
-      color: var(--orange); position: relative;
-    }
-    .slide-hero-content h1 .highlight::after {
-      content: ''; position: absolute; left: 0; bottom: -4px;
-      width: 100%; height: 3px; background: var(--orange); border-radius: 2px; opacity: .45;
-    }
-
-    .hero-sub {
-      font-size: clamp(.95rem, 2vw, 1.08rem); color: rgba(255,255,255,.78);
-      font-weight: 400; margin-bottom: 28px; max-width: 560px; line-height: 1.65;
-    }
-
-    /* Boutons */
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
-
-    .btn-primary {
-      background: var(--orange); color: var(--white); font-weight: 700; font-size: 1rem;
-      padding: 15px 32px; border-radius: 10px; border: none; cursor: pointer;
-      transition: background .2s, transform .15s, box-shadow .2s;
-      box-shadow: 0 4px 20px rgba(249,115,22,.35);
-      display: inline-flex; align-items: center; gap: 8px;
-      position: relative; overflow: hidden;
-    }
-    .btn-primary::after {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(circle at center, rgba(255,255,255,.25) 0%, transparent 70%);
-      opacity: 0; transition: opacity .3s;
-    }
-    .btn-primary:hover { background: var(--orange-dark); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(249,115,22,.45); }
-    .btn-primary:hover::after { opacity: 1; }
-
-    .btn-secondary {
-      background: transparent; color: var(--white); font-weight: 600; font-size: 1rem;
-      padding: 14px 30px; border-radius: 10px; border: 2px solid rgba(255,255,255,.35);
-      cursor: pointer; transition: border-color .2s, background .2s;
-      display: inline-flex; align-items: center; gap: 8px;
-    }
-    .btn-secondary:hover { border-color: rgba(255,255,255,.7); background: rgba(255,255,255,.08); }
-
-    /* Stats animées */
-    .hero-stats { margin-top: 32px; display: flex; gap: 40px; flex-wrap: wrap; }
-    .hero-stat { display: flex; flex-direction: column; }
-    .hero-stat strong { font-size: 2rem; font-weight: 800; color: var(--white); line-height: 1; }
-    .hero-stat strong .stat-val { color: var(--white); }
-    .hero-stat strong .stat-suf { color: var(--orange); }
-    .hero-stat small { font-size: .82rem; color: rgba(255,255,255,.52); margin-top: 4px; font-weight: 400; }
-
-    /* Séparateur stat */
-    .hero-stat-divider {
-      width: 1px; background: rgba(255,255,255,.14); align-self: stretch; margin: 4px 0;
-    }
-
-    /* ── PRODUITS ── */
-    #produits { background: var(--gray-50); }
-
-    .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; }
-
-    .product-card {
-      background: var(--white); border-radius: var(--radius);
-      box-shadow: var(--shadow); border: 1px solid rgba(30,58,95,.07);
-      display: flex; flex-direction: column;
-      transition: box-shadow .3s, transform .3s;
-      position: relative; overflow: hidden;
-      transform-style: preserve-3d;
-    }
-    .product-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0;
-      height: 4px; background: var(--orange);
-      border-radius: var(--radius) var(--radius) 0 0; z-index: 2;
-    }
-    .product-card.coming-soon::before { background: var(--gray-300); }
-    .product-card.cisco::before { background: linear-gradient(90deg, #1ba0d8, #049fd9); }
-    .product-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-6px); }
-
-    /* Lueur au survol */
-    .product-card::after {
-      content: ''; position: absolute; inset: 0; border-radius: var(--radius);
-      box-shadow: inset 0 0 0 1.5px rgba(249,115,22,.0);
-      transition: box-shadow .3s; pointer-events: none; z-index: 3;
-    }
-    .product-card:hover::after { box-shadow: inset 0 0 0 1.5px rgba(249,115,22,.25); }
-
-    .product-card-image { position: relative; height: 190px; overflow: hidden; flex-shrink: 0; }
-    .product-card-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; display: block; }
-    .product-card:hover .product-card-image img { transform: scale(1.07); }
-    .product-card-image-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(21,44,74,.1) 0%, rgba(21,44,74,.55) 100%); }
-    .product-card-image-label {
-      position: absolute; bottom: 14px; left: 18px;
-      display: flex; align-items: center; gap: 8px;
-      background: rgba(249,115,22,.92); color: white;
-      font-size: .75rem; font-weight: 700; padding: 5px 14px;
-      border-radius: 100px; letter-spacing: .5px; text-transform: uppercase;
-    }
-
-    .product-card-body { padding: 28px 32px 36px; display: flex; flex-direction: column; flex: 1; }
-
-    .product-icon { width: 56px; height: 56px; border-radius: 14px; background: rgba(249,115,22,.1); display: flex; align-items: center; justify-content: center; margin-bottom: 24px; font-size: 1.6rem; }
-    .product-card.coming-soon .product-icon { background: var(--gray-100); }
-
-    .product-badge { display: inline-block; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; }
-    .badge-live { background: rgba(34,197,94,.12); color: #16a34a; }
-    .badge-soon { background: var(--gray-100); color: var(--gray-500); }
-    .badge-cisco { background: rgba(27,160,216,.12); color: #0e7aad; }
-
-    .product-card h3 { font-size: 1.45rem; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
-    .product-card p { font-size: .95rem; color: var(--gray-500); line-height: 1.7; flex: 1; margin-bottom: 28px; }
-
-    .product-features { list-style: none; margin-bottom: 28px; display: flex; flex-direction: column; gap: 8px; }
-    .product-features li { font-size: .88rem; color: var(--gray-700); display: flex; align-items: flex-start; gap: 10px; }
-    .product-features li::before { content: '✓'; color: var(--orange); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
-
-    .product-link { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: .92rem; color: var(--navy); transition: color .2s, gap .2s; }
-    .product-link .arrow { transition: transform .2s; }
-    .product-link:hover { color: var(--orange); }
-    .product-link:hover .arrow { transform: translateX(5px); }
-    .product-link.disabled { color: var(--gray-300); cursor: default; pointer-events: none; }
-
-    .cisco-badge-logo { display: flex; align-items: center; gap: 8px; margin-top: 20px; padding: 10px 14px; background: rgba(27,160,216,.08); border: 1px solid rgba(27,160,216,.2); border-radius: 9px; font-size: .8rem; color: #0e7aad; font-weight: 600; }
-    .ccna-chip { display: inline-flex; align-items: center; gap: 6px; background: rgba(34,197,94,.1); border: 1px solid rgba(34,197,94,.25); color: #16a34a; font-size: .75rem; font-weight: 700; padding: 3px 10px; border-radius: 100px; margin-bottom: 6px; }
-
-    /* ── SECTION SAAS VISUELLE ── */
-    #saas-visual { padding: 0; overflow: hidden; }
-    .saas-inner { display: grid; grid-template-columns: 1fr 1fr; min-height: 460px; }
-    .saas-image-panel { position: relative; overflow: hidden; min-height: 380px; }
-    .saas-image-panel img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 8s ease; }
-    .saas-image-panel:hover img { transform: scale(1.04); }
-    .saas-image-panel::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(21,44,74,.5) 0%, rgba(30,58,95,.3) 100%); }
-    .saas-text-panel { background: var(--navy); padding: 64px 56px; display: flex; flex-direction: column; justify-content: center; }
-    .saas-text-panel .section-label { color: #fdb07a; }
-    .saas-text-panel .section-title { color: var(--white); font-size: clamp(1.6rem, 3vw, 2.4rem); margin-bottom: 20px; }
-    .saas-text-panel p { color: rgba(255,255,255,.68); font-size: .97rem; line-height: 1.8; margin-bottom: 36px; }
-
-    .saas-pills { display: flex; flex-wrap: wrap; gap: 10px; }
-    .saas-pill {
-      display: inline-flex; align-items: center; gap: 7px;
-      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12);
-      color: rgba(255,255,255,.85); font-size: .82rem; font-weight: 600;
-      padding: 7px 16px; border-radius: 100px;
-      transition: background .2s, border-color .2s;
-    }
-    .saas-pill:hover { background: rgba(249,115,22,.15); border-color: rgba(249,115,22,.35); }
-    .saas-pill-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--orange); flex-shrink: 0; }
-
-    /* ── POURQUOI NOUS ── */
-    #pourquoi { background: var(--white); }
-    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; }
-
-    .why-card {
-      padding: 36px 28px; border-radius: var(--radius);
-      border: 1.5px solid var(--gray-100);
-      transition: border-color .25s, box-shadow .25s, transform .25s;
-      position: relative; cursor: default;
-    }
-    .why-card:hover { border-color: rgba(249,115,22,.35); box-shadow: var(--shadow); transform: translateY(-4px); }
-
-    /* Indicateur couleur au survol */
-    .why-card::before {
-      content: ''; position: absolute; left: 0; top: 24px; bottom: 24px;
-      width: 3px; border-radius: 0 3px 3px 0;
-      background: var(--orange); opacity: 0; transition: opacity .25s;
-    }
-    .why-card:hover::before { opacity: 1; }
-
-    .why-icon { width: 52px; height: 52px; border-radius: 12px; background: linear-gradient(135deg, var(--navy), var(--navy-light)); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 20px; transition: transform .3s; }
-    .why-card:hover .why-icon { transform: scale(1.1) rotate(-4deg); }
-    .why-card h3 { font-size: 1.08rem; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
-    .why-card p { font-size: .9rem; color: var(--gray-500); line-height: 1.7; }
-
-    /* ── À PROPOS ── */
-    #apropos { background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%); position: relative; overflow: hidden; }
-    #apropos::before { content: ''; position: absolute; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(249,115,22,.10) 0%, transparent 70%); top: -100px; right: -100px; pointer-events: none; }
-
-    .apropos-inner { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
-    .apropos-text .section-label { color: #fdb07a; }
-    .apropos-text .section-title { color: var(--white); }
-    .apropos-text .section-sub { color: rgba(255,255,255,.65); max-width: 480px; }
-    .apropos-text p { font-size: .97rem; color: rgba(255,255,255,.7); line-height: 1.8; margin-top: 20px; }
-
-    .apropos-image-panel { position: relative; border-radius: 18px; overflow: hidden; min-height: 440px; box-shadow: 0 24px 64px rgba(0,0,0,.38); }
-    .apropos-image-panel img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 440px; transition: transform 8s ease; }
-    .apropos-image-panel:hover img { transform: scale(1.04); }
-    .apropos-image-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(21,44,74,.18) 0%, rgba(21,44,74,.88) 65%, rgba(21,44,74,.98) 100%); }
-    .apropos-values-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 28px 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; z-index: 2; }
-
-    .apropos-value { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); border-radius: 11px; padding: 18px 16px; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); transition: background .2s, transform .2s; }
-    .apropos-value:hover { background: rgba(255,255,255,.13); transform: translateY(-2px); }
-    .apropos-value .icon { font-size: 1.3rem; margin-bottom: 8px; }
-    .apropos-value h4 { font-size: .88rem; font-weight: 700; color: var(--white); margin-bottom: 4px; }
-    .apropos-value p { font-size: .76rem; color: rgba(255,255,255,.5); line-height: 1.5; margin: 0; }
-
-    /* ── CONTACT ── */
-    #contact { background: var(--gray-50); }
-    .contact-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; align-items: start; }
-    .contact-info h3 { font-size: 1.25rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
-    .contact-info p { font-size: .95rem; color: var(--gray-500); line-height: 1.7; margin-bottom: 36px; }
-    .contact-items { display: flex; flex-direction: column; gap: 20px; }
-    .contact-item { display: flex; align-items: flex-start; gap: 16px; }
-    .contact-item-icon { width: 44px; height: 44px; border-radius: 10px; background: rgba(249,115,22,.1); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; transition: background .2s, transform .2s; }
-    .contact-item:hover .contact-item-icon { background: rgba(249,115,22,.18); transform: scale(1.08); }
-    .contact-item-text strong { display: block; font-size: .85rem; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
-    .contact-item-text span { font-size: .9rem; color: var(--gray-500); }
-    .contact-item-text a { color: var(--orange); font-weight: 500; transition: color .2s; }
-    .contact-item-text a:hover { color: var(--orange-dark); }
-
-    .contact-form { background: var(--white); border-radius: var(--radius); padding: 40px 36px; box-shadow: var(--shadow); border: 1px solid rgba(30,58,95,.06); transition: box-shadow .3s; }
-    .contact-form:focus-within { box-shadow: var(--shadow-lg); }
-    .contact-form h3 { font-size: 1.2rem; font-weight: 700; color: var(--navy); margin-bottom: 28px; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
-    .form-group label { font-size: .82rem; font-weight: 600; color: var(--navy); }
-    .form-group input, .form-group textarea, .form-group select {
-      padding: 12px 16px; border: 1.5px solid var(--gray-100); border-radius: 9px;
-      font-family: 'Poppins', sans-serif; font-size: .9rem; color: var(--text);
-      background: var(--gray-50); transition: border-color .2s, background .2s, box-shadow .2s; outline: none;
-    }
-    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-      border-color: var(--orange); background: var(--white);
-      box-shadow: 0 0 0 3px rgba(249,115,22,.12);
-    }
-    .form-group textarea { resize: vertical; min-height: 110px; }
-    .form-submit {
-      width: 100%; background: var(--navy); color: var(--white);
-      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: .98rem;
-      padding: 14px 28px; border-radius: 10px; border: none; cursor: pointer;
-      transition: background .2s, transform .15s, box-shadow .2s;
-      display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 8px;
-    }
-    .form-submit:hover { background: var(--navy-light); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(30,58,95,.25); }
-
-    /* ── FOOTER ── */
-    footer { background: var(--navy-dark); color: rgba(255,255,255,.6); padding: 60px 24px 32px; }
-    .footer-inner { max-width: 1200px; margin: 0 auto; }
-    .footer-top { display: grid; grid-template-columns: 1.8fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,.08); }
-    .footer-brand .logo { display: flex; align-items: center; gap: 11px; margin-bottom: 14px; }
-    .footer-logo-wordmark { line-height: 1; }
-    .footer-logo-wordmark strong { display: block; font-size: 1.15rem; font-weight: 800; letter-spacing: -.5px; color: var(--white); }
-    .footer-logo-wordmark small { display: block; font-size: .48rem; font-weight: 700; letter-spacing: 2.5px; color: rgba(255,255,255,.4); margin-top: 3px; text-transform: uppercase; }
-    .footer-brand p { font-size: .88rem; line-height: 1.7; max-width: 280px; }
-    .footer-domain { display: inline-block; margin-top: 16px; font-size: .82rem; font-weight: 600; color: var(--orange); border: 1px solid rgba(249,115,22,.3); padding: 4px 12px; border-radius: 6px; }
-    .footer-col h4 { font-size: .88rem; font-weight: 700; color: var(--white); margin-bottom: 18px; text-transform: uppercase; letter-spacing: .8px; }
-    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .footer-col ul a { font-size: .88rem; transition: color .2s; }
-    .footer-col ul a:hover { color: var(--white); }
-    .footer-bottom { padding-top: 28px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-    .footer-bottom p { font-size: .82rem; }
-    .footer-bottom .made-with { font-size: .82rem; color: rgba(255,255,255,.4); }
-    .footer-bottom .made-with span { color: var(--orange); }
-
-    /* ── SCROLL TOP ── */
-    #scrollTop {
-      position: fixed; bottom: 28px; right: 28px; width: 44px; height: 44px;
-      border-radius: 50%; background: var(--orange); color: var(--white);
-      border: none; cursor: pointer; font-size: 1.1rem;
-      box-shadow: 0 4px 16px rgba(249,115,22,.4);
-      transition: opacity .3s, transform .3s; opacity: 0; pointer-events: none;
-      display: flex; align-items: center; justify-content: center; z-index: 900;
-    }
-    #scrollTop.show { opacity: 1; pointer-events: all; }
-    #scrollTop:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(249,115,22,.5); }
-
-    /* ── CARROUSEL / SLIDER (fusionné avec hero) ── */
-    #slider {
-      margin-top: 0;
-      padding: 0;
-      overflow: hidden;
-      position: relative;
-      background: var(--navy-dark);
-    }
-
-    .slider-track {
-      display: flex;
-      transition: transform .7s cubic-bezier(.77,0,.18,1);
-      will-change: transform;
-    }
-
-    .slide {
-      min-width: 100%;
-      height: 294px;
-      position: relative;
-      flex-shrink: 0;
-      overflow: hidden;
-    }
-
-    /* Slide standard (2-5) */
-    .slide img {
-      width: 100%; height: 100%; object-fit: cover; object-position: center center; display: block;
-      transform: scale(1.06);
-      transition: transform 6s ease;
-    }
-    .slide.active img { transform: scale(1); }
-
-    /* Slide hero — surcharge pour l'image positionnée en absolute */
-    .slide-hero { position: relative; overflow: hidden; }
-    .slide-hero img {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: center 30%;
-      z-index: 1;
-      transform: none;
-    }
-    .slide-hero.active img { transform: none; }
-
-    .slide-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(21,44,74,.78) 0%, rgba(21,44,74,.42) 60%, transparent 100%);
-    }
-
-    .slide-caption {
-      position: absolute; bottom: 0; left: 0;
-      padding: 48px 56px;
-      max-width: 620px;
-      transform: translateY(10px); opacity: 0;
-      transition: transform .6s ease .2s, opacity .6s ease .2s;
-    }
-    .slide.active .slide-caption { transform: translateY(0); opacity: 1; }
-
-    .slide-tag {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: rgba(249,115,22,.88); color: white;
-      font-size: .72rem; font-weight: 700; letter-spacing: .8px;
-      text-transform: uppercase; padding: 5px 14px; border-radius: 100px;
-      margin-bottom: 16px;
-    }
-
-    .slide-caption h3 {
-      font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800;
-      color: white; line-height: 1.2; margin-bottom: 10px;
-      letter-spacing: -.3px;
-    }
-
-    .slide-caption p {
-      font-size: .95rem; color: rgba(255,255,255,.75); line-height: 1.65;
-    }
-
-    /* Flèches */
-    .slider-arrow {
-      position: absolute; top: 50%; transform: translateY(-50%);
-      width: 48px; height: 48px; border-radius: 50%;
-      background: rgba(255,255,255,.12); border: 1.5px solid rgba(255,255,255,.22);
-      color: white; font-size: 1.1rem;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; z-index: 10;
-      transition: background .2s, border-color .2s, transform .2s;
-      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
-    }
-    .slider-arrow:hover { background: rgba(249,115,22,.7); border-color: transparent; transform: translateY(-50%) scale(1.08); }
-    .slider-prev { left: 24px; }
-    .slider-next { right: 24px; }
-
-    /* Points de navigation */
-    .slider-dots {
-      position: absolute; bottom: 20px; right: 56px;
-      display: flex; gap: 8px; z-index: 10;
-    }
-    .slider-dot {
-      width: 8px; height: 8px; border-radius: 100px;
-      background: rgba(255,255,255,.35); cursor: pointer;
-      transition: background .3s, width .3s;
-      border: none;
-    }
-    .slider-dot.active { background: var(--orange); width: 24px; }
-
-    /* Barre de progression */
-    .slider-progress {
-      position: absolute; bottom: 0; left: 0; height: 3px;
-      background: var(--orange); width: 0%;
-      transition: width linear; z-index: 10;
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 960px) {
-      .saas-inner { grid-template-columns: 1fr; }
-      .saas-image-panel { min-height: 300px; }
-      .saas-text-panel { padding: 48px 36px; }
-      .apropos-inner { grid-template-columns: 1fr; gap: 40px; }
-      .apropos-image-panel { min-height: 360px; }
-      .footer-top { grid-template-columns: 1fr 1fr; gap: 36px; }
-      .contact-layout { grid-template-columns: 1fr; gap: 40px; }
-    }
-    @media (max-width: 768px) {
-      section { padding: 72px 20px; }
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .products-grid { grid-template-columns: 1fr; }
-      .why-grid { grid-template-columns: 1fr; }
-      .footer-top { grid-template-columns: 1fr; gap: 28px; }
-      .form-row { grid-template-columns: 1fr; }
-      .hero-stats { gap: 24px; }
-      .slide { height: 224px; }
-      .slide-hero { height: 520px; }
-      .slide-caption { padding: 28px 24px; }
-      .slider-arrow { width: 38px; height: 38px; font-size: .9rem; }
-      .slider-prev { left: 12px; }
-      .slider-next { right: 12px; }
-      .slider-dots { right: 24px; }
-      .slide-hero-content { padding: 36px 20px 60px; }
-    }
-    @media (max-width: 480px) {
-      .hero-actions { flex-direction: column; align-items: stretch; }
-      .btn-primary, .btn-secondary { text-align: center; justify-content: center; }
-      .contact-form { padding: 28px 20px; }
-      .apropos-values-overlay { grid-template-columns: 1fr; }
-    }
+
+/* ═══════════════════════════════════════════════
+   1. RESET & VARIABLES
+═══════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:         #1e3a5f;
+  --navy-dark:    #0f1f35;
+  --navy-mid:     #152c4a;
+  --navy-light:   #254972;
+  --navy-subtle:  #1a3050;
+  --orange:       #f97316;
+  --orange-dark:  #ea6d0e;
+  --orange-glow:  rgba(249,115,22,.18);
+  --white:        #ffffff;
+  --gray-50:      #f8fafc;
+  --gray-100:     #f1f5f9;
+  --gray-200:     #e2e8f0;
+  --gray-300:     #cbd5e1;
+  --gray-400:     #94a3b8;
+  --gray-500:     #64748b;
+  --gray-700:     #334155;
+  --gray-900:     #0f172a;
+  --text:         #1e293b;
+  --radius-sm:    8px;
+  --radius:       14px;
+  --radius-lg:    20px;
+  --shadow-sm:    0 2px 8px rgba(15,31,53,.08);
+  --shadow:       0 4px 24px rgba(15,31,53,.10);
+  --shadow-md:    0 8px 32px rgba(15,31,53,.14);
+  --shadow-lg:    0 20px 56px rgba(15,31,53,.18);
+  --shadow-xl:    0 40px 80px rgba(15,31,53,.24);
+  --transition:   .25s cubic-bezier(.4,0,.2,1);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--text);
+  background: var(--white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+img  { max-width: 100%; display: block; }
+a    { text-decoration: none; color: inherit; }
+
+/* ═══════════════════════════════════════════════
+   2. ANIMATIONS
+═══════════════════════════════════════════════ */
+.fade-up {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .65s ease, transform .65s ease;
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+.fade-up.delay-1 { transition-delay: .08s; }
+.fade-up.delay-2 { transition-delay: .16s; }
+.fade-up.delay-3 { transition-delay: .24s; }
+.fade-up.delay-4 { transition-delay: .32s; }
+.fade-up.delay-5 { transition-delay: .40s; }
+
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+@keyframes floatReverse {
+  0%,100% { transform: translateY(0) rotate(2deg); }
+  50%      { transform: translateY(-5px) rotate(2deg); }
+}
+@keyframes pulse-ring {
+  0%   { transform: scale(.95); box-shadow: 0 0 0 0 rgba(249,115,22,.4); }
+  70%  { transform: scale(1);   box-shadow: 0 0 0 8px rgba(249,115,22,0); }
+  100% { transform: scale(.95); box-shadow: 0 0 0 0 rgba(249,115,22,0); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+@keyframes badge-slide-in {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ═══════════════════════════════════════════════
+   3. UTILITAIRES
+═══════════════════════════════════════════════ */
+section { padding: 96px 24px; }
+.container { max-width: 1200px; margin: 0 auto; }
+
+.section-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: .72rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1.8px; color: var(--orange); margin-bottom: 16px;
+}
+.section-eyebrow::before {
+  content: ''; display: block; width: 20px; height: 2px;
+  background: var(--orange); border-radius: 1px;
+}
+.section-title {
+  font-size: clamp(1.9rem, 4vw, 2.9rem);
+  font-weight: 800; color: var(--navy);
+  line-height: 1.15; letter-spacing: -.6px;
+  margin-bottom: 18px;
+}
+.section-sub {
+  font-size: 1.05rem; color: var(--gray-500);
+  max-width: 580px; line-height: 1.75;
+}
+.section-header { margin-bottom: 60px; }
+.section-header.center { text-align: center; }
+.section-header.center .section-sub { margin: 0 auto; }
+.section-header.center .section-eyebrow {
+  justify-content: center;
+}
+.section-header.center .section-eyebrow::before { display: none; }
+
+/* Boutons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 8px; font-family: 'Poppins', sans-serif; font-weight: 700;
+  font-size: .95rem; border-radius: var(--radius-sm);
+  border: none; cursor: pointer; transition: all var(--transition);
+  position: relative; overflow: hidden; text-decoration: none;
+  white-space: nowrap;
+}
+.btn::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(rgba(255,255,255,.18) 0%, transparent 100%);
+  opacity: 0; transition: opacity var(--transition);
+}
+.btn:hover::after { opacity: 1; }
+
+.btn-primary {
+  background: var(--orange); color: white;
+  padding: 14px 28px;
+  box-shadow: 0 4px 20px rgba(249,115,22,.35), 0 1px 3px rgba(249,115,22,.2);
+}
+.btn-primary:hover {
+  background: var(--orange-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(249,115,22,.48), 0 1px 3px rgba(249,115,22,.3);
+}
+.btn-primary:active { transform: translateY(0); }
+
+.btn-outline-white {
+  background: transparent; color: white;
+  padding: 13px 26px;
+  border: 1.5px solid rgba(255,255,255,.3);
+}
+.btn-outline-white:hover {
+  border-color: rgba(255,255,255,.65);
+  background: rgba(255,255,255,.08);
+}
+
+.btn-outline-navy {
+  background: transparent; color: var(--navy);
+  padding: 13px 26px;
+  border: 1.5px solid var(--gray-200);
+}
+.btn-outline-navy:hover {
+  border-color: var(--navy);
+  background: var(--gray-50);
+}
+
+.btn-lg { padding: 16px 36px; font-size: 1rem; border-radius: 10px; }
+
+/* ═══════════════════════════════════════════════
+   4. NAVBAR
+═══════════════════════════════════════════════ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  transition: background var(--transition), box-shadow var(--transition);
+}
+nav::before {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(15,31,53,.0);
+  backdrop-filter: blur(0px); -webkit-backdrop-filter: blur(0px);
+  transition: background var(--transition), backdrop-filter var(--transition);
+}
+nav.scrolled::before {
+  background: rgba(15,31,53,.92);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+}
+nav.scrolled { box-shadow: 0 1px 0 rgba(255,255,255,.06), 0 4px 24px rgba(0,0,0,.22); }
+
+.nav-inner {
+  max-width: 1240px; margin: 0 auto; padding: 0 28px;
+  height: 70px; display: flex; align-items: center;
+  justify-content: space-between; position: relative; z-index: 2;
+}
+
+.nav-logo {
+  display: inline-flex; align-items: center; gap: 12px; flex-shrink: 0;
+}
+.nav-logo-icon {
+  width: 36px; height: 36px; flex-shrink: 0;
+}
+.nav-logo-wordmark strong {
+  display: block; font-size: 1.08rem; font-weight: 800;
+  letter-spacing: -.4px; color: var(--white); line-height: 1.1;
+}
+.nav-logo-wordmark small {
+  display: block; font-size: .52rem; font-weight: 600;
+  letter-spacing: .22em; color: rgba(255,255,255,.45); margin-top: 3px;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex; align-items: center; gap: 6px; list-style: none;
+}
+.nav-links a {
+  font-size: .88rem; font-weight: 500; color: rgba(255,255,255,.78);
+  transition: color var(--transition);
+  padding: 6px 14px; border-radius: 6px;
+}
+.nav-links a:hover { color: var(--white); background: rgba(255,255,255,.07); }
+
+.nav-actions { display: flex; align-items: center; gap: 10px; }
+
+.nav-btn-demo {
+  background: rgba(255,255,255,.1); color: white;
+  padding: 8px 18px; border-radius: var(--radius-sm);
+  font-size: .85rem; font-weight: 600;
+  border: 1px solid rgba(255,255,255,.15);
+  transition: all var(--transition);
+}
+.nav-btn-demo:hover {
+  background: rgba(255,255,255,.18);
+  border-color: rgba(255,255,255,.3);
+}
+
+.nav-btn-contact {
+  background: var(--orange); color: white;
+  padding: 9px 22px; border-radius: var(--radius-sm);
+  font-size: .85rem; font-weight: 700;
+  box-shadow: 0 2px 12px rgba(249,115,22,.35);
+  transition: all var(--transition);
+}
+.nav-btn-contact:hover {
+  background: var(--orange-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(249,115,22,.5);
+}
+
+/* Hamburger */
+.hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  cursor: pointer; padding: 4px; z-index: 3;
+}
+.hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: white; border-radius: 2px; transition: transform .3s, opacity .3s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-menu {
+  display: none; flex-direction: column;
+  background: var(--navy-dark); padding: 20px 28px 32px;
+  gap: 4px; border-top: 1px solid rgba(255,255,255,.06);
+  position: relative; z-index: 2;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-size: .95rem; font-weight: 500; color: rgba(255,255,255,.8);
+  padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,.06);
+  transition: color var(--transition);
+}
+.mobile-menu a:last-child { border: none; }
+.mobile-menu a:hover { color: white; }
+.mobile-menu .m-cta {
+  margin-top: 12px; background: var(--orange); color: white;
+  text-align: center; padding: 12px; border-radius: 8px;
+  font-weight: 700; border: none;
+}
+
+/* ═══════════════════════════════════════════════
+   5. HERO — Split layout premium
+═══════════════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse 80% 60% at 110% 40%, rgba(249,115,22,.09) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 50% at -10% 60%, rgba(37,73,114,.6) 0%, transparent 70%),
+    linear-gradient(140deg, #0a1929 0%, #0f1f35 30%, #1a3354 65%, #1e3a5f 100%);
+  position: relative; overflow: hidden;
+  display: flex; align-items: center;
+  padding-top: 70px; /* navbar height */
+}
+
+/* Grille de fond subtile */
+.hero-grid {
+  position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* Canvas particules */
+#heroCanvas {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 1;
+}
+
+.hero-inner {
+  max-width: 1240px; margin: 0 auto; width: 100%; padding: 80px 28px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 64px; align-items: center;
+  position: relative; z-index: 2;
+}
+
+/* ── Hero texte ── */
+.hero-text {}
+
+.hero-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(249,115,22,.12); border: 1px solid rgba(249,115,22,.3);
+  color: #fdb07a; font-size: .75rem; font-weight: 700;
+  padding: 6px 16px; border-radius: 100px;
+  letter-spacing: .6px; text-transform: uppercase;
+  margin-bottom: 28px;
+  animation: badge-slide-in .6s ease both;
+}
+.hero-pill .pill-dot {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--orange);
+  animation: pulse-ring 2s ease infinite;
+}
+
+.hero-title {
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: 900; line-height: 1.1;
+  color: white; letter-spacing: -.8px;
+  margin-bottom: 24px;
+}
+.hero-title em {
+  font-style: normal;
+  background: linear-gradient(135deg, var(--orange) 0%, #fbbf24 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-size: 1.1rem; color: rgba(255,255,255,.68);
+  font-weight: 400; line-height: 1.72;
+  margin-bottom: 36px; max-width: 500px;
+}
+
+.hero-actions {
+  display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
+  margin-bottom: 48px;
+}
+
+.hero-trust {
+  display: flex; flex-wrap: wrap; gap: 20px; align-items: center;
+}
+.hero-trust-item {
+  display: flex; align-items: center; gap: 7px;
+  font-size: .82rem; color: rgba(255,255,255,.5); font-weight: 500;
+}
+.hero-trust-item svg { opacity: .6; flex-shrink: 0; }
+.hero-trust-sep {
+  width: 1px; height: 16px; background: rgba(255,255,255,.14);
+}
+
+/* ── Hero mockup (droite) ── */
+.hero-visual {
+  display: flex; align-items: center; justify-content: flex-end;
+  position: relative;
+}
+
+.mockup-wrap {
+  width: 100%; max-width: 540px; position: relative;
+}
+
+.mockup-browser {
+  background: white; border-radius: 12px; overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.06),
+    0 24px 60px rgba(0,0,0,.55),
+    0 80px 120px rgba(0,0,0,.3);
+  transform: perspective(1400px) rotateY(-9deg) rotateX(3deg);
+  transform-style: preserve-3d;
+  transition: transform .4s ease;
+}
+.mockup-browser:hover {
+  transform: perspective(1400px) rotateY(-5deg) rotateX(1deg);
+}
+
+.mockup-titlebar {
+  background: #e8eaed; padding: 9px 14px;
+  display: flex; align-items: center; gap: 12px;
+  border-bottom: 1px solid #d0d3d8;
+}
+.titlebar-dots { display: flex; gap: 6px; }
+.titlebar-dots span {
+  width: 11px; height: 11px; border-radius: 50%;
+}
+.titlebar-dots span:nth-child(1) { background: #ff5f57; }
+.titlebar-dots span:nth-child(2) { background: #febc2e; }
+.titlebar-dots span:nth-child(3) { background: #28c840; }
+
+.titlebar-url {
+  flex: 1; background: white; border: 1px solid #d0d3d8;
+  border-radius: 5px; padding: 4px 10px;
+  font-size: 11px; color: #5f6368; font-family: monospace;
+  display: flex; align-items: center; gap: 4px;
+}
+.titlebar-url::before { content: '🔒'; font-size: 9px; }
+
+.mockup-app {
+  display: grid; grid-template-columns: 54px 1fr; height: 360px;
+}
+
+/* Sidebar du mockup */
+.mock-sidebar {
+  background: var(--navy); display: flex; flex-direction: column;
+  align-items: center; padding: 14px 0; gap: 6px;
+}
+.mock-logo-mark {
+  font-size: 9px; font-weight: 900; color: var(--orange);
+  background: rgba(249,115,22,.18); width: 34px; height: 34px;
+  border-radius: 8px; display: flex; align-items: center; justify-content: center;
+  letter-spacing: -.5px; margin-bottom: 10px;
+}
+.mock-nav-sep { width: 28px; height: 1px; background: rgba(255,255,255,.1); margin: 4px 0; }
+.mock-nav-item {
+  width: 34px; height: 34px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; cursor: default; transition: background .2s;
+  opacity: .5;
+}
+.mock-nav-item.active {
+  background: rgba(249,115,22,.2); opacity: 1;
+}
+
+/* Main area du mockup */
+.mock-main {
+  background: #f1f4f8; display: flex; flex-direction: column;
+  overflow: hidden;
+}
+.mock-topbar {
+  background: white; padding: 10px 14px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid #e4e8ee;
+}
+.mock-topbar-title {
+  font-size: 12px; font-weight: 700; color: var(--navy);
+}
+.mock-topbar-right { display: flex; align-items: center; gap: 8px; }
+.mock-avatar {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--orange); color: white;
+  font-size: 9px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.mock-notif {
+  width: 26px; height: 26px; border-radius: 6px;
+  background: var(--gray-50); border: 1px solid var(--gray-200);
+  display: flex; align-items: center; justify-content: center; font-size: 12px;
+}
+
+.mock-body { padding: 12px; flex: 1; overflow: hidden; }
+
+/* Stat cards */
+.mock-stats {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+  margin-bottom: 12px;
+}
+.mock-stat-card {
+  background: white; border-radius: 8px; padding: 10px 11px;
+  border: 1px solid #e4e8ee;
+}
+.mock-stat-val {
+  font-size: 18px; font-weight: 800; color: var(--navy); line-height: 1; margin-bottom: 2px;
+}
+.mock-stat-label { font-size: 9px; color: #94a3b8; font-weight: 500; margin-bottom: 6px; }
+.mock-stat-pill {
+  font-size: 8px; font-weight: 700; padding: 2px 6px;
+  border-radius: 100px; display: inline-block;
+}
+.mock-stat-pill.g { background: rgba(34,197,94,.12); color: #16a34a; }
+.mock-stat-pill.b { background: rgba(27,160,216,.12); color: #0e7aad; }
+.mock-stat-pill.o { background: rgba(249,115,22,.12); color: var(--orange); }
+
+/* Liste élèves */
+.mock-list-label {
+  font-size: 9px; font-weight: 700; color: #94a3b8;
+  text-transform: uppercase; letter-spacing: .6px; margin-bottom: 7px;
+}
+.mock-list { display: flex; flex-direction: column; gap: 5px; }
+.mock-list-row {
+  background: white; border-radius: 7px; padding: 7px 10px;
+  display: flex; align-items: center; gap: 8px;
+  border: 1px solid #e4e8ee;
+}
+.mock-av {
+  width: 24px; height: 24px; border-radius: 50%;
+  font-size: 8px; font-weight: 800; color: white;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.mock-av.c1 { background: #3b82f6; }
+.mock-av.c2 { background: var(--orange); }
+.mock-av.c3 { background: #8b5cf6; }
+.mock-row-info { flex: 1; min-width: 0; }
+.mock-row-info span { display: block; font-size: 10px; font-weight: 600; color: var(--navy); }
+.mock-row-info small { display: block; font-size: 8px; color: #94a3b8; }
+.mock-row-badge {
+  font-size: 8px; font-weight: 700; padding: 2px 7px;
+  border-radius: 100px; flex-shrink: 0;
+}
+.mock-row-badge.ok { background: rgba(34,197,94,.12); color: #16a34a; }
+.mock-row-badge.pending { background: #f1f5f9; color: #94a3b8; }
+
+/* Floating cards sur le mockup */
+.mockup-float {
+  position: absolute; background: white; border-radius: 12px;
+  box-shadow: var(--shadow-lg); padding: 12px 16px;
+  display: flex; align-items: center; gap: 10px;
+}
+.mockup-float-1 {
+  bottom: -18px; left: -28px;
+  animation: float 4s ease-in-out infinite;
+  z-index: 10;
+}
+.mockup-float-2 {
+  top: 30px; right: -24px;
+  animation: floatReverse 5s ease-in-out infinite;
+  z-index: 10; transform: rotate(2deg);
+}
+.float-icon {
+  width: 34px; height: 34px; border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; flex-shrink: 0;
+}
+.float-icon.green  { background: rgba(34,197,94,.12); }
+.float-icon.blue   { background: rgba(27,160,216,.12); }
+.float-text strong { display: block; font-size: 11px; font-weight: 700; color: var(--navy); }
+.float-text small  { display: block; font-size: 9px; color: var(--gray-400); }
+
+/* ═══════════════════════════════════════════════
+   6. TRUST BAR
+═══════════════════════════════════════════════ */
+.trust-bar {
+  background: white; border-bottom: 1px solid var(--gray-100);
+  padding: 0 24px;
+}
+.trust-bar-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: stretch; justify-content: space-between;
+  flex-wrap: wrap;
+}
+.trust-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 22px 16px; flex: 1; min-width: 0;
+  transition: background var(--transition);
+  position: relative;
+}
+.trust-item:not(:last-child)::after {
+  content: ''; position: absolute; right: 0; top: 20%; bottom: 20%;
+  width: 1px; background: var(--gray-100);
+}
+.trust-item:hover { background: var(--gray-50); }
+.trust-icon {
+  width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
+  background: rgba(249,115,22,.08); border: 1px solid rgba(249,115,22,.12);
+  display: flex; align-items: center; justify-content: center; font-size: 18px;
+}
+.trust-text strong {
+  display: block; font-size: .82rem; font-weight: 700; color: var(--navy);
+}
+.trust-text span {
+  display: block; font-size: .74rem; color: var(--gray-400); font-weight: 400;
+  margin-top: 1px;
+}
+
+/* ═══════════════════════════════════════════════
+   7. PRODUITS
+═══════════════════════════════════════════════ */
+#produits { background: var(--gray-50); }
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px; align-items: stretch;
+}
+
+.product-card {
+  background: white; border-radius: var(--radius);
+  border: 1.5px solid var(--gray-100);
+  display: flex; flex-direction: column;
+  transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+  position: relative; overflow: hidden;
+}
+.product-card:hover {
+  border-color: rgba(249,115,22,.3);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-6px);
+}
+.product-card-accent {
+  height: 4px; width: 100%;
+  background: var(--orange); flex-shrink: 0;
+}
+.product-card-accent.academy { background: linear-gradient(90deg, #1ba0d8, #0ea5e9); }
+.product-card-accent.coming  { background: var(--gray-200); }
+
+.product-card-body {
+  padding: 28px 28px 32px; display: flex; flex-direction: column; flex: 1;
+}
+
+.product-header {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  margin-bottom: 20px;
+}
+.product-icon-wrap {
+  width: 52px; height: 52px; border-radius: 13px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; flex-shrink: 0;
+}
+.product-icon-wrap.orange { background: rgba(249,115,22,.1); }
+.product-icon-wrap.blue   { background: rgba(27,160,216,.1); }
+.product-icon-wrap.gray   { background: var(--gray-100); }
+
+.product-status {
+  font-size: .68rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .7px; padding: 4px 10px; border-radius: 100px;
+  display: inline-flex; align-items: center; gap: 5px;
+  white-space: nowrap;
+}
+.product-status::before { content: ''; width: 6px; height: 6px; border-radius: 50%; }
+.product-status.live {
+  background: rgba(34,197,94,.1); color: #15803d;
+}
+.product-status.live::before { background: #22c55e; }
+.product-status.soon {
+  background: var(--gray-100); color: var(--gray-400);
+}
+.product-status.soon::before { background: var(--gray-300); }
+.product-status.cisco {
+  background: rgba(27,160,216,.1); color: #0284c7;
+}
+.product-status.cisco::before { background: #0ea5e9; }
+
+.product-name {
+  font-size: 1.3rem; font-weight: 800; color: var(--navy); margin-bottom: 10px;
+  letter-spacing: -.3px;
+}
+.product-desc {
+  font-size: .9rem; color: var(--gray-500); line-height: 1.7;
+  margin-bottom: 22px; flex: 1;
+}
+
+.product-features {
+  list-style: none; display: flex; flex-direction: column;
+  gap: 8px; margin-bottom: 28px;
+}
+.product-features li {
+  font-size: .85rem; color: var(--gray-700);
+  display: flex; align-items: flex-start; gap: 9px; line-height: 1.5;
+}
+.product-features li::before {
+  content: '';
+  display: block; width: 16px; height: 16px;
+  background: rgba(249,115,22,.12); border-radius: 50%;
+  flex-shrink: 0; margin-top: 1px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12'%3E%3Cpath d='M2 6l3 3 5-5' stroke='%23f97316' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: center;
+}
+.product-card.academy .product-features li::before {
+  background-color: rgba(27,160,216,.12);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12'%3E%3Cpath d='M2 6l3 3 5-5' stroke='%231ba0d8' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+}
+
+.product-cta {
+  display: flex; align-items: center; gap: 8px;
+  font-size: .88rem; font-weight: 700; color: var(--navy);
+  transition: color var(--transition), gap var(--transition);
+  margin-top: auto;
+}
+.product-cta .arrow { transition: transform var(--transition); }
+.product-cta:hover { color: var(--orange); gap: 12px; }
+.product-cta:hover .arrow { transform: translateX(4px); }
+.product-cta.disabled { color: var(--gray-300); pointer-events: none; }
+
+.cisco-partner-badge {
+  display: flex; align-items: center; gap: 10px;
+  background: rgba(27,160,216,.06); border: 1px solid rgba(27,160,216,.18);
+  border-radius: 9px; padding: 10px 14px; margin-bottom: 20px;
+  font-size: .76rem; font-weight: 600; color: #0284c7;
+}
+.cisco-partner-badge span { font-size: 1rem; }
+
+/* ═══════════════════════════════════════════════
+   8. SECTION PLATEFORME (SaaS visuel)
+═══════════════════════════════════════════════ */
+#plateforme { padding: 0; overflow: hidden; }
+
+.platform-inner {
+  display: grid; grid-template-columns: 1fr 1fr; min-height: 480px;
+}
+.platform-image {
+  position: relative; overflow: hidden;
+}
+.platform-image img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 8s ease;
+}
+.platform-image:hover img { transform: scale(1.04); }
+.platform-image::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to right, transparent 50%, rgba(15,31,53,.12));
+}
+.platform-text {
+  background: var(--navy-dark); padding: 72px 60px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.platform-text .section-eyebrow { color: rgba(249,115,22,.9); }
+.platform-text .section-title { color: white; font-size: clamp(1.7rem, 3vw, 2.5rem); }
+.platform-text p {
+  color: rgba(255,255,255,.62); font-size: .97rem; line-height: 1.8;
+  margin-bottom: 36px;
+}
+
+.platform-pills {
+  display: flex; flex-wrap: wrap; gap: 10px;
+}
+.platform-pill {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+  color: rgba(255,255,255,.82); font-size: .8rem; font-weight: 600;
+  padding: 8px 16px; border-radius: 100px;
+  transition: background var(--transition), border-color var(--transition);
+}
+.platform-pill:hover {
+  background: rgba(249,115,22,.14); border-color: rgba(249,115,22,.3);
+  color: white;
+}
+.platform-pill-dot {
+  width: 6px; height: 6px; border-radius: 50%; background: var(--orange);
+}
+
+/* ═══════════════════════════════════════════════
+   9. POURQUOI NOUS
+═══════════════════════════════════════════════ */
+#pourquoi { background: white; }
+
+.why-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+  background: var(--gray-100); border-radius: var(--radius);
+  overflow: hidden; border: 1px solid var(--gray-100);
+}
+
+.why-card {
+  background: white; padding: 36px 30px;
+  transition: background var(--transition); cursor: default;
+  position: relative;
+}
+.why-card:hover { background: #fafbff; }
+
+.why-card-top {
+  display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px;
+}
+.why-num {
+  font-size: .72rem; font-weight: 800; color: rgba(249,115,22,.35);
+  letter-spacing: .5px; padding-top: 6px; flex-shrink: 0; font-variant-numeric: tabular-nums;
+}
+.why-icon-wrap {
+  width: 46px; height: 46px; border-radius: 12px; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem;
+  transition: transform var(--transition);
+}
+.why-card:hover .why-icon-wrap { transform: scale(1.08) rotate(-3deg); }
+
+.why-title {
+  font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 10px;
+}
+.why-desc { font-size: .88rem; color: var(--gray-500); line-height: 1.7; }
+
+/* ═══════════════════════════════════════════════
+   10. À PROPOS
+═══════════════════════════════════════════════ */
+#apropos {
+  background: linear-gradient(140deg, var(--navy-dark) 0%, #0f2840 40%, var(--navy) 100%);
+  position: relative; overflow: hidden;
+}
+#apropos::before {
+  content: ''; position: absolute; width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(249,115,22,.08) 0%, transparent 65%);
+  top: -150px; right: -100px; pointer-events: none;
+}
+#apropos::after {
+  content: ''; position: absolute; width: 400px; height: 400px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(37,73,114,.6) 0%, transparent 65%);
+  bottom: -100px; left: -80px; pointer-events: none;
+}
+
+.apropos-inner {
+  position: relative; z-index: 2;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+}
+
+.apropos-text .section-eyebrow { color: rgba(249,115,22,.9); }
+.apropos-text .section-title { color: white; }
+.apropos-text .section-sub { color: rgba(255,255,255,.6); margin-bottom: 36px; }
+
+.apropos-values {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 16px; margin-top: 36px;
+}
+.apropos-value {
+  padding: 20px; border-radius: var(--radius-sm);
+  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08);
+  transition: background var(--transition), transform var(--transition);
+}
+.apropos-value:hover {
+  background: rgba(255,255,255,.09); transform: translateY(-2px);
+}
+.apropos-value-icon { font-size: 1.4rem; margin-bottom: 10px; }
+.apropos-value h4 { font-size: .88rem; font-weight: 700; color: white; margin-bottom: 5px; }
+.apropos-value p { font-size: .78rem; color: rgba(255,255,255,.48); line-height: 1.55; }
+
+.apropos-image-side { position: relative; }
+.apropos-image-wrap {
+  border-radius: var(--radius-lg); overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0,0,0,.45);
+  position: relative;
+}
+.apropos-image-wrap img {
+  width: 100%; height: 520px; object-fit: cover; display: block;
+  transition: transform 8s ease;
+}
+.apropos-image-wrap:hover img { transform: scale(1.04); }
+.apropos-image-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(10,25,41,.08) 0%, rgba(10,25,41,.72) 80%);
+}
+.apropos-image-footer {
+  position: absolute; bottom: 0; left: 0; right: 0; padding: 28px;
+}
+.apropos-stat-line {
+  display: flex; gap: 28px;
+}
+.apropos-stat strong {
+  display: block; font-size: 1.9rem; font-weight: 900; color: white; line-height: 1;
+}
+.apropos-stat strong span { color: var(--orange); }
+.apropos-stat small { font-size: .76rem; color: rgba(255,255,255,.5); font-weight: 400; }
+
+/* Floating badge sur l'image */
+.apropos-badge {
+  position: absolute; top: 24px; right: -18px;
+  background: white; border-radius: 11px; padding: 12px 16px;
+  display: flex; align-items: center; gap: 10px;
+  box-shadow: var(--shadow-lg); z-index: 3;
+  animation: float 5s ease-in-out infinite;
+}
+.apropos-badge-icon {
+  width: 36px; height: 36px; border-radius: 9px;
+  background: rgba(27,160,216,.1); display: flex; align-items: center;
+  justify-content: center; font-size: 18px; flex-shrink: 0;
+}
+.apropos-badge strong { display: block; font-size: .82rem; font-weight: 700; color: var(--navy); }
+.apropos-badge small  { display: block; font-size: .72rem; color: var(--gray-400); }
+
+/* ═══════════════════════════════════════════════
+   11. BANDEAU CTA CONVERSION
+═══════════════════════════════════════════════ */
+.cta-banner {
+  background: linear-gradient(135deg, var(--orange) 0%, #f59e0b 100%);
+  padding: 72px 24px; text-align: center; position: relative; overflow: hidden;
+}
+.cta-banner::before {
+  content: ''; position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.cta-banner-inner { position: relative; z-index: 2; max-width: 660px; margin: 0 auto; }
+.cta-banner h2 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; color: white;
+  line-height: 1.15; letter-spacing: -.5px; margin-bottom: 16px;
+}
+.cta-banner p {
+  font-size: 1.05rem; color: rgba(255,255,255,.85); margin-bottom: 36px; line-height: 1.6;
+}
+.cta-banner-actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.btn-white {
+  background: white; color: var(--orange);
+  padding: 14px 30px; border-radius: var(--radius-sm);
+  font-weight: 800; font-size: .95rem; border: none; cursor: pointer;
+  transition: all var(--transition); display: inline-flex; align-items: center; gap: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.15);
+}
+.btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,.2); }
+.btn-outline-white-cta {
+  background: transparent; color: white; padding: 13px 28px;
+  border-radius: var(--radius-sm); border: 2px solid rgba(255,255,255,.5);
+  font-weight: 700; font-size: .95rem; cursor: pointer;
+  transition: all var(--transition); display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-outline-white-cta:hover { border-color: white; background: rgba(255,255,255,.1); }
+
+/* ═══════════════════════════════════════════════
+   12. CONTACT
+═══════════════════════════════════════════════ */
+#contact { background: var(--gray-50); }
+
+.contact-inner {
+  display: grid; grid-template-columns: 1fr 1.35fr;
+  gap: 64px; align-items: start;
+}
+
+.contact-left {}
+.contact-left h3 {
+  font-size: 1.4rem; font-weight: 800; color: var(--navy); margin-bottom: 12px;
+}
+.contact-left p {
+  font-size: .95rem; color: var(--gray-500); line-height: 1.7; margin-bottom: 32px;
+}
+
+.contact-response-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(34,197,94,.08); border: 1px solid rgba(34,197,94,.2);
+  color: #15803d; font-size: .78rem; font-weight: 700;
+  padding: 7px 14px; border-radius: 100px; margin-bottom: 32px;
+}
+.contact-response-badge::before { content: '⚡'; }
+
+.contact-items { display: flex; flex-direction: column; gap: 18px; }
+.contact-item {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 16px; border-radius: var(--radius-sm);
+  border: 1px solid var(--gray-100); background: white;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.contact-item:hover {
+  border-color: rgba(249,115,22,.25); box-shadow: var(--shadow-sm);
+}
+.contact-icon {
+  width: 42px; height: 42px; border-radius: 10px; flex-shrink: 0;
+  background: rgba(249,115,22,.08);
+  display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+}
+.contact-item-body strong {
+  display: block; font-size: .82rem; font-weight: 700; color: var(--navy); margin-bottom: 3px;
+}
+.contact-item-body span { font-size: .88rem; color: var(--gray-500); }
+.contact-item-body a { color: var(--orange); font-weight: 500; transition: color var(--transition); }
+.contact-item-body a:hover { color: var(--orange-dark); }
+
+/* Formulaire */
+.contact-form-wrap {
+  background: white; border-radius: var(--radius);
+  padding: 40px 36px; border: 1.5px solid var(--gray-100);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition), border-color var(--transition);
+}
+.contact-form-wrap:focus-within {
+  box-shadow: var(--shadow-md); border-color: rgba(249,115,22,.2);
+}
+.contact-form-title {
+  font-size: 1.15rem; font-weight: 800; color: var(--navy); margin-bottom: 24px;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+.form-group label { font-size: .8rem; font-weight: 700; color: var(--navy); }
+.form-control {
+  padding: 11px 15px; border: 1.5px solid var(--gray-200);
+  border-radius: var(--radius-sm); font-family: 'Poppins', sans-serif;
+  font-size: .9rem; color: var(--text); background: var(--gray-50);
+  transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
+  outline: none; width: 100%;
+}
+.form-control:focus {
+  border-color: var(--orange); background: white;
+  box-shadow: 0 0 0 3px rgba(249,115,22,.1);
+}
+.form-control::placeholder { color: var(--gray-300); }
+textarea.form-control { resize: vertical; min-height: 110px; }
+
+.form-submit-btn {
+  width: 100%; background: var(--navy); color: white;
+  font-family: 'Poppins', sans-serif; font-weight: 700; font-size: .95rem;
+  padding: 14px 24px; border-radius: var(--radius-sm); border: none;
+  cursor: pointer; transition: all var(--transition);
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  margin-top: 8px;
+}
+.form-submit-btn:hover {
+  background: var(--navy-light); transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(30,58,95,.25);
+}
+
+/* ═══════════════════════════════════════════════
+   13. FOOTER
+═══════════════════════════════════════════════ */
+footer {
+  background: var(--navy-dark); color: rgba(255,255,255,.5);
+  padding: 72px 24px 36px;
+}
+.footer-inner { max-width: 1200px; margin: 0 auto; }
+
+.footer-top {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 56px; padding-bottom: 56px;
+  border-bottom: 1px solid rgba(255,255,255,.07);
+}
+
+.footer-brand {}
+.footer-logo {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+}
+.footer-wordmark strong {
+  display: block; font-size: 1.05rem; font-weight: 800; color: white; letter-spacing: -.3px;
+}
+.footer-wordmark small {
+  display: block; font-size: .5rem; font-weight: 700;
+  letter-spacing: 2px; color: rgba(255,255,255,.3); text-transform: uppercase; margin-top: 3px;
+}
+.footer-brand p {
+  font-size: .86rem; line-height: 1.72; max-width: 280px; margin-bottom: 20px;
+}
+.footer-domain {
+  display: inline-block; font-size: .78rem; font-weight: 700;
+  color: var(--orange); border: 1px solid rgba(249,115,22,.28);
+  padding: 5px 12px; border-radius: 6px;
+}
+
+.footer-col h4 {
+  font-size: .78rem; font-weight: 700; color: white;
+  margin-bottom: 20px; text-transform: uppercase; letter-spacing: .8px;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.footer-col a { font-size: .86rem; transition: color var(--transition); }
+.footer-col a:hover { color: white; }
+
+.footer-bottom {
+  padding-top: 32px; display: flex; align-items: center;
+  justify-content: space-between; flex-wrap: wrap; gap: 12px;
+}
+.footer-bottom p { font-size: .8rem; }
+.footer-tagline { font-size: .8rem; color: rgba(255,255,255,.3); }
+.footer-tagline span { color: var(--orange); }
+
+/* ═══════════════════════════════════════════════
+   14. SCROLL TOP
+═══════════════════════════════════════════════ */
+#scrollTop {
+  position: fixed; bottom: 28px; right: 28px; z-index: 900;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--orange); color: white; border: none; cursor: pointer;
+  box-shadow: 0 4px 16px rgba(249,115,22,.4);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; opacity: 0; pointer-events: none;
+  transition: opacity .3s, transform .3s;
+}
+#scrollTop.show { opacity: 1; pointer-events: all; }
+#scrollTop:hover { transform: translateY(-3px); }
+
+/* ═══════════════════════════════════════════════
+   15. RESPONSIVE
+═══════════════════════════════════════════════ */
+@media (max-width: 1100px) {
+  .products-grid { grid-template-columns: 1fr 1fr; }
+  .products-grid .product-card:last-child { grid-column: span 2; max-width: 480px; margin: 0 auto; width: 100%; }
+  .hero-inner { gap: 40px; }
+}
+
+@media (max-width: 960px) {
+  .hero-inner { grid-template-columns: 1fr; text-align: center; }
+  .hero-text { order: 1; }
+  .hero-visual { display: none; } /* masqué sur tablette */
+  .hero-sub { max-width: 100%; margin-left: auto; margin-right: auto; }
+  .hero-actions { justify-content: center; }
+  .hero-trust { justify-content: center; }
+  .hero-pill { margin-left: auto; margin-right: auto; }
+  .platform-inner { grid-template-columns: 1fr; }
+  .platform-image { min-height: 320px; }
+  .platform-text { padding: 56px 40px; }
+  .apropos-inner { grid-template-columns: 1fr; gap: 48px; }
+  .apropos-image-wrap img { height: 380px; }
+  .apropos-badge { right: 16px; top: 16px; }
+  .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .why-grid { grid-template-columns: 1fr 1fr; }
+  .trust-bar-inner { justify-content: flex-start; }
+  .trust-item { min-width: 50%; }
+  .trust-item:nth-child(2)::after,
+  .trust-item:nth-child(4)::after { display: none; }
+}
+
+@media (max-width: 768px) {
+  section { padding: 72px 20px; }
+  .nav-links, .nav-actions { display: none; }
+  .hamburger { display: flex; }
+  .products-grid { grid-template-columns: 1fr; }
+  .products-grid .product-card:last-child { grid-column: auto; max-width: none; }
+  .why-grid { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr; gap: 32px; }
+  .form-row { grid-template-columns: 1fr; }
+  .hero { min-height: auto; }
+  .hero-inner { padding: 72px 20px 60px; }
+  .hero-title { font-size: 2.2rem; }
+  .trust-bar-inner { flex-direction: column; }
+  .trust-item { min-width: 100%; }
+  .trust-item::after { display: none !important; }
+  .trust-item:not(:last-child) { border-bottom: 1px solid var(--gray-100); }
+  .apropos-values { grid-template-columns: 1fr; }
+  .cta-banner-actions { flex-direction: column; align-items: center; }
+}
+
+@media (max-width: 480px) {
+  .hero-actions { flex-direction: column; }
+  .btn { width: 100%; }
+  .hero-trust { flex-direction: column; gap: 12px; align-items: flex-start; }
+  .hero-trust-sep { display: none; }
+  .contact-form-wrap { padding: 28px 20px; }
+  .apropos-stat-line { gap: 20px; }
+}
+
   </style>
 </head>
 <body>
 
-  <!-- ── NAVBAR ── -->
-  <nav id="navbar">
-    <div class="nav-inner">
-      <a href="#" class="nav-logo">
-        <svg width="34" height="34" viewBox="0 0 52 52" aria-hidden="true"><rect width="52" height="52" rx="13" fill="rgba(255,255,255,0.12)"/><line x1="26" y1="24" x2="9" y2="8" stroke="white" stroke-width="3.5" stroke-linecap="round"/><line x1="26" y1="24" x2="43" y2="8" stroke="white" stroke-width="3.5" stroke-linecap="round"/><line x1="26" y1="24" x2="26" y2="46" stroke="white" stroke-width="3.5" stroke-linecap="round"/><circle cx="9" cy="8" r="3.5" fill="white"/><circle cx="43" cy="8" r="3.5" fill="white"/><circle cx="26" cy="46" r="3.5" fill="white"/><circle cx="26" cy="24" r="6" fill="#f97316"/></svg>
-        <div class="nav-logo-wordmark">
-          <strong>YOU TECHNOLOGY</strong>
-          <small>Le choix des professionnels</small>
-        </div>
-      </a>
-      <ul class="nav-links">
-        <li><a href="#produits">Produits</a></li>
-        <li><a href="#pourquoi">Pourquoi nous</a></li>
-        <li><a href="#apropos">À propos</a></li>
-        <li><a href="#contact" class="nav-cta">Nous contacter</a></li>
-      </ul>
-      <div class="hamburger" id="hamburger" aria-label="Menu" role="button" tabindex="0">
-        <span></span><span></span><span></span>
+<!-- ═══════════════════════════════════════════════
+     NAVBAR
+═══════════════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <svg class="nav-logo-icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="52" height="52" rx="13" fill="rgba(255,255,255,0.1)"/>
+        <line x1="26" y1="24" x2="9" y2="8" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
+        <line x1="26" y1="24" x2="43" y2="8" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
+        <line x1="26" y1="24" x2="26" y2="46" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
+        <circle cx="9"  cy="8"  r="3.5" fill="white"/>
+        <circle cx="43" cy="8"  r="3.5" fill="white"/>
+        <circle cx="26" cy="46" r="3.5" fill="white"/>
+        <circle cx="26" cy="24" r="6" fill="#f97316"/>
+      </svg>
+      <div class="nav-logo-wordmark">
+        <strong>YOU TECHNOLOGY</strong>
+        <small>Le choix des professionnels</small>
       </div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#produits">Produits</a></li>
+      <li><a href="#pourquoi">Pourquoi nous</a></li>
+      <li><a href="#apropos">À propos</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <a href="#contact" class="nav-btn-demo">Demander une démo</a>
+      <a href="#contact" class="nav-btn-contact">Nous contacter →</a>
     </div>
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="#produits" class="mobile-link">Produits</a>
-      <a href="#pourquoi" class="mobile-link">Pourquoi nous</a>
-      <a href="#apropos" class="mobile-link">À propos</a>
-      <a href="#contact" class="nav-cta mobile-link">Nous contacter</a>
+
+    <div class="hamburger" id="hamburger" role="button" tabindex="0" aria-label="Menu">
+      <span></span><span></span><span></span>
     </div>
-  </nav>
+  </div>
 
-  <!-- ── CARROUSEL ── -->
-  <section id="slider">
-    <div class="slider-track" id="sliderTrack">
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#produits" class="mobile-link">Produits</a>
+    <a href="#pourquoi" class="mobile-link">Pourquoi nous</a>
+    <a href="#apropos" class="mobile-link">À propos</a>
+    <a href="#contact" class="m-cta mobile-link">Nous contacter →</a>
+  </div>
+</nav>
 
-      <!-- Slide 1 : EcoleGN -->
-      <div class="slide">
-        <img src="https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&dpr=1" alt="EcoleGN - Gestion scolaire numérique" loading="lazy" />
-        <div class="slide-overlay"></div>
-        <div class="slide-caption">
-          <span class="slide-tag">🎓 EcoleGN</span>
-          <h3>La gestion scolaire,<br />simplifiée et modernisée</h3>
-          <p>De l'inscription au bulletin, tout se gère depuis un seul outil — accessible depuis n'importe quel appareil.</p>
-        </div>
+
+<!-- ═══════════════════════════════════════════════
+     HERO — Split layout
+═══════════════════════════════════════════════ -->
+<section id="accueil" class="hero">
+  <div class="hero-grid"></div>
+  <canvas id="heroCanvas" aria-hidden="true"></canvas>
+
+  <div class="hero-inner">
+
+    <!-- Texte gauche -->
+    <div class="hero-text">
+
+      <div class="hero-pill fade-up visible">
+        <span class="pill-dot"></span>
+        Académie Cisco Agréée &nbsp;·&nbsp; Conakry, Guinée
       </div>
 
-      <!-- Slide 2 : Plateformes -->
-      <div class="slide">
-        <img src="https://images.pexels.com/photos/12969403/pexels-photo-12969403.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&dpr=1" alt="Interface logicielle professionnelle" loading="lazy" />
-        <div class="slide-overlay"></div>
-        <div class="slide-caption">
-          <span class="slide-tag">💻 Nos plateformes</span>
-          <h3>Des interfaces pensées<br />pour la performance</h3>
-          <p>Rapides, intuitives et robustes — nos logiciels s'adaptent à votre contexte sans compromis sur la qualité.</p>
-        </div>
+      <h1 class="hero-title fade-up delay-1 visible">
+        Des logiciels sérieux.<br>
+        Des formations <em>reconnues.</em>
+      </h1>
+
+      <p class="hero-sub fade-up delay-2 visible">
+        YOU TECHNOLOGY conçoit des applications web professionnelles et des formations Cisco certifiantes —
+        pensées pour les équipes qui veulent performer à l'ère numérique.
+      </p>
+
+      <div class="hero-actions fade-up delay-3 visible">
+        <a href="#produits" class="btn btn-primary btn-lg">
+          Découvrir nos solutions
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#contact" class="btn btn-outline-white btn-lg">
+          Demander une démo
+        </a>
       </div>
 
-      <!-- Slide 3 : Cisco -->
-      <div class="slide">
-        <img src="https://images.pexels.com/photos/159304/network-cable-ethernet-computer-159304.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&dpr=1" alt="Infrastructure réseau Cisco" loading="lazy" />
-        <div class="slide-overlay"></div>
-        <div class="slide-caption">
-          <span class="slide-tag">📡 Cisco Academy</span>
-          <h3>Formez vos équipes<br />aux standards internationaux</h3>
-          <p>Certifications Cisco reconnues partout dans le monde, dispensées en ligne depuis Conakry.</p>
+      <div class="hero-trust fade-up delay-4 visible">
+        <div class="hero-trust-item">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.6 3.5L7 9.5 3.9 11l.6-3.5L2 5l3.5-.5L7 1z" fill="rgba(255,255,255,0.5)"/></svg>
+          <span><span class="stat-val" data-target="3">0</span>+ ans d'expertise</span>
         </div>
-      </div>
-
-      <!-- Slide 4 : Innovation -->
-      <div class="slide">
-        <img src="https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&dpr=1" alt="Code et développement logiciel" loading="lazy" />
-        <div class="slide-overlay"></div>
-        <div class="slide-caption">
-          <span class="slide-tag">🚀 Innovation</span>
-          <h3>Conçu ici,<br />utilisé partout</h3>
-          <p>YOU TECHNOLOGY, c'est l'expertise locale avec les standards des meilleures boîtes tech du monde.</p>
+        <div class="hero-trust-sep"></div>
+        <div class="hero-trust-item">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/><path d="M7 4v3l2 1" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <span>Support 24 / 7</span>
+        </div>
+        <div class="hero-trust-sep"></div>
+        <div class="hero-trust-item">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1C4 1 2 5 2 5s2 4 5 4 5-4 5-4-2-4-5-4z" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/><circle cx="7" cy="5" r="1.5" fill="rgba(255,255,255,0.5)"/></svg>
+          <span>100% Made in Guinea</span>
         </div>
       </div>
 
     </div>
-    <button class="slider-arrow slider-prev" id="sliderPrev" aria-label="Slide précédente">&#8592;</button>
-    <button class="slider-arrow slider-next" id="sliderNext" aria-label="Slide suivante">&#8594;</button>
-    <div class="slider-dots" id="sliderDots"></div>
-    <div class="slider-progress" id="sliderProgress"></div>
-  </section>
 
-  <!-- ── HERO ── -->
-  <section id="accueil" class="slide-hero">
-    <canvas id="heroCanvas" class="hero-canvas" aria-hidden="true"></canvas>
-    <div class="hero-grid"></div>
-    <img src="https://images.pexels.com/photos/3894378/pexels-photo-3894378.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1" alt="" aria-hidden="true" />
-    <div class="slide-hero-overlay"></div>
-    <div class="slide-hero-content">
-      <div class="slide-hero-inner">
+    <!-- Mockup droite -->
+    <div class="hero-visual fade-up delay-3 visible" aria-hidden="true">
+      <div class="mockup-wrap">
 
-        <div class="hero-badges fade-up visible">
-          <div class="hero-badge">Le choix des professionnels</div>
-          <div class="hero-badge hero-badge-cisco">Académie Cisco Agréée</div>
-        </div>
-
-        <div class="hero-rotator fade-up delay-1 visible">
-          <span class="rotator-prefix">Nous construisons</span>
-          <div class="rotator-word-wrap">
-            <span id="typed-word"></span>
-            <span class="typed-cursor" aria-hidden="true"></span>
+        <!-- Notification flottante haut droit -->
+        <div class="mockup-float mockup-float-2">
+          <div class="float-icon blue">🎓</div>
+          <div class="float-text">
+            <strong>CCNA Certified</strong>
+            <small>Cisco Networking Academy</small>
           </div>
         </div>
 
-        <h1 class="fade-up delay-2 visible">
-          Logiciels en ligne &amp; formations certifiantes<br />
-          <span class="highlight">des solutions qui font la différence</span>
-        </h1>
-
-        <p class="hero-sub fade-up delay-3 visible">Logiciels accessibles depuis n'importe quel appareil, formations Cisco certifiantes — depuis Conakry, pour des professionnels qui exigent le meilleur.</p>
-
-        <div class="hero-actions fade-up delay-4 visible">
-          <a href="#produits" class="btn-primary">Découvrir nos produits <span>→</span></a>
-          <a href="#produits" class="btn-secondary">Nos formations Cisco</a>
-        </div>
-
-        <div class="hero-stats fade-up delay-5 visible">
-          <div class="hero-stat">
-            <strong><span class="stat-val" data-target="100" data-suffix="%">0</span><span class="stat-suf">%</span></strong>
-            <small>Made in Guinea</small>
-          </div>
-          <div class="hero-stat-divider"></div>
-          <div class="hero-stat">
-            <strong><span class="stat-val" data-target="3" data-suffix="">0</span><span class="stat-suf">+</span></strong>
-            <small>Ans d'expertise</small>
-          </div>
-          <div class="hero-stat-divider"></div>
-          <div class="hero-stat">
-            <strong><span class="stat-val" data-target="24" data-suffix="">0</span><span class="stat-suf">/7</span></strong>
-            <small>Support dédié</small>
-          </div>
-        </div>
-
-      </div>
-    </div>
-    <p class="hero-attribution">Photo : <a href="https://www.pexels.com/photo/3894378/" target="_blank" rel="noopener">Pexels</a></p>
-  </section>
-
-  <!-- ── PRODUITS ── -->
-  <section id="produits">
-    <div class="container">
-      <div class="section-header fade-up">
-        <p class="section-label">Nos produits</p>
-        <h2 class="section-title">Des outils numériques qui transforment<br />votre quotidien</h2>
-        <p class="section-sub">Chaque solution est conçue avec une connaissance profonde du terrain et des usages réels.</p>
-      </div>
-      <div class="products-grid">
-
-        <div class="product-card fade-up delay-1">
-          <div class="product-card-image">
-            <img src="https://images.pexels.com/photos/5427868/pexels-photo-5427868.jpeg?auto=compress&cs=tinysrgb&w=800&h=500&dpr=1" alt="Gestion scolaire numérique" loading="lazy" />
-            <div class="product-card-image-overlay"></div>
-            <div class="product-card-image-label">🎓 Disponible</div>
-          </div>
-          <div class="product-card-body">
-            <h3>EcoleGN</h3>
-            <p>La plateforme complète de gestion scolaire pour les établissements privés de Guinée — de la maternelle à l'université. Accessible depuis n'importe quel téléphone ou ordinateur, sans installation.</p>
-            <ul class="product-features">
-              <li>Gestion des inscriptions &amp; dossiers élèves</li>
-              <li>Notes, bulletins &amp; relevés automatisés</li>
-              <li>Suivi des paiements de scolarité</li>
-              <li>Communication parent–école intégrée</li>
-              <li>Emplois du temps &amp; absences</li>
-            </ul>
-            <a href="https://ecole.youtech.tech" target="_blank" rel="noopener" class="product-link">
-              Accéder à EcoleGN <span class="arrow">→</span>
-            </a>
-          </div>
-        </div>
-
-        <div class="product-card coming-soon fade-up delay-2">
-          <div class="product-card-body" style="padding-top:36px;">
-            <div class="product-icon">🛒</div>
-            <span class="product-badge badge-soon">Bientôt disponible</span>
-            <h3>Boutique</h3>
-            <p>Notre solution e-commerce clé en main pour les entrepreneurs et PME. Créez votre boutique en ligne, gérez vos stocks et encaissez vos paiements en quelques clics — sans compétences techniques.</p>
-            <ul class="product-features">
-              <li>Boutique en ligne personnalisable</li>
-              <li>Gestion des commandes &amp; stocks</li>
-              <li>Intégration paiements mobiles locaux</li>
-              <li>Tableau de bord analytics</li>
-              <li>Livraison &amp; suivi des colis</li>
-            </ul>
-            <span class="product-link disabled">Bientôt disponible <span class="arrow">→</span></span>
-          </div>
-        </div>
-
-        <div class="product-card cisco fade-up delay-3">
-          <div class="product-card-body" style="padding-top:36px;">
-            <div class="product-icon" style="background:rgba(27,160,216,.1);">🎓</div>
-            <span class="product-badge badge-cisco">Académie Cisco Agréée</span>
-            <h3>YOU TECHNOLOGY Academy</h3>
-            <p>Formations certifiantes en réseaux et cybersécurité, dispensées en ligne via la plateforme officielle Cisco Networking Academy. Des certifications reconnues mondialement, depuis Conakry.</p>
-            <ul class="product-features">
-              <li><span class="ccna-chip">✓ Disponible</span> CCNA — Cisco Certified Network Associate</li>
-              <li>Cours 100 % en ligne sur Netacad</li>
-              <li>Instructeurs certifiés Cisco</li>
-              <li>Labs pratiques et simulations Packet Tracer</li>
-              <li>Certification reconnue à l'international</li>
-            </ul>
-            <div class="cisco-badge-logo">
-              <span>🔵</span> Cisco Networking Academy — Partenaire officiel
+        <!-- Fenêtre navigateur -->
+        <div class="mockup-browser">
+          <div class="mockup-titlebar">
+            <div class="titlebar-dots">
+              <span></span><span></span><span></span>
             </div>
-            <a href="https://www.netacad.com" target="_blank" rel="noopener" class="product-link" style="margin-top:20px;">
-              Accéder à Netacad <span class="arrow">→</span>
-            </a>
+            <div class="titlebar-url">ecole.youtech.tech</div>
+          </div>
+          <div class="mockup-app">
+            <!-- Sidebar -->
+            <div class="mock-sidebar">
+              <div class="mock-logo-mark">EGN</div>
+              <div class="mock-nav-sep"></div>
+              <div class="mock-nav-item active" title="Tableau de bord">📊</div>
+              <div class="mock-nav-item" title="Élèves">🎓</div>
+              <div class="mock-nav-item" title="Paiements">💰</div>
+              <div class="mock-nav-item" title="Emploi du temps">📅</div>
+              <div class="mock-nav-item" title="Paramètres">⚙️</div>
+            </div>
+            <!-- Contenu principal -->
+            <div class="mock-main">
+              <div class="mock-topbar">
+                <span class="mock-topbar-title">Tableau de bord</span>
+                <div class="mock-topbar-right">
+                  <div class="mock-notif">🔔</div>
+                  <div class="mock-avatar">AD</div>
+                </div>
+              </div>
+              <div class="mock-body">
+                <div class="mock-stats">
+                  <div class="mock-stat-card">
+                    <div class="mock-stat-val">247</div>
+                    <div class="mock-stat-label">Élèves inscrits</div>
+                    <span class="mock-stat-pill g">+12 ce mois</span>
+                  </div>
+                  <div class="mock-stat-card">
+                    <div class="mock-stat-val">94%</div>
+                    <div class="mock-stat-label">Paiements</div>
+                    <span class="mock-stat-pill b">À jour</span>
+                  </div>
+                  <div class="mock-stat-card">
+                    <div class="mock-stat-val">18</div>
+                    <div class="mock-stat-label">Classes actives</div>
+                    <span class="mock-stat-pill o">Actives</span>
+                  </div>
+                </div>
+                <div class="mock-list-label">Inscriptions récentes</div>
+                <div class="mock-list">
+                  <div class="mock-list-row">
+                    <div class="mock-av c1">AD</div>
+                    <div class="mock-row-info">
+                      <span>Alpha Diallo</span>
+                      <small>Terminale A · IPAC</small>
+                    </div>
+                    <span class="mock-row-badge ok">✓ Inscrit</span>
+                  </div>
+                  <div class="mock-list-row">
+                    <div class="mock-av c2">FB</div>
+                    <div class="mock-row-info">
+                      <span>Fatoumata Bah</span>
+                      <small>6ème · Lycée Privé</small>
+                    </div>
+                    <span class="mock-row-badge ok">✓ Inscrit</span>
+                  </div>
+                  <div class="mock-list-row">
+                    <div class="mock-av c3">MK</div>
+                    <div class="mock-row-info">
+                      <span>Mamadou Kouyaté</span>
+                      <small>CM1 · École Primaire</small>
+                    </div>
+                    <span class="mock-row-badge pending">⏳ En attente</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Notification flottante bas gauche -->
+        <div class="mockup-float mockup-float-1">
+          <div class="float-icon green">✓</div>
+          <div class="float-text">
+            <strong>Paiement reçu</strong>
+            <small>F. Camara — 450 000 GNF</small>
           </div>
         </div>
 
       </div>
     </div>
-  </section>
 
-  <!-- ── SECTION SAAS VISUELLE ── -->
-  <section id="saas-visual">
-    <div class="saas-inner">
-      <div class="saas-image-panel">
-        <img src="https://images.pexels.com/photos/12969403/pexels-photo-12969403.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Interface logicielle sur écran d'ordinateur" loading="lazy" />
-      </div>
-      <div class="saas-text-panel">
-        <p class="section-label">Nos plateformes en ligne</p>
-        <h2 class="section-title">Des interfaces<br />pensées pour durer</h2>
-        <p>Nos logiciels fonctionnent directement depuis votre navigateur — sur téléphone, tablette ou ordinateur — même avec une connexion limitée. Chaque fonctionnalité répond à un besoin concret, pas à une tendance venue d'ailleurs.</p>
-        <div class="saas-pills">
-          <span class="saas-pill"><span class="saas-pill-dot"></span>Multi-établissements</span>
-          <span class="saas-pill"><span class="saas-pill-dot"></span>Mobile-first</span>
-          <span class="saas-pill"><span class="saas-pill-dot"></span>Données sécurisées</span>
-          <span class="saas-pill"><span class="saas-pill-dot"></span>Mises à jour continues</span>
-          <span class="saas-pill"><span class="saas-pill-dot"></span>Support francophone</span>
-        </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     TRUST BAR
+═══════════════════════════════════════════════ -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-item">
+      <div class="trust-icon">🏙️</div>
+      <div class="trust-text">
+        <strong>Basé à Conakry</strong>
+        <span>Guinée, Afrique de l'Ouest</span>
       </div>
     </div>
-  </section>
-
-  <!-- ── POURQUOI NOUS ── -->
-  <section id="pourquoi">
-    <div class="container">
-      <div class="section-header fade-up">
-        <p class="section-label">Pourquoi nous choisir</p>
-        <h2 class="section-title">L'expertise technique<br />au service de vos ambitions</h2>
-        <p class="section-sub">Nous combinons rigueur d'ingénierie et connaissance approfondie des besoins de nos clients.</p>
-      </div>
-      <div class="why-grid">
-        <div class="why-card fade-up delay-1">
-          <div class="why-icon">🌍</div>
-          <h3>Innovation locale</h3>
-          <p>Nos solutions sont conçues depuis Conakry, avec une compréhension directe des contraintes terrain : connectivité variable, usages mobiles, contextes économiques divers.</p>
-        </div>
-        <div class="why-card fade-up delay-2">
-          <div class="why-icon">⚙️</div>
-          <h3>Expertise technique</h3>
-          <p>Une équipe d'ingénieurs passionnés, formés aux meilleures pratiques du développement, qui livrent des produits robustes, sécurisés et maintenables dans la durée.</p>
-        </div>
-        <div class="why-card fade-up delay-3">
-          <div class="why-icon">🤝</div>
-          <h3>Support de proximité</h3>
-          <p>Un accompagnement humain, en français. Nous sommes disponibles pour vous aider à chaque étape — de la configuration initiale jusqu'à la montée en charge.</p>
-        </div>
-        <div class="why-card fade-up delay-1">
-          <div class="why-icon">☁️</div>
-          <h3>Cloud &amp; fiabilité</h3>
-          <p>Infrastructure cloud moderne avec haute disponibilité. Vos données sont sécurisées, sauvegardées et accessibles de n'importe où, depuis n'importe quel appareil.</p>
-        </div>
-        <div class="why-card fade-up delay-2">
-          <div class="why-icon">💰</div>
-          <h3>Tarification accessible</h3>
-          <p>Des abonnements flexibles, pensés pour démarrer sereinement et évoluer à votre rythme — sans frais cachés ni engagement long terme.</p>
-        </div>
-        <div class="why-card fade-up delay-3">
-          <div class="why-icon">🚀</div>
-          <h3>Mise en route rapide</h3>
-          <p>Déployez et configurez votre solution en quelques heures. Nos interfaces intuitives réduisent le temps de formation et accélèrent l'adoption par vos équipes.</p>
-        </div>
+    <div class="trust-item">
+      <div class="trust-icon">🎓</div>
+      <div class="trust-text">
+        <strong>Cisco Academy Agréée</strong>
+        <span>Partenaire officiel Netacad</span>
       </div>
     </div>
-  </section>
+    <div class="trust-item">
+      <div class="trust-icon">☁️</div>
+      <div class="trust-text">
+        <strong>100% Cloud</strong>
+        <span>Accessible depuis tout appareil</span>
+      </div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">🔒</div>
+      <div class="trust-text">
+        <strong>Données sécurisées</strong>
+        <span>Hébergement professionnel</span>
+      </div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">💬</div>
+      <div class="trust-text">
+        <strong>Support francophone</strong>
+        <span>Équipe réactive, disponible</span>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <!-- ── À PROPOS ── -->
-  <section id="apropos">
-    <div class="container">
-      <div class="apropos-inner">
-        <div class="apropos-text fade-up">
-          <p class="section-label">À propos</p>
-          <h2 class="section-title">Un studio tech sérieux,<br />basé à Conakry</h2>
-          <p class="section-sub">YOU TECHNOLOGY est une entreprise guinéenne fondée avec une ambition claire : construire des logiciels de qualité professionnelle qui durent.</p>
-          <p>Nous développons des logiciels accessibles depuis le web, simples à prendre en main et conçus pour des environnements exigeants. Académie Cisco agréée, nous formons également la prochaine génération d'ingénieurs réseau via la plateforme officielle Netacad. Notre objectif : être le partenaire tech de référence pour toute organisation qui veut passer à la vitesse supérieure.</p>
+
+<!-- ═══════════════════════════════════════════════
+     PRODUITS
+═══════════════════════════════════════════════ -->
+<section id="produits">
+  <div class="container">
+
+    <div class="section-header center fade-up">
+      <p class="section-eyebrow">Nos produits</p>
+      <h2 class="section-title">Des outils conçus pour votre quotidien</h2>
+      <p class="section-sub">Chaque solution répond à un besoin concret, identifié sur le terrain, avec une connaissance directe des usages guinéens et africains.</p>
+    </div>
+
+    <div class="products-grid">
+
+      <!-- EcoleGN -->
+      <div class="product-card fade-up delay-1">
+        <div class="product-card-accent"></div>
+        <div class="product-card-body">
+          <div class="product-header">
+            <div class="product-icon-wrap orange">🎓</div>
+            <span class="product-status live">Disponible</span>
+          </div>
+          <h3 class="product-name">EcoleGN</h3>
+          <p class="product-desc">La plateforme complète de gestion scolaire pour les établissements privés — de la maternelle à l'université. Accessible sur n'importe quel téléphone ou ordinateur.</p>
+          <ul class="product-features">
+            <li>Inscriptions, dossiers élèves et bulletins automatisés</li>
+            <li>Suivi des paiements de scolarité en temps réel</li>
+            <li>Emplois du temps, absences et notes par matière</li>
+            <li>Communication parent-école intégrée</li>
+            <li>Module université avec GPA et crédits ECTS</li>
+          </ul>
+          <a href="https://ecole.youtech.tech" target="_blank" rel="noopener" class="product-cta">
+            Accéder à EcoleGN <span class="arrow">→</span>
+          </a>
         </div>
-        <div class="apropos-image-panel fade-up delay-2">
-          <img src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Espace de travail moderne" loading="lazy" />
+      </div>
+
+      <!-- Boutique -->
+      <div class="product-card coming fade-up delay-2">
+        <div class="product-card-accent coming"></div>
+        <div class="product-card-body">
+          <div class="product-header">
+            <div class="product-icon-wrap gray">🛒</div>
+            <span class="product-status soon">Bientôt disponible</span>
+          </div>
+          <h3 class="product-name">Boutique</h3>
+          <p class="product-desc">Votre boutique en ligne clé en main, pensée pour les entrepreneurs et PME guinéennes. Vendez, gérez vos stocks et encaissez en ligne sans compétence technique.</p>
+          <ul class="product-features">
+            <li>Boutique personnalisable, opérationnelle en heures</li>
+            <li>Gestion des commandes et des stocks en temps réel</li>
+            <li>Intégration paiements mobiles (Orange Money, MTN)</li>
+            <li>Tableau de bord analytics et rapports de vente</li>
+            <li>Suivi des livraisons et gestion des retours</li>
+          </ul>
+          <span class="product-cta disabled">
+            Rejoindre la liste d'attente <span class="arrow">→</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Cisco Academy -->
+      <div class="product-card academy fade-up delay-3">
+        <div class="product-card-accent academy"></div>
+        <div class="product-card-body">
+          <div class="product-header">
+            <div class="product-icon-wrap blue">🏅</div>
+            <span class="product-status cisco">Académie Officielle</span>
+          </div>
+          <h3 class="product-name">YOU TECHNOLOGY Academy</h3>
+          <p class="product-desc">Formations certifiantes en réseaux et cybersécurité, dispensées via la plateforme officielle Cisco Networking Academy. Des certifications reconnues mondialement, depuis Conakry.</p>
+          <div class="cisco-partner-badge">
+            <span>🔵</span> Partenaire officiel Cisco Networking Academy
+          </div>
+          <ul class="product-features">
+            <li>CCNA — Cisco Certified Network Associate</li>
+            <li>Cours 100% en ligne sur Netacad</li>
+            <li>Instructeurs certifiés Cisco</li>
+            <li>Labs pratiques avec Packet Tracer</li>
+            <li>Certification reconnue à l'international</li>
+          </ul>
+          <a href="https://www.netacad.com" target="_blank" rel="noopener" class="product-cta">
+            Accéder à Netacad <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     SECTION PLATEFORME
+═══════════════════════════════════════════════ -->
+<section id="plateforme">
+  <div class="platform-inner">
+    <div class="platform-image">
+      <img src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Espace de travail numérique — ordinateur portable" loading="lazy" />
+    </div>
+    <div class="platform-text">
+      <p class="section-eyebrow">Nos plateformes en ligne</p>
+      <h2 class="section-title">Accessibles partout,<br>conçus pour durer.</h2>
+      <p>Nos logiciels fonctionnent directement depuis votre navigateur — sur téléphone, tablette ou ordinateur. Même avec une connexion limitée. Chaque fonctionnalité répond à un besoin réel, pas à une tendance venue d'ailleurs.</p>
+      <div class="platform-pills">
+        <span class="platform-pill"><span class="platform-pill-dot"></span>Multi-établissements</span>
+        <span class="platform-pill"><span class="platform-pill-dot"></span>Mobile-first</span>
+        <span class="platform-pill"><span class="platform-pill-dot"></span>Données sécurisées</span>
+        <span class="platform-pill"><span class="platform-pill-dot"></span>Mises à jour continues</span>
+        <span class="platform-pill"><span class="platform-pill-dot"></span>Support francophone</span>
+        <span class="platform-pill"><span class="platform-pill-dot"></span>Déploiement rapide</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     POURQUOI NOUS
+═══════════════════════════════════════════════ -->
+<section id="pourquoi">
+  <div class="container">
+
+    <div class="section-header fade-up">
+      <p class="section-eyebrow">Pourquoi nous choisir</p>
+      <h2 class="section-title">L'expertise technique<br>au service de votre terrain.</h2>
+      <p class="section-sub">Nous ne vendons pas de logiciels génériques. Nous concevons des solutions adaptées à votre réalité, avec des standards qui n'ont rien à envier aux meilleures boîtes tech mondiales.</p>
+    </div>
+
+    <div class="why-grid fade-up delay-1">
+
+      <div class="why-card">
+        <div class="why-card-top">
+          <span class="why-num">01</span>
+          <div class="why-icon-wrap">🌍</div>
+        </div>
+        <h3 class="why-title">Expertise locale</h3>
+        <p class="why-desc">Nos équipes sont à Conakry. Nous connaissons les contraintes réelles du terrain : connectivité variable, usages mobiles dominants, contextes économiques divers. Nos produits en tiennent compte.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-card-top">
+          <span class="why-num">02</span>
+          <div class="why-icon-wrap">⚙️</div>
+        </div>
+        <h3 class="why-title">Ingénierie rigoureuse</h3>
+        <p class="why-desc">Nos logiciels sont construits avec des technologies modernes, des pratiques d'ingénierie éprouvées et une attention au détail qui garantit robustesse, sécurité et maintenabilité dans la durée.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-card-top">
+          <span class="why-num">03</span>
+          <div class="why-icon-wrap">🤝</div>
+        </div>
+        <h3 class="why-title">Support de proximité</h3>
+        <p class="why-desc">Un accompagnement humain, en français, par une équipe joignable et disponible. Nous sommes là à chaque étape — de la configuration initiale jusqu'à la montée en charge de votre organisation.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-card-top">
+          <span class="why-num">04</span>
+          <div class="why-icon-wrap">☁️</div>
+        </div>
+        <h3 class="why-title">Cloud & fiabilité</h3>
+        <p class="why-desc">Infrastructure cloud moderne avec haute disponibilité. Vos données sont sécurisées, sauvegardées en continu et accessibles depuis n'importe où, sans installation ni maintenance côté client.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-card-top">
+          <span class="why-num">05</span>
+          <div class="why-icon-wrap">💰</div>
+        </div>
+        <h3 class="why-title">Tarification accessible</h3>
+        <p class="why-desc">Des abonnements flexibles pensés pour démarrer sereinement et évoluer à votre rythme — sans frais cachés, sans engagement long terme ni infrastructure à financer vous-même.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-card-top">
+          <span class="why-num">06</span>
+          <div class="why-icon-wrap">🚀</div>
+        </div>
+        <h3 class="why-title">Mise en route rapide</h3>
+        <p class="why-desc">Configuration en quelques heures, prise en main immédiate. Nos interfaces réduisent le temps de formation au minimum et accélèrent l'adoption par vos équipes dès le premier jour.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     À PROPOS
+═══════════════════════════════════════════════ -->
+<section id="apropos">
+  <div class="container">
+    <div class="apropos-inner">
+
+      <div class="apropos-text fade-up">
+        <p class="section-eyebrow">À propos</p>
+        <h2 class="section-title">Un studio tech sérieux,<br>ancré à Conakry.</h2>
+        <p class="section-sub">YOU TECHNOLOGY est une entreprise guinéenne fondée avec une ambition claire : concevoir des logiciels de qualité professionnelle, durables et adaptés à notre réalité.</p>
+
+        <div class="apropos-values">
+          <div class="apropos-value">
+            <div class="apropos-value-icon">🎯</div>
+            <h4>Notre mission</h4>
+            <p>Construire des outils numériques fiables qui font gagner du temps et améliorent la performance des organisations.</p>
+          </div>
+          <div class="apropos-value">
+            <div class="apropos-value-icon">🔭</div>
+            <h4>Notre vision</h4>
+            <p>Être le partenaire technologique de référence pour les organisations qui veulent passer à la vitesse supérieure.</p>
+          </div>
+          <div class="apropos-value">
+            <div class="apropos-value-icon">⭐</div>
+            <h4>Nos valeurs</h4>
+            <p>Excellence technique, transparence totale et impact positif sur les organisations que nous servons.</p>
+          </div>
+          <div class="apropos-value">
+            <div class="apropos-value-icon">📍</div>
+            <h4>Notre ancrage</h4>
+            <p>Fièrement basés à Conakry, ouverts sur le monde. Standards internationaux, réalité locale.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="apropos-image-side fade-up delay-2">
+        <div class="apropos-image-wrap">
+          <img src="https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Développement logiciel — code à l'écran" loading="lazy" />
           <div class="apropos-image-overlay"></div>
-          <div class="apropos-values-overlay">
-            <div class="apropos-value">
-              <div class="icon">🎯</div>
-              <h4>Notre mission</h4>
-              <p>Construire des outils numériques fiables qui font gagner du temps.</p>
-            </div>
-            <div class="apropos-value">
-              <div class="icon">👁️</div>
-              <h4>Notre vision</h4>
-              <p>Des produits tech reconnus pour leur robustesse et leur pertinence.</p>
-            </div>
-            <div class="apropos-value">
-              <div class="icon">⭐</div>
-              <h4>Nos valeurs</h4>
-              <p>Excellence, transparence et impact social positif.</p>
-            </div>
-            <div class="apropos-value">
-              <div class="icon">📍</div>
-              <h4>Notre ancrage</h4>
-              <p>Fièrement basés à Conakry, ouverts sur le monde.</p>
+          <div class="apropos-image-footer">
+            <div class="apropos-stat-line">
+              <div class="apropos-stat">
+                <strong><span class="stat-val" data-target="3">0</span><span>+</span></strong>
+                <small>Ans d'expertise</small>
+              </div>
+              <div class="apropos-stat">
+                <strong><span class="stat-val" data-target="2">0</span><span>+</span></strong>
+                <small>Produits conçus</small>
+              </div>
+              <div class="apropos-stat">
+                <strong><span class="stat-val" data-target="100">0</span><span>%</span></strong>
+                <small>Made in Guinea</small>
+              </div>
             </div>
           </div>
         </div>
+        <!-- Floating badge -->
+        <div class="apropos-badge">
+          <div class="apropos-badge-icon">🎓</div>
+          <div>
+            <strong>Cisco Networking Academy</strong>
+            <small>Partenaire officiel agréé</small>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ── CONTACT ── -->
-  <section id="contact">
-    <div class="container">
-      <div class="section-header fade-up">
-        <p class="section-label">Contact</p>
-        <h2 class="section-title">Parlons de votre projet</h2>
-        <p class="section-sub">Vous avez une question ou souhaitez démarrer avec l'un de nos produits ? Notre équipe vous répond sous 24h.</p>
-      </div>
-      <div class="contact-layout">
-        <div class="contact-info fade-up delay-1">
-          <h3>Nous trouver</h3>
-          <p>Que vous soyez à Conakry ou ailleurs, nous sommes à votre disposition.</p>
-          <div class="contact-items">
-            <div class="contact-item">
-              <div class="contact-item-icon">📧</div>
-              <div class="contact-item-text">
-                <strong>Email</strong>
-                <span><a href="mailto:contact@youtech.tech">contact@youtech.tech</a></span>
-              </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     BANDEAU CTA
+═══════════════════════════════════════════════ -->
+<div class="cta-banner">
+  <div class="cta-banner-inner">
+    <h2 class="fade-up visible">Prêt à moderniser votre organisation ?</h2>
+    <p class="fade-up delay-1 visible">Que vous cherchiez à digitaliser une école, lancer votre boutique en ligne ou certifier vos équipes — nous avons la solution. Échangeons.</p>
+    <div class="cta-banner-actions">
+      <a href="#contact" class="btn-white">
+        <span>Parler à notre équipe</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="https://ecole.youtech.tech" target="_blank" rel="noopener" class="btn-outline-white-cta">
+        Voir EcoleGN en direct
+      </a>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     CONTACT
+═══════════════════════════════════════════════ -->
+<section id="contact">
+  <div class="container">
+
+    <div class="section-header fade-up">
+      <p class="section-eyebrow">Contact</p>
+      <h2 class="section-title">Parlons de votre projet.</h2>
+      <p class="section-sub">Une question sur nos produits ? Un projet à discuter ? Notre équipe vous répond rapidement et sans engagement.</p>
+    </div>
+
+    <div class="contact-inner">
+
+      <div class="contact-left fade-up delay-1">
+        <h3>Nous joindre</h3>
+        <p>Que vous soyez à Conakry ou ailleurs, nous sommes disponibles pour répondre à vos questions et vous accompagner dans votre démarche.</p>
+
+        <div class="contact-response-badge">Réponse garantie sous 24h</div>
+
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-icon">📧</div>
+            <div class="contact-item-body">
+              <strong>Email</strong>
+              <span><a href="mailto:contact@youtech.tech">contact@youtech.tech</a></span>
             </div>
-            <div class="contact-item">
-              <div class="contact-item-icon">📍</div>
-              <div class="contact-item-text">
-                <strong>Localisation</strong>
-                <span>Conakry, République de Guinée</span>
-              </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div class="contact-item-body">
+              <strong>Localisation</strong>
+              <span>Conakry, République de Guinée</span>
             </div>
-            <div class="contact-item">
-              <div class="contact-item-icon">🌐</div>
-              <div class="contact-item-text">
-                <strong>Site web</strong>
-                <span><a href="https://youtech.tech">youtech.tech</a></span>
-              </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🌐</div>
+            <div class="contact-item-body">
+              <strong>Site web</strong>
+              <span><a href="https://youtech.tech">youtech.tech</a></span>
             </div>
-            <div class="contact-item">
-              <div class="contact-item-icon">🎓</div>
-              <div class="contact-item-text">
-                <strong>EcoleGN</strong>
-                <span><a href="https://ecole.youtech.tech">ecole.youtech.tech</a></span>
-              </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🎓</div>
+            <div class="contact-item-body">
+              <strong>EcoleGN — Application</strong>
+              <span><a href="https://ecole.youtech.tech">ecole.youtech.tech</a></span>
             </div>
           </div>
         </div>
-        <div class="contact-form fade-up delay-2">
-          <h3>Envoyer un message</h3>
-          <form id="contactForm" onsubmit="handleSubmit(event)">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="nom">Nom complet</label>
-                <input type="text" id="nom" placeholder="Votre nom" required />
-              </div>
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" placeholder="vous@exemple.com" required />
-              </div>
+      </div>
+
+      <div class="contact-form-wrap fade-up delay-2">
+        <div class="contact-form-title">Envoyer un message</div>
+        <form id="contactForm" onsubmit="handleSubmit(event)" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nom">Nom complet</label>
+              <input class="form-control" type="text" id="nom" placeholder="Votre nom" required />
             </div>
             <div class="form-group">
-              <label for="sujet">Sujet</label>
-              <select id="sujet">
-                <option value="">Sélectionner un sujet</option>
-                <option value="ecologn">EcoleGN — Demande de démo</option>
-                <option value="boutique">Boutique — Liste d'attente</option>
-                <option value="partenariat">Partenariat</option>
-                <option value="autre">Autre demande</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="message">Message</label>
-              <textarea id="message" placeholder="Décrivez votre besoin ou votre question…" required></textarea>
-            </div>
-            <button type="submit" class="form-submit">Envoyer le message <span>✉️</span></button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── FOOTER ── -->
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <div class="logo">
-            <svg width="38" height="38" viewBox="0 0 52 52" aria-hidden="true"><rect width="52" height="52" rx="13" fill="rgba(255,255,255,0.1)"/><line x1="26" y1="24" x2="9" y2="8" stroke="white" stroke-width="3.5" stroke-linecap="round"/><line x1="26" y1="24" x2="43" y2="8" stroke="white" stroke-width="3.5" stroke-linecap="round"/><line x1="26" y1="24" x2="26" y2="46" stroke="white" stroke-width="3.5" stroke-linecap="round"/><circle cx="9" cy="8" r="3.5" fill="white"/><circle cx="43" cy="8" r="3.5" fill="white"/><circle cx="26" cy="46" r="3.5" fill="white"/><circle cx="26" cy="24" r="6" fill="#f97316"/></svg>
-            <div class="footer-logo-wordmark">
-              <strong>YOU TECHNOLOGY</strong>
-              <small>Conakry · Guinée</small>
+              <label for="email">Adresse email</label>
+              <input class="form-control" type="email" id="email" placeholder="vous@exemple.com" required />
             </div>
           </div>
-          <p>Logiciels professionnels en ligne et formations certifiantes Cisco — conçus à Conakry, pour des organisations qui veulent performer.</p>
-          <span class="footer-domain">youtech.tech</span>
-        </div>
-        <div class="footer-col">
-          <h4>Produits</h4>
-          <ul>
-            <li><a href="https://ecole.youtech.tech">EcoleGN</a></li>
-            <li><a href="#produits">Boutique (bientôt)</a></li>
-            <li><a href="https://www.netacad.com">YOU TECHNOLOGY Academy</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Entreprise</h4>
-          <ul>
-            <li><a href="#apropos">À propos</a></li>
-            <li><a href="#pourquoi">Pourquoi nous</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Légal</h4>
-          <ul>
-            <li><a href="#">Confidentialité</a></li>
-            <li><a href="#">CGU</a></li>
-            <li><a href="#">Mentions légales</a></li>
-          </ul>
-        </div>
+          <div class="form-group">
+            <label for="sujet">Type de demande</label>
+            <select class="form-control" id="sujet">
+              <option value="">Choisissez un sujet…</option>
+              <option value="ecologn">EcoleGN — Demande de démo</option>
+              <option value="cisco">Formations Cisco — Renseignements</option>
+              <option value="boutique">Boutique — Liste d'attente</option>
+              <option value="partenariat">Partenariat</option>
+              <option value="autre">Autre demande</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Votre message</label>
+            <textarea class="form-control" id="message" placeholder="Décrivez votre besoin ou votre question…" required></textarea>
+          </div>
+          <button type="submit" class="form-submit-btn">
+            Envoyer le message
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </form>
       </div>
-      <div class="footer-bottom">
-        <p>© 2026 YOU TECHNOLOGY. Tous droits réservés.</p>
-        <p class="made-with">Made with <span>♥</span> in Conakry, Guinea</p>
-      </div>
+
     </div>
-  </footer>
-
-  <button id="scrollTop" aria-label="Retour en haut">↑</button>
-
-  <!-- ════════════════════════════════════════
-       JAVASCRIPT — Effets dynamiques
-  ════════════════════════════════════════ -->
-  <script>
-  /* ───────────────────────────────────────
-     1. CANVAS — Réseau de particules (hero slide)
-  ─────────────────────────────────────── */
-  (function() {
-    const canvas = document.getElementById('heroCanvas');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    let W, H, particles, animId;
-    const COUNT = 55, LINK_DIST = 130, SPEED = 0.35;
-
-    function resize() {
-      W = canvas.width  = canvas.offsetWidth;
-      H = canvas.height = canvas.offsetHeight;
-    }
-
-    function Particle() {
-      this.x  = Math.random() * W;
-      this.y  = Math.random() * H;
-      this.vx = (Math.random() - .5) * SPEED;
-      this.vy = (Math.random() - .5) * SPEED;
-      this.r  = Math.random() * 1.8 + 0.8;
-      this.a  = Math.random() * .35 + .12;
-    }
-
-    function init() {
-      particles = Array.from({length: COUNT}, () => new Particle());
-    }
-
-    function draw() {
-      ctx.clearRect(0, 0, W, H);
-
-      // Connexions
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const d  = Math.sqrt(dx*dx + dy*dy);
-          if (d < LINK_DIST) {
-            const alpha = (1 - d / LINK_DIST) * .18;
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(249,115,22,${alpha})`;
-            ctx.lineWidth = .9;
-            ctx.stroke();
-          }
-        }
-      }
-
-      // Points
-      particles.forEach(p => {
-        p.x += p.vx;
-        p.y += p.vy;
-        if (p.x < 0 || p.x > W) p.vx *= -1;
-        if (p.y < 0 || p.y > H) p.vy *= -1;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255,255,255,${p.a})`;
-        ctx.fill();
-      });
-
-      animId = requestAnimationFrame(draw);
-    }
-
-    function start() {
-      cancelAnimationFrame(animId);
-      resize();
-      init();
-      draw();
-    }
-
-    window.addEventListener('resize', start);
-    start();
-
-    // Pause quand le hero sort de la vue (économie CPU)
-    const heroSection = document.getElementById('accueil');
-    const io = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting) { draw(); }
-      else { cancelAnimationFrame(animId); }
-    }, { threshold: 0 });
-    if (heroSection) io.observe(heroSection);
-  })();
+  </div>
+</section>
 
 
-  /* ───────────────────────────────────────
-     2. TYPED TEXT — Texte rotatif typé
-  ─────────────────────────────────────── */
-  (function() {
-    const el = document.getElementById('typed-word');
-    if (!el) return;
+<!-- ═══════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
 
-    const words = [
-      'des logiciels sur mesure',
-      'des outils de gestion',
-      'des applications web',
-      'des formations Cisco',
-      'des solutions durables',
-    ];
-    let wi = 0, ci = 0, deleting = false;
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <svg width="36" height="36" viewBox="0 0 52 52" fill="none" aria-hidden="true">
+            <rect width="52" height="52" rx="13" fill="rgba(255,255,255,0.08)"/>
+            <line x1="26" y1="24" x2="9"  y2="8"  stroke="white" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="26" y1="24" x2="43" y2="8"  stroke="white" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="26" y1="24" x2="26" y2="46" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
+            <circle cx="9"  cy="8"  r="3.5" fill="white"/>
+            <circle cx="43" cy="8"  r="3.5" fill="white"/>
+            <circle cx="26" cy="46" r="3.5" fill="white"/>
+            <circle cx="26" cy="24" r="6"   fill="#f97316"/>
+          </svg>
+          <div class="footer-wordmark">
+            <strong>YOU TECHNOLOGY</strong>
+            <small>Conakry · Guinée</small>
+          </div>
+        </div>
+        <p>Logiciels professionnels en ligne et formations Cisco certifiantes — conçus à Conakry, pour des organisations qui veulent performer à l'ère numérique.</p>
+        <span class="footer-domain">youtech.tech</span>
+      </div>
 
-    function type() {
-      const word = words[wi];
-      el.textContent = deleting
-        ? word.slice(0, ci - 1)
-        : word.slice(0, ci + 1);
+      <div class="footer-col">
+        <h4>Produits</h4>
+        <ul>
+          <li><a href="https://ecole.youtech.tech">EcoleGN</a></li>
+          <li><a href="#produits">Boutique (bientôt)</a></li>
+          <li><a href="https://www.netacad.com">YOU TECH Academy</a></li>
+        </ul>
+      </div>
 
-      if (!deleting) ci++;
-      else           ci--;
+      <div class="footer-col">
+        <h4>Entreprise</h4>
+        <ul>
+          <li><a href="#apropos">À propos</a></li>
+          <li><a href="#pourquoi">Pourquoi nous</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
 
-      let delay = deleting ? 40 : 75;
+      <div class="footer-col">
+        <h4>Légal</h4>
+        <ul>
+          <li><a href="#">Confidentialité</a></li>
+          <li><a href="#">Conditions d'utilisation</a></li>
+          <li><a href="#">Mentions légales</a></li>
+        </ul>
+      </div>
 
-      if (!deleting && ci === word.length) {
-        deleting = true;
-        delay = 1600;
-      } else if (deleting && ci === 0) {
-        deleting = false;
-        wi = (wi + 1) % words.length;
-        delay = 300;
-      }
+    </div>
 
-      setTimeout(type, delay);
-    }
+    <div class="footer-bottom">
+      <p>© 2026 YOU TECHNOLOGY. Tous droits réservés.</p>
+      <p class="footer-tagline">Made with <span>♥</span> in Conakry, Guinea</p>
+    </div>
+  </div>
+</footer>
 
-    // Démarrer après 800ms pour laisser la page charger
-    setTimeout(type, 800);
-  })();
-
-
-  /* ───────────────────────────────────────
-     3. COUNT-UP — Compteurs animés
-     Déclenchés au DOMContentLoaded (stats visibles dès le chargement)
-  ─────────────────────────────────────── */
-  (function() {
-    const statEls = document.querySelectorAll('.stat-val[data-target]');
-    if (!statEls.length) return;
-
-    function countUp(el) {
-      const target = parseInt(el.dataset.target, 10);
-      const duration = 1400;
-      const start = performance.now();
-
-      function update(now) {
-        const elapsed  = now - start;
-        const progress = Math.min(elapsed / duration, 1);
-        // Ease out cubic
-        const eased = 1 - Math.pow(1 - progress, 3);
-        el.textContent = Math.floor(eased * target);
-        if (progress < 1) requestAnimationFrame(update);
-        else el.textContent = target;
-      }
-      requestAnimationFrame(update);
-    }
-
-    // Les stats sont dans la première slide, visible au chargement
-    // On déclenche après 800ms pour laisser la page s'afficher
-    setTimeout(() => {
-      statEls.forEach(el => countUp(el));
-    }, 800);
-  })();
+<!-- Scroll to top -->
+<button id="scrollTop" aria-label="Retour en haut">↑</button>
 
 
-  /* ───────────────────────────────────────
-     4. FADE-UP — Apparitions au scroll
-  ─────────────────────────────────────── */
-  (function() {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          observer.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-  })();
+<!-- ═══════════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════════ -->
+<script>
 
+/* ── 1. CANVAS PARTICULES (hero) ── */
+(function() {
+  const canvas = document.getElementById('heroCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, particles, animId;
+  const COUNT = 50, LINK_DIST = 120, SPEED = 0.3;
 
-  /* ───────────────────────────────────────
-     5. NAVBAR — Scroll + hamburger
-  ─────────────────────────────────────── */
-  (function() {
-    const navbar    = document.getElementById('navbar');
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
-
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 10);
-    });
-
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('open');
-      mobileMenu.classList.toggle('open');
-    });
-
-    document.querySelectorAll('.mobile-link').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('open');
-        mobileMenu.classList.remove('open');
-      });
-    });
-  })();
-
-
-  /* ───────────────────────────────────────
-     6. SCROLL-TO-TOP
-  ─────────────────────────────────────── */
-  (function() {
-    const btn = document.getElementById('scrollTop');
-    window.addEventListener('scroll', () => {
-      btn.classList.toggle('show', window.scrollY > 400);
-    });
-    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-  })();
-
-
-  /* ───────────────────────────────────────
-     7. CARROUSEL — Défilement d'images
-  ─────────────────────────────────────── */
-  (function() {
-    const track    = document.getElementById('sliderTrack');
-    const slides   = track ? Array.from(track.querySelectorAll('.slide')) : [];
-    const dotsWrap = document.getElementById('sliderDots');
-    const prevBtn  = document.getElementById('sliderPrev');
-    const nextBtn  = document.getElementById('sliderNext');
-    const progBar  = document.getElementById('sliderProgress');
-    if (!slides.length) return;
-
-    const DELAY = 5000; // ms entre chaque slide
-    let current = 0, timer = null, progTimer = null, isPaused = false;
-
-    // Créer les dots
-    slides.forEach((_, i) => {
-      const dot = document.createElement('button');
-      dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
-      dot.setAttribute('aria-label', `Slide ${i + 1}`);
-      dot.addEventListener('click', () => goTo(i));
-      dotsWrap.appendChild(dot);
-    });
-
-    function getDots() { return Array.from(dotsWrap.querySelectorAll('.slider-dot')); }
-
-    function goTo(index) {
-      slides[current].classList.remove('active');
-      getDots()[current].classList.remove('active');
-
-      current = (index + slides.length) % slides.length;
-
-      slides[current].classList.add('active');
-      getDots()[current].classList.add('active');
-      track.style.transform = `translateX(-${current * 100}%)`;
-
-      resetProgress();
-    }
-
-    function next() { goTo(current + 1); }
-    function prev() { goTo(current - 1); }
-
-    // Barre de progression
-    function resetProgress() {
-      clearTimeout(progTimer);
-      if (progBar) {
-        progBar.style.transition = 'none';
-        progBar.style.width = '0%';
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            progBar.style.transition = `width ${DELAY}ms linear`;
-            progBar.style.width = '100%';
-          });
-        });
-      }
-    }
-
-    // Auto-play
-    function startAuto() {
-      clearInterval(timer);
-      timer = setInterval(() => { if (!isPaused) next(); }, DELAY);
-    }
-
-    // Pause au survol
-    const section = document.getElementById('slider');
-    if (section) {
-      section.addEventListener('mouseenter', () => { isPaused = true; });
-      section.addEventListener('mouseleave', () => { isPaused = false; });
-    }
-
-    // Flèches
-    prevBtn && prevBtn.addEventListener('click', () => { prev(); });
-    nextBtn && nextBtn.addEventListener('click', () => { next(); });
-
-    // Swipe tactile mobile
-    let touchStartX = 0;
-    track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
-    track.addEventListener('touchend', e => {
-      const dx = e.changedTouches[0].clientX - touchStartX;
-      if (Math.abs(dx) > 50) { dx < 0 ? next() : prev(); }
-    }, { passive: true });
-
-    // Clavier (accessibilité)
-    document.addEventListener('keydown', e => {
-      if (e.key === 'ArrowLeft')  prev();
-      if (e.key === 'ArrowRight') next();
-    });
-
-    // Init
-    resetProgress();
-    startAuto();
-  })();
-
-
-  /* ───────────────────────────────────────
-     8. CONTACT FORM
-  ─────────────────────────────────────── */
-  function handleSubmit(e) {
-    e.preventDefault();
-    const btn = e.target.querySelector('.form-submit');
-    btn.textContent = 'Message envoyé ✓';
-    btn.style.background = '#16a34a';
-    btn.disabled = true;
-    setTimeout(() => {
-      btn.innerHTML = 'Envoyer le message <span>✉️</span>';
-      btn.style.background = '';
-      btn.disabled = false;
-      e.target.reset();
-    }, 3000);
+  function resize() {
+    W = canvas.width  = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
   }
-  </script>
+
+  function Particle() {
+    this.x  = Math.random() * W;
+    this.y  = Math.random() * H;
+    this.vx = (Math.random() - .5) * SPEED;
+    this.vy = (Math.random() - .5) * SPEED;
+    this.r  = Math.random() * 1.6 + 0.6;
+    this.a  = Math.random() * .3 + .1;
+  }
+
+  function init() { particles = Array.from({length: COUNT}, () => new Particle()); }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const d  = Math.sqrt(dx*dx + dy*dy);
+        if (d < LINK_DIST) {
+          const alpha = (1 - d / LINK_DIST) * .15;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(249,115,22,${alpha})`;
+          ctx.lineWidth = .8;
+          ctx.stroke();
+        }
+      }
+    }
+    particles.forEach(p => {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > W) p.vx *= -1;
+      if (p.y < 0 || p.y > H) p.vy *= -1;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${p.a})`;
+      ctx.fill();
+    });
+    animId = requestAnimationFrame(draw);
+  }
+
+  function start() {
+    cancelAnimationFrame(animId);
+    resize();
+    init();
+    draw();
+  }
+
+  window.addEventListener('resize', start);
+  start();
+
+  // Pause hors vue
+  const hero = document.querySelector('.hero');
+  if (hero) {
+    new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) draw();
+      else cancelAnimationFrame(animId);
+    }, { threshold: 0 }).observe(hero);
+  }
+})();
+
+
+/* ── 2. COUNT-UP ANIMÉ ── */
+(function() {
+  const els = document.querySelectorAll('.stat-val[data-target]');
+  if (!els.length) return;
+
+  function countUp(el) {
+    const target = parseInt(el.dataset.target, 10);
+    const start  = performance.now();
+    const dur    = 1400;
+    function tick(now) {
+      const p = Math.min((now - start) / dur, 1);
+      const e = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.floor(e * target);
+      if (p < 1) requestAnimationFrame(tick);
+      else el.textContent = target;
+    }
+    requestAnimationFrame(tick);
+  }
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        countUp(e.target);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  els.forEach(el => io.observe(el));
+})();
+
+
+/* ── 3. FADE-UP SCROLL ── */
+(function() {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+})();
+
+
+/* ── 4. NAVBAR — scroll + hamburger ── */
+(function() {
+  const nav  = document.getElementById('navbar');
+  const ham  = document.getElementById('hamburger');
+  const menu = document.getElementById('mobileMenu');
+
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+  // Déclencher au chargement aussi
+  nav.classList.toggle('scrolled', window.scrollY > 20);
+
+  ham.addEventListener('click', () => {
+    ham.classList.toggle('open');
+    menu.classList.toggle('open');
+  });
+  document.querySelectorAll('.mobile-link').forEach(l => {
+    l.addEventListener('click', () => {
+      ham.classList.remove('open');
+      menu.classList.remove('open');
+    });
+  });
+})();
+
+
+/* ── 5. SCROLL TO TOP ── */
+(function() {
+  const btn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('show', window.scrollY > 500);
+  });
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+})();
+
+
+/* ── 6. FORMULAIRE CONTACT ── */
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.form-submit-btn');
+  const orig = btn.innerHTML;
+  btn.innerHTML = '✓ Message envoyé !';
+  btn.style.background = '#16a34a';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.innerHTML = orig;
+    btn.style.background = '';
+    btn.disabled = false;
+    e.target.reset();
+  }, 3500);
+}
+
+</script>
 </body>
 </html>
-      
