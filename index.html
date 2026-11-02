@@ -1,2213 +1,725 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>YOU TECHNOLOGY — Logiciels & Formations Certifiantes</title>
-  <meta name="description" content="YOU TECHNOLOGY conçoit des logiciels professionnels en ligne et des formations Cisco certifiantes depuis Conakry — pour des organisations qui veulent performer à l'ère numérique." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
-  <style>
-
-/* ═══════════════════════════════════════════════
-   1. RESET & VARIABLES
-═══════════════════════════════════════════════ */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>YOUTECH — Logiciels et formations réseau à Conakry</title>
+<meta name="description" content="YOUTECH conçoit des logiciels de gestion (EcoleGN) et forme aux réseaux Cisco à Conakry. Formation CCNA en direct, sur du vrai matériel Cisco." />
+<meta name="theme-color" content="#0B1B33" />
+<meta property="og:title" content="YOUTECH — Logiciels et formations réseau à Conakry" />
+<meta property="og:description" content="Logiciels de gestion et formation CCNA sur du vrai matériel Cisco, à Conakry." />
+<meta property="og:image" content="https://youtech.tech/assets/logo-youtech.png" />
+<meta property="og:url" content="https://youtech.tech" />
+<link rel="icon" type="image/png" href="assets/logo-youtech.png" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
 :root {
-  --navy:         #1e3a5f;
-  --navy-dark:    #0f1f35;
-  --navy-mid:     #152c4a;
-  --navy-light:   #254972;
-  --navy-subtle:  #1a3050;
-  --orange:       #f97316;
-  --orange-dark:  #ea6d0e;
-  --orange-glow:  rgba(249,115,22,.18);
-  --white:        #ffffff;
-  --gray-50:      #f8fafc;
-  --gray-100:     #f1f5f9;
-  --gray-200:     #e2e8f0;
-  --gray-300:     #cbd5e1;
-  --gray-400:     #94a3b8;
-  --gray-500:     #64748b;
-  --gray-700:     #334155;
-  --gray-900:     #0f172a;
-  --text:         #1e293b;
-  --radius-sm:    8px;
-  --radius:       14px;
-  --radius-lg:    20px;
-  --shadow-sm:    0 2px 8px rgba(15,31,53,.08);
-  --shadow:       0 4px 24px rgba(15,31,53,.10);
-  --shadow-md:    0 8px 32px rgba(15,31,53,.14);
-  --shadow-lg:    0 20px 56px rgba(15,31,53,.18);
-  --shadow-xl:    0 40px 80px rgba(15,31,53,.24);
-  --transition:   .25s cubic-bezier(.4,0,.2,1);
+  --navy-900: #071428;
+  --navy-800: #0B1B33;
+  --navy-700: #13284A;
+  --navy-600: #1D3A66;
+  --blue-600: #1572D3;
+  --blue-500: #2B8BEA;
+  --blue-400: #42A5F5;
+  --blue-50:  #EEF5FD;
+  --yellow:   #F5C518;
+  --red-gn:   #CE1126;
+  --yellow-gn:#FCD116;
+  --green-gn: #009460;
+  --ink:      #0B1B33;
+  --ink-2:    #3D4B60;
+  --ink-3:    #6B7789;
+  --line:     #E3E8EF;
+  --bg:       #FFFFFF;
+  --bg-soft:  #F5F7FA;
+  --radius:   14px;
+  --shadow-sm: 0 1px 2px rgba(11,27,51,.06), 0 1px 3px rgba(11,27,51,.04);
+  --shadow-md: 0 8px 24px rgba(11,27,51,.08), 0 2px 6px rgba(11,27,51,.04);
+  --container: 1160px;
 }
-
-html { scroll-behavior: smooth; }
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 body {
-  font-family: 'Poppins', sans-serif;
-  color: var(--text);
-  background: var(--white);
-  overflow-x: hidden;
+  margin: 0;
+  font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--ink-2);
+  background: var(--bg);
   -webkit-font-smoothing: antialiased;
 }
-img  { max-width: 100%; display: block; }
-a    { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+a { color: var(--blue-600); text-decoration: none; }
+a:hover { text-decoration: underline; }
+h1, h2, h3, h4 { color: var(--ink); line-height: 1.2; margin: 0; font-weight: 700; letter-spacing: -0.01em; }
+p { margin: 0; }
+ul { margin: 0; padding: 0; list-style: none; }
+.container { max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+.icon { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+.icon-sm { width: 18px; height: 18px; }
+:focus-visible { outline: 3px solid var(--blue-400); outline-offset: 2px; border-radius: 6px; }
 
-/* ═══════════════════════════════════════════════
-   2. ANIMATIONS
-═══════════════════════════════════════════════ */
-.fade-up {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity .65s ease, transform .65s ease;
-}
-.fade-up.visible { opacity: 1; transform: translateY(0); }
-.fade-up.delay-1 { transition-delay: .08s; }
-.fade-up.delay-2 { transition-delay: .16s; }
-.fade-up.delay-3 { transition-delay: .24s; }
-.fade-up.delay-4 { transition-delay: .32s; }
-.fade-up.delay-5 { transition-delay: .40s; }
+/* Guinea tricolour bar — signature detail from the logo */
+.gn-bar { display: inline-flex; width: 72px; height: 5px; border-radius: 3px; overflow: hidden; }
+.gn-bar span { flex: 1; }
+.gn-bar span:nth-child(1) { background: var(--red-gn); }
+.gn-bar span:nth-child(2) { background: var(--yellow-gn); }
+.gn-bar span:nth-child(3) { background: var(--green-gn); }
 
-@keyframes float {
-  0%,100% { transform: translateY(0); }
-  50%      { transform: translateY(-8px); }
-}
-@keyframes floatReverse {
-  0%,100% { transform: translateY(0) rotate(2deg); }
-  50%      { transform: translateY(-5px) rotate(2deg); }
-}
-@keyframes pulse-ring {
-  0%   { transform: scale(.95); box-shadow: 0 0 0 0 rgba(249,115,22,.4); }
-  70%  { transform: scale(1);   box-shadow: 0 0 0 8px rgba(249,115,22,0); }
-  100% { transform: scale(.95); box-shadow: 0 0 0 0 rgba(249,115,22,0); }
-}
-@keyframes shimmer {
-  0%   { background-position: -200% 0; }
-  100% { background-position:  200% 0; }
-}
-@keyframes badge-slide-in {
-  from { opacity: 0; transform: translateX(-20px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-
-/* ═══════════════════════════════════════════════
-   3. UTILITAIRES
-═══════════════════════════════════════════════ */
-section { padding: 96px 24px; }
-.container { max-width: 1200px; margin: 0 auto; }
-
-.section-eyebrow {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-size: .72rem; font-weight: 700; text-transform: uppercase;
-  letter-spacing: 1.8px; color: var(--orange); margin-bottom: 16px;
-}
-.section-eyebrow::before {
-  content: ''; display: block; width: 20px; height: 2px;
-  background: var(--orange); border-radius: 1px;
-}
-.section-title {
-  font-size: clamp(1.9rem, 4vw, 2.9rem);
-  font-weight: 800; color: var(--navy);
-  line-height: 1.15; letter-spacing: -.6px;
-  margin-bottom: 18px;
-}
-.section-sub {
-  font-size: 1.05rem; color: var(--gray-500);
-  max-width: 580px; line-height: 1.75;
-}
-.section-header { margin-bottom: 60px; }
-.section-header.center { text-align: center; }
-.section-header.center .section-sub { margin: 0 auto; }
-.section-header.center .section-eyebrow {
-  justify-content: center;
-}
-.section-header.center .section-eyebrow::before { display: none; }
-
-/* Boutons */
+/* Buttons */
 .btn {
-  display: inline-flex; align-items: center; justify-content: center;
-  gap: 8px; font-family: 'Poppins', sans-serif; font-weight: 700;
-  font-size: .95rem; border-radius: var(--radius-sm);
-  border: none; cursor: pointer; transition: all var(--transition);
-  position: relative; overflow: hidden; text-decoration: none;
-  white-space: nowrap;
-}
-.btn::after {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(rgba(255,255,255,.18) 0%, transparent 100%);
-  opacity: 0; transition: opacity var(--transition);
-}
-.btn:hover::after { opacity: 1; }
-
-.btn-primary {
-  background: var(--orange); color: white;
-  padding: 14px 28px;
-  box-shadow: 0 4px 20px rgba(249,115,22,.35), 0 1px 3px rgba(249,115,22,.2);
-}
-.btn-primary:hover {
-  background: var(--orange-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(249,115,22,.48), 0 1px 3px rgba(249,115,22,.3);
-}
-.btn-primary:active { transform: translateY(0); }
-
-.btn-outline-white {
-  background: transparent; color: white;
-  padding: 13px 26px;
-  border: 1.5px solid rgba(255,255,255,.3);
-}
-.btn-outline-white:hover {
-  border-color: rgba(255,255,255,.65);
-  background: rgba(255,255,255,.08);
-}
-
-.btn-outline-navy {
-  background: transparent; color: var(--navy);
-  padding: 13px 26px;
-  border: 1.5px solid var(--gray-200);
-}
-.btn-outline-navy:hover {
-  border-color: var(--navy);
-  background: var(--gray-50);
-}
-
-.btn-lg { padding: 16px 36px; font-size: 1rem; border-radius: 10px; }
-
-/* ═══════════════════════════════════════════════
-   4. NAVBAR
-═══════════════════════════════════════════════ */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  background: rgba(15,31,53,.9);
-  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(255,255,255,.06);
-  transition: background var(--transition), box-shadow var(--transition);
-}
-nav.scrolled {
-  background: rgba(15,31,53,.97);
-  box-shadow: 0 1px 0 rgba(255,255,255,.06), 0 4px 24px rgba(0,0,0,.28);
-}
-
-.nav-inner {
-  max-width: 1240px; margin: 0 auto; padding: 0 28px;
-  height: 70px; display: flex; align-items: center;
-  justify-content: space-between; position: relative; z-index: 2;
-}
-
-.nav-logo {
-  display: inline-flex; align-items: center; gap: 12px; flex-shrink: 0;
-}
-.nav-logo-icon {
-  width: 36px; height: 36px; flex-shrink: 0;
-}
-.nav-logo-wordmark strong {
-  display: block; font-size: 1.08rem; font-weight: 800;
-  letter-spacing: -.4px; color: var(--white); line-height: 1.1;
-}
-.nav-logo-wordmark small {
-  display: block; font-size: .52rem; font-weight: 600;
-  letter-spacing: .22em; color: rgba(255,255,255,.45); margin-top: 3px;
-  text-transform: uppercase;
-}
-
-.nav-links {
-  display: flex; align-items: center; gap: 6px; list-style: none;
-}
-.nav-links a {
-  font-size: .88rem; font-weight: 500; color: rgba(255,255,255,.78);
-  transition: color var(--transition);
-  padding: 6px 14px; border-radius: 6px;
-}
-.nav-links a:hover { color: var(--white); background: rgba(255,255,255,.07); }
-
-.nav-actions { display: flex; align-items: center; gap: 10px; }
-
-.nav-btn-demo {
-  background: rgba(255,255,255,.1); color: white;
-  padding: 8px 18px; border-radius: var(--radius-sm);
-  font-size: .85rem; font-weight: 600;
-  border: 1px solid rgba(255,255,255,.15);
-  transition: all var(--transition);
-}
-.nav-btn-demo:hover {
-  background: rgba(255,255,255,.18);
-  border-color: rgba(255,255,255,.3);
-}
-
-.nav-btn-contact {
-  background: var(--orange); color: white;
-  padding: 9px 22px; border-radius: var(--radius-sm);
-  font-size: .85rem; font-weight: 700;
-  box-shadow: 0 2px 12px rgba(249,115,22,.35);
-  transition: all var(--transition);
-}
-.nav-btn-contact:hover {
-  background: var(--orange-dark);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(249,115,22,.5);
-}
-
-/* Hamburger */
-.hamburger {
-  display: none; flex-direction: column; gap: 5px;
-  cursor: pointer; padding: 4px; z-index: 3;
-}
-.hamburger span {
-  display: block; width: 22px; height: 2px;
-  background: white; border-radius: 2px; transition: transform .3s, opacity .3s;
-}
-.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.hamburger.open span:nth-child(2) { opacity: 0; }
-.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-.mobile-menu {
-  display: none; flex-direction: column;
-  background: var(--navy-dark); padding: 20px 28px 32px;
-  gap: 4px; border-top: 1px solid rgba(255,255,255,.06);
-  position: relative; z-index: 2;
-}
-.mobile-menu.open { display: flex; }
-.mobile-menu a {
-  font-size: .95rem; font-weight: 500; color: rgba(255,255,255,.8);
-  padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,.06);
-  transition: color var(--transition);
-}
-.mobile-menu a:last-child { border: none; }
-.mobile-menu a:hover { color: white; }
-.mobile-menu .m-cta {
-  margin-top: 12px; background: var(--orange); color: white;
-  text-align: center; padding: 12px; border-radius: 8px;
-  font-weight: 700; border: none;
-}
-
-/* Ancres : compenser la navbar fixe (70px) */
-#produits, #services, #plateforme, #pourquoi, #apropos, #contact {
-  scroll-margin-top: 74px;
-}
-
-/* ═══════════════════════════════════════════════
-   5. HERO — Split layout premium
-═══════════════════════════════════════════════ */
-.hero {
-  min-height: calc(100vh - 70px);
-  background:
-    radial-gradient(ellipse 80% 60% at 110% 40%, rgba(249,115,22,.09) 0%, transparent 70%),
-    radial-gradient(ellipse 60% 50% at -10% 60%, rgba(37,73,114,.6) 0%, transparent 70%),
-    linear-gradient(140deg, #0a1929 0%, #0f1f35 30%, #1a3354 65%, #1e3a5f 100%);
-  position: relative; overflow: hidden;
-  display: flex; align-items: center;
-  padding-top: 70px; /* navbar height */
-}
-
-/* Grille de fond subtile */
-.hero-grid {
-  position: absolute; inset: 0; pointer-events: none; z-index: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
-  background-size: 64px 64px;
-}
-
-/* Canvas particules */
-#heroCanvas {
-  position: absolute; inset: 0; width: 100%; height: 100%;
-  pointer-events: none; z-index: 1;
-}
-
-.hero-inner {
-  max-width: 1240px; margin: 0 auto; width: 100%; padding: 80px 28px;
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 64px; align-items: center;
-  position: relative; z-index: 2;
-}
-
-/* ── Hero texte ── */
-.hero-text {}
-
-.hero-pill {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(249,115,22,.12); border: 1px solid rgba(249,115,22,.3);
-  color: #fdb07a; font-size: .75rem; font-weight: 700;
-  padding: 6px 16px; border-radius: 100px;
-  letter-spacing: .6px; text-transform: uppercase;
-  margin-bottom: 28px;
-  animation: badge-slide-in .6s ease both;
-}
-.hero-pill .pill-dot {
-  width: 7px; height: 7px; border-radius: 50%; background: var(--orange);
-  animation: pulse-ring 2s ease infinite;
-}
-
-.hero-title {
-  font-size: clamp(2.4rem, 5vw, 3.8rem);
-  font-weight: 900; line-height: 1.1;
-  color: white; letter-spacing: -.8px;
-  margin-bottom: 24px;
-}
-.hero-title em {
-  font-style: normal;
-  background: linear-gradient(135deg, var(--orange) 0%, #fbbf24 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.hero-sub {
-  font-size: 1.1rem; color: rgba(255,255,255,.68);
-  font-weight: 400; line-height: 1.72;
-  margin-bottom: 36px; max-width: 500px;
-}
-
-.hero-actions {
-  display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
-  margin-bottom: 48px;
-}
-
-.hero-trust {
-  display: flex; flex-wrap: wrap; gap: 20px; align-items: center;
-}
-.hero-trust-item {
-  display: flex; align-items: center; gap: 7px;
-  font-size: .82rem; color: rgba(255,255,255,.5); font-weight: 500;
-}
-.hero-trust-item svg { opacity: .6; flex-shrink: 0; }
-.hero-trust-sep {
-  width: 1px; height: 16px; background: rgba(255,255,255,.14);
-}
-
-/* ── Hero mockup (droite) ── */
-.hero-visual {
-  display: flex; align-items: center; justify-content: flex-end;
-  position: relative;
-}
-
-.mockup-wrap {
-  width: 100%; max-width: 540px; position: relative;
-}
-
-.mockup-browser {
-  background: white; border-radius: 12px; overflow: hidden;
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,.06),
-    0 24px 60px rgba(0,0,0,.55),
-    0 80px 120px rgba(0,0,0,.3);
-  transform: perspective(1400px) rotateY(-9deg) rotateX(3deg);
-  transform-style: preserve-3d;
-  transition: transform .4s ease;
-}
-.mockup-browser:hover {
-  transform: perspective(1400px) rotateY(-5deg) rotateX(1deg);
-}
-
-.mockup-titlebar {
-  background: #e8eaed; padding: 9px 14px;
-  display: flex; align-items: center; gap: 12px;
-  border-bottom: 1px solid #d0d3d8;
-}
-.titlebar-dots { display: flex; gap: 6px; }
-.titlebar-dots span {
-  width: 11px; height: 11px; border-radius: 50%;
-}
-.titlebar-dots span:nth-child(1) { background: #ff5f57; }
-.titlebar-dots span:nth-child(2) { background: #febc2e; }
-.titlebar-dots span:nth-child(3) { background: #28c840; }
-
-.titlebar-url {
-  flex: 1; background: white; border: 1px solid #d0d3d8;
-  border-radius: 5px; padding: 4px 10px;
-  font-size: 11px; color: #5f6368; font-family: monospace;
-  display: flex; align-items: center; gap: 4px;
-}
-.titlebar-url::before { content: '🔒'; font-size: 9px; }
-
-.mockup-app {
-  display: grid; grid-template-columns: 54px 1fr; height: 360px;
-}
-
-/* Sidebar du mockup */
-.mock-sidebar {
-  background: var(--navy); display: flex; flex-direction: column;
-  align-items: center; padding: 14px 0; gap: 6px;
-}
-.mock-logo-mark {
-  font-size: 9px; font-weight: 900; color: var(--orange);
-  background: rgba(249,115,22,.18); width: 34px; height: 34px;
-  border-radius: 8px; display: flex; align-items: center; justify-content: center;
-  letter-spacing: -.5px; margin-bottom: 10px;
-}
-.mock-nav-sep { width: 28px; height: 1px; background: rgba(255,255,255,.1); margin: 4px 0; }
-.mock-nav-item {
-  width: 34px; height: 34px; border-radius: 8px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 14px; cursor: default; transition: background .2s;
-  opacity: .5;
-}
-.mock-nav-item.active {
-  background: rgba(249,115,22,.2); opacity: 1;
-}
-
-/* Main area du mockup */
-.mock-main {
-  background: #f1f4f8; display: flex; flex-direction: column;
-  overflow: hidden;
-}
-.mock-topbar {
-  background: white; padding: 10px 14px;
-  display: flex; align-items: center; justify-content: space-between;
-  border-bottom: 1px solid #e4e8ee;
-}
-.mock-topbar-title {
-  font-size: 12px; font-weight: 700; color: var(--navy);
-}
-.mock-topbar-right { display: flex; align-items: center; gap: 8px; }
-.mock-avatar {
-  width: 26px; height: 26px; border-radius: 50%;
-  background: var(--orange); color: white;
-  font-size: 9px; font-weight: 700;
-  display: flex; align-items: center; justify-content: center;
-}
-.mock-notif {
-  width: 26px; height: 26px; border-radius: 6px;
-  background: var(--gray-50); border: 1px solid var(--gray-200);
-  display: flex; align-items: center; justify-content: center; font-size: 12px;
-}
-
-.mock-body { padding: 12px; flex: 1; overflow: hidden; }
-
-/* Stat cards */
-.mock-stats {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
-  margin-bottom: 12px;
-}
-.mock-stat-card {
-  background: white; border-radius: 8px; padding: 10px 11px;
-  border: 1px solid #e4e8ee;
-}
-.mock-stat-val {
-  font-size: 18px; font-weight: 800; color: var(--navy); line-height: 1; margin-bottom: 2px;
-}
-.mock-stat-label { font-size: 9px; color: #94a3b8; font-weight: 500; margin-bottom: 6px; }
-.mock-stat-pill {
-  font-size: 8px; font-weight: 700; padding: 2px 6px;
-  border-radius: 100px; display: inline-block;
-}
-.mock-stat-pill.g { background: rgba(34,197,94,.12); color: #16a34a; }
-.mock-stat-pill.b { background: rgba(27,160,216,.12); color: #0e7aad; }
-.mock-stat-pill.o { background: rgba(249,115,22,.12); color: var(--orange); }
-
-/* Liste élèves */
-.mock-list-label {
-  font-size: 9px; font-weight: 700; color: #94a3b8;
-  text-transform: uppercase; letter-spacing: .6px; margin-bottom: 7px;
-}
-.mock-list { display: flex; flex-direction: column; gap: 5px; }
-.mock-list-row {
-  background: white; border-radius: 7px; padding: 7px 10px;
-  display: flex; align-items: center; gap: 8px;
-  border: 1px solid #e4e8ee;
-}
-.mock-av {
-  width: 24px; height: 24px; border-radius: 50%;
-  font-size: 8px; font-weight: 800; color: white;
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-}
-.mock-av.c1 { background: #3b82f6; }
-.mock-av.c2 { background: var(--orange); }
-.mock-av.c3 { background: #8b5cf6; }
-.mock-row-info { flex: 1; min-width: 0; }
-.mock-row-info span { display: block; font-size: 10px; font-weight: 600; color: var(--navy); }
-.mock-row-info small { display: block; font-size: 8px; color: #94a3b8; }
-.mock-row-badge {
-  font-size: 8px; font-weight: 700; padding: 2px 7px;
-  border-radius: 100px; flex-shrink: 0;
-}
-.mock-row-badge.ok { background: rgba(34,197,94,.12); color: #16a34a; }
-.mock-row-badge.pending { background: #f1f5f9; color: #94a3b8; }
-
-/* Floating cards sur le mockup */
-.mockup-float {
-  position: absolute; background: white; border-radius: 12px;
-  box-shadow: var(--shadow-lg); padding: 12px 16px;
-  display: flex; align-items: center; gap: 10px;
-}
-.mockup-float-1 {
-  bottom: -18px; left: -28px;
-  animation: float 4s ease-in-out infinite;
-  z-index: 10;
-}
-.mockup-float-2 {
-  top: 30px; right: -24px;
-  animation: floatReverse 5s ease-in-out infinite;
-  z-index: 10; transform: rotate(2deg);
-}
-.float-icon {
-  width: 34px; height: 34px; border-radius: 9px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 16px; flex-shrink: 0;
-}
-.float-icon.green  { background: rgba(34,197,94,.12); }
-.float-icon.blue   { background: rgba(27,160,216,.12); }
-.float-text strong { display: block; font-size: 11px; font-weight: 700; color: var(--navy); }
-.float-text small  { display: block; font-size: 9px; color: var(--gray-400); }
-
-/* ═══════════════════════════════════════════════
-   6. TRUST BAR
-═══════════════════════════════════════════════ */
-.trust-bar {
-  background: white; border-bottom: 1px solid var(--gray-100);
-  padding: 0 24px;
-}
-.trust-bar-inner {
-  max-width: 1200px; margin: 0 auto;
-  display: flex; align-items: stretch; justify-content: space-between;
-  flex-wrap: wrap;
-}
-.trust-item {
-  display: flex; align-items: center; gap: 12px;
-  padding: 22px 16px; flex: 1; min-width: 0;
-  transition: background var(--transition);
-  position: relative;
-}
-.trust-item:not(:last-child)::after {
-  content: ''; position: absolute; right: 0; top: 20%; bottom: 20%;
-  width: 1px; background: var(--gray-100);
-}
-.trust-item:hover { background: var(--gray-50); }
-.trust-icon {
-  width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
-  background: rgba(249,115,22,.08); border: 1px solid rgba(249,115,22,.12);
-  display: flex; align-items: center; justify-content: center; font-size: 18px;
-}
-.trust-text strong {
-  display: block; font-size: .82rem; font-weight: 700; color: var(--navy);
-}
-.trust-text span {
-  display: block; font-size: .74rem; color: var(--gray-400); font-weight: 400;
-  margin-top: 1px;
-}
-
-/* ═══════════════════════════════════════════════
-   7. PRODUITS
-═══════════════════════════════════════════════ */
-#produits { background: var(--gray-50); }
-
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px; align-items: stretch;
-}
-
-.product-card {
-  background: white; border-radius: var(--radius);
-  border: 1.5px solid var(--gray-100);
-  display: flex; flex-direction: column;
-  transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
-  position: relative; overflow: hidden;
-}
-.product-card:hover {
-  border-color: rgba(249,115,22,.3);
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-6px);
-}
-.product-card-accent {
-  height: 4px; width: 100%;
-  background: var(--orange); flex-shrink: 0;
-}
-.product-card-accent.academy { background: linear-gradient(90deg, #1ba0d8, #0ea5e9); }
-.product-card-accent.coming  { background: var(--gray-200); }
-
-.product-card-body {
-  padding: 28px 28px 32px; display: flex; flex-direction: column; flex: 1;
-}
-
-.product-header {
-  display: flex; align-items: flex-start; justify-content: space-between;
-  margin-bottom: 20px;
-}
-.product-icon-wrap {
-  width: 52px; height: 52px; border-radius: 13px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.5rem; flex-shrink: 0;
-}
-.product-icon-wrap.orange { background: rgba(249,115,22,.1); }
-.product-icon-wrap.blue   { background: rgba(27,160,216,.1); }
-.product-icon-wrap.gray   { background: var(--gray-100); }
-
-.product-status {
-  font-size: .68rem; font-weight: 700; text-transform: uppercase;
-  letter-spacing: .7px; padding: 4px 10px; border-radius: 100px;
-  display: inline-flex; align-items: center; gap: 5px;
-  white-space: nowrap;
-}
-.product-status::before { content: ''; width: 6px; height: 6px; border-radius: 50%; }
-.product-status.live {
-  background: rgba(34,197,94,.1); color: #15803d;
-}
-.product-status.live::before { background: #22c55e; }
-.product-status.soon {
-  background: var(--gray-100); color: var(--gray-400);
-}
-.product-status.soon::before { background: var(--gray-300); }
-.product-status.cisco {
-  background: rgba(27,160,216,.1); color: #0284c7;
-}
-.product-status.cisco::before { background: #0ea5e9; }
-
-.product-name {
-  font-size: 1.3rem; font-weight: 800; color: var(--navy); margin-bottom: 10px;
-  letter-spacing: -.3px;
-}
-.product-desc {
-  font-size: .9rem; color: var(--gray-500); line-height: 1.7;
-  margin-bottom: 22px; flex: 1;
-}
-
-.product-features {
-  list-style: none; display: flex; flex-direction: column;
-  gap: 8px; margin-bottom: 28px;
-}
-.product-features li {
-  font-size: .85rem; color: var(--gray-700);
-  display: flex; align-items: flex-start; gap: 9px; line-height: 1.5;
-}
-.product-features li::before {
-  content: '';
-  display: block; width: 16px; height: 16px;
-  background: rgba(249,115,22,.12); border-radius: 50%;
-  flex-shrink: 0; margin-top: 1px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12'%3E%3Cpath d='M2 6l3 3 5-5' stroke='%23f97316' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
-  background-repeat: no-repeat; background-position: center;
-}
-.product-card.academy .product-features li::before {
-  background-color: rgba(27,160,216,.12);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12'%3E%3Cpath d='M2 6l3 3 5-5' stroke='%231ba0d8' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
-}
-
-.product-cta {
-  display: flex; align-items: center; gap: 8px;
-  font-size: .88rem; font-weight: 700; color: var(--navy);
-  transition: color var(--transition), gap var(--transition);
-  margin-top: auto;
-}
-.product-cta .arrow { transition: transform var(--transition); }
-.product-cta:hover { color: var(--orange); gap: 12px; }
-.product-cta:hover .arrow { transform: translateX(4px); }
-.product-cta.disabled { color: var(--gray-300); pointer-events: none; }
-
-.cisco-partner-badge {
-  display: flex; align-items: center; gap: 10px;
-  background: rgba(27,160,216,.06); border: 1px solid rgba(27,160,216,.18);
-  border-radius: 9px; padding: 10px 14px; margin-bottom: 20px;
-  font-size: .76rem; font-weight: 600; color: #0284c7;
-}
-.cisco-partner-badge span { font-size: 1rem; }
-
-/* ═══════════════════════════════════════════════
-   8. SERVICES
-═══════════════════════════════════════════════ */
-#services { background: white; }
-
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-}
-
-.service-card {
-  padding: 28px 22px 24px;
-  border-radius: var(--radius);
-  border: 1.5px solid var(--gray-100);
-  background: white;
-  display: flex; flex-direction: column;
-  transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
-  position: relative; cursor: default; overflow: hidden;
-}
-.service-card::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0;
-  height: 3px; background: var(--orange);
-  border-radius: var(--radius) var(--radius) 0 0;
-  opacity: 0; transition: opacity var(--transition);
-}
-.service-card:hover::before { opacity: 1; }
-.service-card:hover {
-  border-color: rgba(249,115,22,.25);
-  box-shadow: var(--shadow-md);
-  transform: translateY(-5px);
-}
-
-.service-icon {
-  width: 46px; height: 46px; border-radius: 12px;
-  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.25rem; margin-bottom: 16px; flex-shrink: 0;
-  transition: transform var(--transition);
-}
-.service-card:hover .service-icon { transform: scale(1.1) rotate(-4deg); }
-
-.service-title {
-  font-size: .97rem; font-weight: 700; color: var(--navy);
-  margin-bottom: 10px; line-height: 1.3;
-}
-.service-desc {
-  font-size: .84rem; color: var(--gray-500); line-height: 1.72;
-  margin-bottom: 16px; flex: 1;
-}
-.service-points {
-  list-style: none; display: flex; flex-direction: column; gap: 6px;
-  border-top: 1px solid var(--gray-100); padding-top: 14px; margin-top: 4px;
-}
-.service-points li {
-  font-size: .78rem; color: var(--gray-700);
-  display: flex; align-items: flex-start; gap: 7px; line-height: 1.45;
-}
-.service-points li::before {
-  content: '';
-  display: block; width: 14px; height: 14px; flex-shrink: 0; margin-top: 1px;
-  background: rgba(249,115,22,.1); border-radius: 50%;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='9' viewBox='0 0 12 12'%3E%3Cpath d='M2 6l3 3 5-5' stroke='%23f97316' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
-  background-repeat: no-repeat; background-position: center;
-}
-
-.services-bottom {
-  margin-top: 52px;
-  display: flex; align-items: center; justify-content: center;
-  gap: 20px; flex-wrap: wrap;
-}
-.services-bottom-note {
-  font-size: .84rem; color: var(--gray-400);
-}
-
-/* ═══════════════════════════════════════════════
-   9. SECTION PLATEFORME (SaaS visuel)
-═══════════════════════════════════════════════ */
-#plateforme { padding: 0; overflow: hidden; }
-
-.platform-inner {
-  display: grid; grid-template-columns: 1fr 1fr; min-height: 480px;
-}
-.platform-image {
-  position: relative; overflow: hidden;
-}
-.platform-image img {
-  width: 100%; height: 100%; object-fit: cover; display: block;
-  transition: transform 8s ease;
-}
-.platform-image:hover img { transform: scale(1.04); }
-.platform-image::after {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(to right, transparent 50%, rgba(15,31,53,.12));
-}
-.platform-text {
-  background: var(--navy-dark); padding: 72px 60px;
-  display: flex; flex-direction: column; justify-content: center;
-}
-.platform-text .section-eyebrow { color: rgba(249,115,22,.9); }
-.platform-text .section-title { color: white; font-size: clamp(1.7rem, 3vw, 2.5rem); }
-.platform-text p {
-  color: rgba(255,255,255,.62); font-size: .97rem; line-height: 1.8;
-  margin-bottom: 36px;
-}
-
-.platform-pills {
-  display: flex; flex-wrap: wrap; gap: 10px;
-}
-.platform-pill {
-  display: inline-flex; align-items: center; gap: 7px;
-  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
-  color: rgba(255,255,255,.82); font-size: .8rem; font-weight: 600;
-  padding: 8px 16px; border-radius: 100px;
-  transition: background var(--transition), border-color var(--transition);
-}
-.platform-pill:hover {
-  background: rgba(249,115,22,.14); border-color: rgba(249,115,22,.3);
-  color: white;
-}
-.platform-pill-dot {
-  width: 6px; height: 6px; border-radius: 50%; background: var(--orange);
-}
-
-/* ═══════════════════════════════════════════════
-   9. POURQUOI NOUS
-═══════════════════════════════════════════════ */
-#pourquoi { background: white; }
-
-.why-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
-  background: var(--gray-100); border-radius: var(--radius);
-  overflow: hidden; border: 1px solid var(--gray-100);
-}
-
-.why-card {
-  background: white; padding: 36px 30px;
-  transition: background var(--transition); cursor: default;
-  position: relative;
-}
-.why-card:hover { background: #fafbff; }
-
-.why-card-top {
-  display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px;
-}
-.why-num {
-  font-size: .72rem; font-weight: 800; color: rgba(249,115,22,.35);
-  letter-spacing: .5px; padding-top: 6px; flex-shrink: 0; font-variant-numeric: tabular-nums;
-}
-.why-icon-wrap {
-  width: 46px; height: 46px; border-radius: 12px; flex-shrink: 0;
-  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.3rem;
-  transition: transform var(--transition);
-}
-.why-card:hover .why-icon-wrap { transform: scale(1.08) rotate(-3deg); }
-
-.why-title {
-  font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 10px;
-}
-.why-desc { font-size: .88rem; color: var(--gray-500); line-height: 1.7; }
-
-/* ═══════════════════════════════════════════════
-   10. À PROPOS
-═══════════════════════════════════════════════ */
-#apropos {
-  background: linear-gradient(140deg, var(--navy-dark) 0%, #0f2840 40%, var(--navy) 100%);
-  position: relative; overflow: hidden;
-}
-#apropos::before {
-  content: ''; position: absolute; width: 600px; height: 600px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(249,115,22,.08) 0%, transparent 65%);
-  top: -150px; right: -100px; pointer-events: none;
-}
-#apropos::after {
-  content: ''; position: absolute; width: 400px; height: 400px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(37,73,114,.6) 0%, transparent 65%);
-  bottom: -100px; left: -80px; pointer-events: none;
-}
-
-.apropos-inner {
-  position: relative; z-index: 2;
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 80px; align-items: center;
-}
-
-.apropos-text .section-eyebrow { color: rgba(249,115,22,.9); }
-.apropos-text .section-title { color: white; }
-.apropos-text .section-sub { color: rgba(255,255,255,.6); margin-bottom: 36px; }
-
-.apropos-values {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 16px; margin-top: 36px;
-}
-.apropos-value {
-  padding: 20px; border-radius: var(--radius-sm);
-  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08);
-  transition: background var(--transition), transform var(--transition);
-}
-.apropos-value:hover {
-  background: rgba(255,255,255,.09); transform: translateY(-2px);
-}
-.apropos-value-icon { font-size: 1.4rem; margin-bottom: 10px; }
-.apropos-value h4 { font-size: .88rem; font-weight: 700; color: white; margin-bottom: 5px; }
-.apropos-value p { font-size: .78rem; color: rgba(255,255,255,.48); line-height: 1.55; }
-
-.apropos-image-side { position: relative; }
-.apropos-image-wrap {
-  border-radius: var(--radius-lg); overflow: hidden;
-  box-shadow: 0 32px 80px rgba(0,0,0,.45);
-  position: relative;
-}
-.apropos-image-wrap img {
-  width: 100%; height: 520px; object-fit: cover; display: block;
-  transition: transform 8s ease;
-}
-.apropos-image-wrap:hover img { transform: scale(1.04); }
-.apropos-image-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to bottom, rgba(10,25,41,.08) 0%, rgba(10,25,41,.72) 80%);
-}
-.apropos-image-footer {
-  position: absolute; bottom: 0; left: 0; right: 0; padding: 28px;
-}
-.apropos-stat-line {
-  display: flex; gap: 28px;
-}
-.apropos-stat strong {
-  display: block; font-size: 1.9rem; font-weight: 900; color: white; line-height: 1;
-}
-.apropos-stat strong span { color: var(--orange); }
-.apropos-stat small { font-size: .76rem; color: rgba(255,255,255,.5); font-weight: 400; }
-
-/* Floating badge sur l'image */
-.apropos-badge {
-  position: absolute; top: 24px; right: -18px;
-  background: white; border-radius: 11px; padding: 12px 16px;
-  display: flex; align-items: center; gap: 10px;
-  box-shadow: var(--shadow-lg); z-index: 3;
-  animation: float 5s ease-in-out infinite;
-}
-.apropos-badge-icon {
-  width: 36px; height: 36px; border-radius: 9px;
-  background: rgba(27,160,216,.1); display: flex; align-items: center;
-  justify-content: center; font-size: 18px; flex-shrink: 0;
-}
-.apropos-badge strong { display: block; font-size: .82rem; font-weight: 700; color: var(--navy); }
-.apropos-badge small  { display: block; font-size: .72rem; color: var(--gray-400); }
-
-/* ═══════════════════════════════════════════════
-   11. BANDEAU CTA CONVERSION
-═══════════════════════════════════════════════ */
-.cta-banner {
-  background: linear-gradient(135deg, var(--orange) 0%, #f59e0b 100%);
-  padding: 72px 24px; text-align: center; position: relative; overflow: hidden;
-}
-.cta-banner::before {
-  content: ''; position: absolute; inset: 0;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-}
-.cta-banner-inner { position: relative; z-index: 2; max-width: 660px; margin: 0 auto; }
-.cta-banner h2 {
-  font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; color: white;
-  line-height: 1.15; letter-spacing: -.5px; margin-bottom: 16px;
-}
-.cta-banner p {
-  font-size: 1.05rem; color: rgba(255,255,255,.85); margin-bottom: 36px; line-height: 1.6;
-}
-.cta-banner-actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
-.btn-white {
-  background: white; color: var(--orange);
-  padding: 14px 30px; border-radius: var(--radius-sm);
-  font-weight: 800; font-size: .95rem; border: none; cursor: pointer;
-  transition: all var(--transition); display: inline-flex; align-items: center; gap: 8px;
-  box-shadow: 0 4px 20px rgba(0,0,0,.15);
-}
-.btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,.2); }
-.btn-outline-white-cta {
-  background: transparent; color: white; padding: 13px 28px;
-  border-radius: var(--radius-sm); border: 2px solid rgba(255,255,255,.5);
-  font-weight: 700; font-size: .95rem; cursor: pointer;
-  transition: all var(--transition); display: inline-flex; align-items: center; gap: 8px;
-}
-.btn-outline-white-cta:hover { border-color: white; background: rgba(255,255,255,.1); }
-
-/* ═══════════════════════════════════════════════
-   12. CONTACT
-═══════════════════════════════════════════════ */
-#contact { background: var(--gray-50); }
-
-.contact-inner {
-  display: grid; grid-template-columns: 1fr 1.35fr;
-  gap: 64px; align-items: start;
-}
-
-.contact-left {}
-.contact-left h3 {
-  font-size: 1.4rem; font-weight: 800; color: var(--navy); margin-bottom: 12px;
-}
-.contact-left p {
-  font-size: .95rem; color: var(--gray-500); line-height: 1.7; margin-bottom: 32px;
-}
-
-.contact-response-badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(34,197,94,.08); border: 1px solid rgba(34,197,94,.2);
-  color: #15803d; font-size: .78rem; font-weight: 700;
-  padding: 7px 14px; border-radius: 100px; margin-bottom: 32px;
-}
-.contact-response-badge::before { content: '⚡'; }
-
-.contact-items { display: flex; flex-direction: column; gap: 18px; }
-.contact-item {
-  display: flex; align-items: flex-start; gap: 14px;
-  padding: 16px; border-radius: var(--radius-sm);
-  border: 1px solid var(--gray-100); background: white;
-  transition: border-color var(--transition), box-shadow var(--transition);
-}
-.contact-item:hover {
-  border-color: rgba(249,115,22,.25); box-shadow: var(--shadow-sm);
-}
-.contact-icon {
-  width: 42px; height: 42px; border-radius: 10px; flex-shrink: 0;
-  background: rgba(249,115,22,.08);
-  display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
-}
-.contact-item-body strong {
-  display: block; font-size: .82rem; font-weight: 700; color: var(--navy); margin-bottom: 3px;
-}
-.contact-item-body span { font-size: .88rem; color: var(--gray-500); }
-.contact-item-body a { color: var(--orange); font-weight: 500; transition: color var(--transition); }
-.contact-item-body a:hover { color: var(--orange-dark); }
-
-/* Formulaire */
-.contact-form-wrap {
-  background: white; border-radius: var(--radius);
-  padding: 40px 36px; border: 1.5px solid var(--gray-100);
-  box-shadow: var(--shadow-sm);
-  transition: box-shadow var(--transition), border-color var(--transition);
-}
-.contact-form-wrap:focus-within {
-  box-shadow: var(--shadow-md); border-color: rgba(249,115,22,.2);
-}
-.contact-form-title {
-  font-size: 1.15rem; font-weight: 800; color: var(--navy); margin-bottom: 24px;
-}
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 13px 22px; border-radius: 10px; border: 1px solid transparent;
+  font: 600 15px/1 'Poppins', sans-serif; cursor: pointer; text-decoration: none !important;
+  transition: background .15s, border-color .15s, color .15s, transform .15s;
+}
+.btn:active { transform: translateY(1px); }
+.btn-primary { background: var(--blue-600); color: #fff; }
+.btn-primary:hover { background: #0F62B8; }
+.btn-secondary { background: #fff; color: var(--ink); border-color: var(--line); }
+.btn-secondary:hover { border-color: #C7D0DC; background: var(--bg-soft); }
+.btn-yellow { background: var(--yellow); color: var(--navy-800); }
+.btn-yellow:hover { background: #E7B80C; }
+.btn-ghost-light { background: transparent; color: #fff; border-color: rgba(255,255,255,.28); }
+.btn-ghost-light:hover { background: rgba(255,255,255,.08); }
+
+/* ── Header ───────────────────────────── */
+.header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(255,255,255,.92);
+  backdrop-filter: saturate(180%) blur(10px);
+  -webkit-backdrop-filter: saturate(180%) blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.header-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 24px; }
+.logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none !important; }
+.logo-mark { width: 36px; height: 36px; border-radius: 50%; background: var(--navy-800); display: grid; place-items: center; box-shadow: inset 0 0 0 2px var(--blue-400); }
+.logo-mark svg { width: 22px; height: 22px; }
+.logo-word { font-weight: 700; font-size: 21px; letter-spacing: -0.02em; color: var(--ink); }
+.logo-word b { color: var(--blue-500); font-weight: 700; }
+.nav { display: flex; align-items: center; gap: 28px; }
+.nav a { color: var(--ink-2); font-size: 15px; font-weight: 500; }
+.nav a:hover { color: var(--ink); text-decoration: none; }
+.header-cta { display: flex; align-items: center; gap: 12px; }
+.header-cta .btn { padding: 10px 18px; font-size: 14px; }
+.nav-toggle { display: none; background: none; border: 0; padding: 8px; cursor: pointer; color: var(--ink); }
+
+/* ── Hero ─────────────────────────────── */
+.hero { padding: 72px 0 80px; background: linear-gradient(180deg, #FFFFFF 0%, var(--bg-soft) 100%); }
+.hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--blue-600);
+}
+.hero h1 { font-size: clamp(36px, 5vw, 54px); margin: 18px 0 20px; letter-spacing: -0.025em; }
+.hero h1 em { font-style: normal; color: var(--blue-600); }
+.hero-lead { font-size: 18px; color: var(--ink-2); max-width: 540px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.hero-points { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-top: 32px; color: var(--ink-3); font-size: 14px; }
+.hero-points li { display: inline-flex; align-items: center; gap: 8px; }
+.hero-points .icon { color: var(--green-gn); width: 18px; height: 18px; }
+.hero-visual { position: relative; }
+.hero-photo { border-radius: 18px; overflow: hidden; box-shadow: var(--shadow-md); aspect-ratio: 5 / 4; background: var(--navy-800); }
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+.hero-card {
+  position: absolute; left: -28px; bottom: 28px;
+  background: #fff; border-radius: 14px; padding: 16px 18px; box-shadow: var(--shadow-md);
+  display: flex; gap: 14px; align-items: center; max-width: 290px; border: 1px solid var(--line);
+}
+.hero-card-icon { width: 44px; height: 44px; border-radius: 10px; background: #FFF7D6; color: #8A6A00; display: grid; place-items: center; }
+.hero-card strong { display: block; color: var(--ink); font-size: 15px; }
+.hero-card span { font-size: 13px; color: var(--ink-3); }
+
+/* ── Trust strip ──────────────────────── */
+.trust { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: #fff; }
+.trust-list { display: grid; grid-template-columns: repeat(4, 1fr); }
+.trust-list li { display: flex; align-items: center; gap: 12px; padding: 22px 20px; font-size: 14px; color: var(--ink-2); }
+.trust-list li + li { border-left: 1px solid var(--line); }
+.trust-list .icon { color: var(--blue-600); }
+.trust-list strong { display: block; color: var(--ink); font-size: 14px; font-weight: 600; }
+
+/* ── Sections ─────────────────────────── */
+.section { padding: 96px 0; }
+.section-soft { background: var(--bg-soft); }
+.section-head { max-width: 680px; margin-bottom: 48px; }
+.section-head h2 { font-size: clamp(28px, 3.4vw, 38px); margin: 14px 0 14px; }
+.section-head p { font-size: 17px; }
+
+/* ── Solutions ────────────────────────── */
+.solutions-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px; }
+.card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 32px; box-shadow: var(--shadow-sm); }
+.tag { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; }
+.tag-live { background: #E6F6EF; color: #00704A; }
+.tag-live::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--green-gn); }
+.tag-soon { background: var(--bg-soft); color: var(--ink-3); border: 1px solid var(--line); }
+.product-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+.product-name { font-size: 24px; }
+.product-desc { margin-bottom: 22px; }
+.checklist li { display: flex; gap: 10px; padding: 6px 0; font-size: 15px; }
+.checklist .icon { color: var(--blue-600); width: 18px; height: 18px; margin-top: 3px; }
+.product-ecole { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; }
+.product-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 22px; font-weight: 600; }
+/* EcoleGN mini dashboard */
+.mock { background: var(--bg-soft); border: 1px solid var(--line); border-radius: 12px; padding: 14px; font-size: 12px; }
+.mock-bar { display: flex; align-items: center; gap: 6px; margin-bottom: 12px; color: var(--ink-3); font-size: 11px; }
+.mock-bar i { width: 8px; height: 8px; border-radius: 50%; background: #D5DBE3; display: inline-block; }
+.mock-bar code { margin-left: 8px; background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 2px 8px; font-family: ui-monospace, monospace; }
+.mock-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 10px; }
+.mock-stat { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 10px; }
+.mock-stat b { display: block; color: var(--ink); font-size: 18px; }
+.mock-stat span { color: var(--ink-3); font-size: 11px; }
+.mock-row { display: flex; justify-content: space-between; align-items: center; background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; margin-top: 6px; }
+.mock-row b { color: var(--ink); font-weight: 600; }
+.mock-row small { display: block; color: var(--ink-3); font-size: 10.5px; }
+.pill { font-size: 10.5px; font-weight: 600; padding: 2px 8px; border-radius: 999px; }
+.pill-ok { background: #E6F6EF; color: #00704A; }
+.pill-wait { background: #FFF5D6; color: #8A6A00; }
+
+/* ── Academy (dark band) ──────────────── */
+.academy { background: var(--navy-800); color: #C9D4E3; position: relative; overflow: hidden; }
+.academy::before {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(800px 400px at 85% 0%, rgba(66,165,245,.16), transparent 60%);
+  pointer-events: none;
+}
+.academy .container { position: relative; }
+.academy h2, .academy h3, .academy h4 { color: #fff; }
+.academy .eyebrow { color: var(--yellow); }
+.academy .section-head p { color: #AFC0D6; }
+.academy-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: start; }
+.course-card { background: var(--navy-700); border: 1px solid rgba(66,165,245,.25); border-radius: 18px; padding: 32px; }
+.course-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 8px; }
+.course-head h3 { font-size: 28px; }
+.course-head h3 em { font-style: normal; color: var(--blue-400); }
+.course-sub { color: #AFC0D6; margin-bottom: 24px; }
+.start-badge { background: var(--yellow); color: var(--navy-800); font-weight: 700; font-size: 14px; padding: 8px 14px; border-radius: 999px; white-space: nowrap; }
+.facts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.fact { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 14px 16px; }
+.fact-wide { grid-column: 1 / -1; }
+.fact span { display: block; font-size: 12.5px; color: var(--blue-400); font-weight: 600; margin-bottom: 2px; }
+.fact b { color: #fff; font-weight: 500; font-size: 15px; }
+.price { margin-top: 18px; border: 1.5px solid var(--yellow); border-radius: 14px; padding: 20px; }
+.price-row { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 14px; }
+.price-now { font-size: 30px; font-weight: 700; color: #fff; letter-spacing: -0.01em; }
+.price-old { color: #8FA2BC; text-decoration: line-through; }
+.price-note { font-size: 14px; color: #C9D4E3; margin-top: 6px; }
+.price-note strong { color: var(--yellow); font-weight: 600; }
+.perks { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.perks li { font-size: 13px; color: #DCE6F2; border: 1px solid rgba(66,165,245,.35); border-radius: 999px; padding: 5px 12px; }
+.course-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+.course-foot { font-size: 13px; color: #8FA2BC; margin-top: 14px; }
+.lab h3 { font-size: 22px; margin-bottom: 10px; }
+.lab p { color: #AFC0D6; margin-bottom: 20px; }
+.lab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.lab-grid figure { margin: 0; border-radius: 12px; overflow: hidden; aspect-ratio: 3 / 2; background: var(--navy-700); }
+.lab-grid figure.tall { grid-row: span 2; aspect-ratio: auto; }
+.lab-grid img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+.lab-grid figure:hover img { transform: scale(1.03); }
+.lab-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.lab-tags li { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #DCE6F2; }
+.lab-tags .icon { color: var(--blue-400); width: 16px; height: 16px; }
+.cisco-note { display: flex; align-items: center; gap: 10px; margin-top: 22px; font-size: 13px; color: #8FA2BC; }
+
+/* ── Services ─────────────────────────── */
+.services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.service { background: #fff; padding: 28px 24px; }
+.service-icon { width: 42px; height: 42px; border-radius: 10px; background: var(--blue-50); color: var(--blue-600); display: grid; place-items: center; margin-bottom: 16px; }
+.service h3 { font-size: 16.5px; margin-bottom: 8px; }
+.service p { font-size: 14.5px; color: var(--ink-3); }
+
+/* ── Approach ─────────────────────────── */
+.approach-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 64px; align-items: start; }
+.approach-grid .section-head { margin-bottom: 0; }
+.steps { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 32px; }
+.step-num { font-size: 13px; font-weight: 700; color: var(--blue-600); margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+.step-num::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+.step h3 { font-size: 17px; margin-bottom: 6px; }
+.step p { font-size: 15px; color: var(--ink-3); }
+
+/* ── Contact ──────────────────────────── */
+.contact-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 48px; align-items: start; }
+.contact-list { margin-top: 28px; display: grid; gap: 4px; }
+.contact-list li { display: flex; align-items: center; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.contact-list li:last-child { border-bottom: 0; }
+.contact-list .service-icon { margin: 0; width: 40px; height: 40px; }
+.contact-list small { display: block; font-size: 12.5px; color: var(--ink-3); }
+.contact-list a, .contact-list b { color: var(--ink); font-weight: 600; font-size: 15.5px; }
+.form { display: grid; gap: 16px; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
-.form-group label { font-size: .8rem; font-weight: 700; color: var(--navy); }
-.form-control {
-  padding: 11px 15px; border: 1.5px solid var(--gray-200);
-  border-radius: var(--radius-sm); font-family: 'Poppins', sans-serif;
-  font-size: .9rem; color: var(--text); background: var(--gray-50);
-  transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
-  outline: none; width: 100%;
+.field label { display: block; font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 6px; }
+.field input, .field select, .field textarea {
+  width: 100%; font: 400 15px/1.5 'Poppins', sans-serif; color: var(--ink);
+  background: #fff; border: 1px solid #CDD5DF; border-radius: 10px; padding: 11px 14px;
+  transition: border-color .15s, box-shadow .15s;
 }
-.form-control:focus {
-  border-color: var(--orange); background: white;
-  box-shadow: 0 0 0 3px rgba(249,115,22,.1);
-}
-.form-control::placeholder { color: var(--gray-300); }
-textarea.form-control { resize: vertical; min-height: 110px; }
+.field textarea { resize: vertical; min-height: 130px; }
+.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--blue-500); box-shadow: 0 0 0 3px rgba(43,139,234,.18); }
+.form-note { font-size: 13px; color: var(--ink-3); }
+.form-error { font-size: 14px; color: var(--red-gn); display: none; }
 
-.form-submit-btn {
-  width: 100%; background: var(--navy); color: white;
-  font-family: 'Poppins', sans-serif; font-weight: 700; font-size: .95rem;
-  padding: 14px 24px; border-radius: var(--radius-sm); border: none;
-  cursor: pointer; transition: all var(--transition);
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-  margin-top: 8px;
-}
-.form-submit-btn:hover {
-  background: var(--navy-light); transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(30,58,95,.25);
-}
+/* ── Footer ───────────────────────────── */
+.footer { background: var(--navy-900); color: #9FB0C6; padding: 64px 0 28px; font-size: 14.5px; }
+.footer .logo-word { color: #fff; }
+.footer .logo-word b { color: var(--blue-400); }
+.footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; }
+.footer-brand p { margin-top: 16px; max-width: 320px; }
+.footer h4 { color: #fff; font-size: 14px; font-weight: 600; margin-bottom: 14px; }
+.footer li { padding: 4px 0; }
+.footer a { color: #9FB0C6; }
+.footer a:hover { color: #fff; text-decoration: none; }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,.08); margin-top: 48px; padding-top: 24px; font-size: 13px; }
 
-/* ═══════════════════════════════════════════════
-   13. FOOTER
-═══════════════════════════════════════════════ */
-footer {
-  background: var(--navy-dark); color: rgba(255,255,255,.5);
-  padding: 72px 24px 36px;
-}
-.footer-inner { max-width: 1200px; margin: 0 auto; }
-
-.footer-top {
-  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 56px; padding-bottom: 56px;
-  border-bottom: 1px solid rgba(255,255,255,.07);
+/* ── Reveal on scroll (progressive: visible without JS) ── */
+.js .reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+.js .reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  .lab-grid img { transition: none; }
 }
 
-.footer-brand {}
-.footer-logo {
-  display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
-}
-.footer-wordmark strong {
-  display: block; font-size: 1.05rem; font-weight: 800; color: white; letter-spacing: -.3px;
-}
-.footer-wordmark small {
-  display: block; font-size: .5rem; font-weight: 700;
-  letter-spacing: 2px; color: rgba(255,255,255,.3); text-transform: uppercase; margin-top: 3px;
-}
-.footer-brand p {
-  font-size: .86rem; line-height: 1.72; max-width: 280px; margin-bottom: 20px;
-}
-.footer-domain {
-  display: inline-block; font-size: .78rem; font-weight: 700;
-  color: var(--orange); border: 1px solid rgba(249,115,22,.28);
-  padding: 5px 12px; border-radius: 6px;
-}
-
-.footer-col h4 {
-  font-size: .78rem; font-weight: 700; color: white;
-  margin-bottom: 20px; text-transform: uppercase; letter-spacing: .8px;
-}
-.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-.footer-col a { font-size: .86rem; transition: color var(--transition); }
-.footer-col a:hover { color: white; }
-
-.footer-bottom {
-  padding-top: 32px; display: flex; align-items: center;
-  justify-content: space-between; flex-wrap: wrap; gap: 12px;
-}
-.footer-bottom p { font-size: .8rem; }
-.footer-tagline { font-size: .8rem; color: rgba(255,255,255,.3); }
-.footer-tagline span { color: var(--orange); }
-
-/* ═══════════════════════════════════════════════
-   14. SCROLL TOP
-═══════════════════════════════════════════════ */
-#scrollTop {
-  position: fixed; bottom: 28px; right: 28px; z-index: 900;
-  width: 44px; height: 44px; border-radius: 50%;
-  background: var(--orange); color: white; border: none; cursor: pointer;
-  box-shadow: 0 4px 16px rgba(249,115,22,.4);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1rem; opacity: 0; pointer-events: none;
-  transition: opacity .3s, transform .3s;
-}
-#scrollTop.show { opacity: 1; pointer-events: all; }
-#scrollTop:hover { transform: translateY(-3px); }
-
-/* ═══════════════════════════════════════════════
-   15. RESPONSIVE
-═══════════════════════════════════════════════ */
-@media (max-width: 1100px) {
-  .products-grid { grid-template-columns: 1fr 1fr; }
-  .products-grid .product-card:last-child { grid-column: span 2; max-width: 480px; margin: 0 auto; width: 100%; }
-  .hero-inner { gap: 40px; }
-}
-
-@media (max-width: 960px) {
-  .hero-inner { grid-template-columns: 1fr; text-align: center; }
-  .hero-text { order: 1; }
-  .hero-visual { display: none; } /* masqué sur tablette */
-  .hero-sub { max-width: 100%; margin-left: auto; margin-right: auto; }
-  .hero-actions { justify-content: center; }
-  .hero-trust { justify-content: center; }
-  .hero-pill { margin-left: auto; margin-right: auto; }
-  .platform-inner { grid-template-columns: 1fr; }
-  .platform-image { min-height: 320px; }
-  .platform-text { padding: 56px 40px; }
-  .apropos-inner { grid-template-columns: 1fr; gap: 48px; }
-  .apropos-image-wrap img { height: 380px; }
-  .apropos-badge { right: 16px; top: 16px; }
-  .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+/* ── Responsive ───────────────────────── */
+@media (max-width: 1024px) {
   .services-grid { grid-template-columns: repeat(2, 1fr); }
-  .why-grid { grid-template-columns: 1fr 1fr; }
-  .trust-bar-inner { justify-content: flex-start; }
-  .trust-item { min-width: 50%; }
-  .trust-item:nth-child(2)::after,
-  .trust-item:nth-child(4)::after { display: none; }
+  .solutions-grid { grid-template-columns: 1fr; }
+  .academy-grid, .approach-grid { grid-template-columns: 1fr; gap: 40px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
 }
-
-@media (max-width: 768px) {
-  section { padding: 72px 20px; }
-  .nav-links, .nav-actions { display: none; }
-  .hamburger { display: flex; }
-  .products-grid { grid-template-columns: 1fr; }
-  .products-grid .product-card:last-child { grid-column: auto; max-width: none; }
-  .services-grid { grid-template-columns: repeat(2, 1fr); }
-  .why-grid { grid-template-columns: 1fr; }
-  .footer-top { grid-template-columns: 1fr; gap: 32px; }
-  .form-row { grid-template-columns: 1fr; }
-  .hero { min-height: auto; padding-bottom: 0; }
-  .hero-inner { padding: 72px 20px 56px; }
-  .hero-title { font-size: 2.2rem; }
-  .trust-bar-inner { flex-direction: column; }
-  .trust-item { min-width: 100%; }
-  .trust-item::after { display: none !important; }
-  .trust-item:not(:last-child) { border-bottom: 1px solid var(--gray-100); }
-  .apropos-values { grid-template-columns: 1fr; }
-  .cta-banner-actions { flex-direction: column; align-items: center; }
+@media (max-width: 860px) {
+  .nav, .header-cta .btn-secondary { display: none; }
+  .nav-toggle { display: inline-flex; }
+  .nav.open {
+    display: flex; flex-direction: column; align-items: stretch; gap: 0;
+    position: absolute; top: 68px; left: 0; right: 0; background: #fff;
+    border-bottom: 1px solid var(--line); box-shadow: var(--shadow-md); padding: 8px 24px 16px;
+  }
+  .nav.open a { padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .nav.open a:last-child { border-bottom: 0; }
+  .hero { padding: 48px 0 56px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .hero-card { left: 12px; bottom: 12px; }
+  .trust-list { grid-template-columns: 1fr 1fr; }
+  .trust-list li:nth-child(3) { border-left: 0; }
+  .trust-list li:nth-child(n+3) { border-top: 1px solid var(--line); }
+  .product-ecole { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .section { padding: 72px 0; }
 }
-
-@media (max-width: 480px) {
+@media (max-width: 560px) {
+  .container { padding: 0 16px; }
+  .header-cta .btn-primary { display: none; }
+  .hero-actions .btn { flex: 1 1 100%; }
+  .trust-list { grid-template-columns: 1fr; }
+  .trust-list li { border-left: 0 !important; padding: 14px 4px; }
+  .trust-list li + li { border-top: 1px solid var(--line); }
   .services-grid { grid-template-columns: 1fr; }
-  .hero-actions { flex-direction: column; }
-  .btn { width: 100%; }
-  .hero-trust { flex-direction: column; gap: 12px; align-items: flex-start; }
-  .hero-trust-sep { display: none; }
-  .contact-form-wrap { padding: 28px 20px; }
-  .apropos-stat-line { gap: 20px; }
+  .steps, .facts, .form-row { grid-template-columns: 1fr; }
+  .card, .course-card { padding: 24px 20px; }
+  .course-actions .btn { flex: 1 1 100%; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .hero-card { position: static; margin-top: 12px; max-width: none; }
 }
-
-  </style>
+</style>
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════════
-     NAVBAR
-═══════════════════════════════════════════════ -->
-<nav id="navbar">
-  <div class="nav-inner">
-    <a href="#" class="nav-logo">
-      <svg class="nav-logo-icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <rect width="52" height="52" rx="13" fill="rgba(255,255,255,0.1)"/>
-        <line x1="26" y1="24" x2="9" y2="8" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
-        <line x1="26" y1="24" x2="43" y2="8" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
-        <line x1="26" y1="24" x2="26" y2="46" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
-        <circle cx="9"  cy="8"  r="3.5" fill="white"/>
-        <circle cx="43" cy="8"  r="3.5" fill="white"/>
-        <circle cx="26" cy="46" r="3.5" fill="white"/>
-        <circle cx="26" cy="24" r="6" fill="#f97316"/>
-      </svg>
-      <div class="nav-logo-wordmark">
-        <strong>YOU TECHNOLOGY</strong>
-        <small>Le choix des professionnels</small>
-      </div>
+<!-- Icon set (inline SVG sprite) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-cap" viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/></symbol>
+  <symbol id="i-server" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></symbol>
+  <symbol id="i-app" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 14h4"/></symbol>
+  <symbol id="i-flow" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><path d="M10 6.5h4a3 3 0 0 1 3 3V14"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/></symbol>
+  <symbol id="i-network" viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="5" rx="1"/><rect x="2" y="17" width="6" height="5" rx="1"/><rect x="16" y="17" width="6" height="5" rx="1"/><path d="M12 7v5M5 17v-2.5h14V17"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5 5-2Z"/></symbol>
+  <symbol id="i-tool" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4 2.5-2.5Z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></symbol>
+  <symbol id="i-cable" viewBox="0 0 24 24"><path d="M4 4v5a3 3 0 0 0 3 3h10a3 3 0 0 1 3 3v5"/><rect x="2" y="2" width="4" height="3" rx="1"/><rect x="18" y="19" width="4" height="3" rx="1"/></symbol>
+  <symbol id="i-video" viewBox="0 0 24 24"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="m16 10 5-3v10l-5-3"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+</svg>
+
+<!-- ══════════ HEADER ══════════ -->
+<header class="header">
+  <div class="container header-inner">
+    <a href="#top" class="logo" aria-label="YOUTECH — accueil">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M12 5 2 9.5 12 14l10-4.5L12 5Z" fill="#42A5F5"/><path d="M6.5 12v3.6c3 1.9 8 1.9 11 0V12L12 14.5 6.5 12Z" fill="#fff"/><path d="M20 10v4.5" stroke="#F5C518" stroke-width="1.4" stroke-linecap="round"/><circle cx="20" cy="15.2" r="1" fill="#F5C518"/></svg>
+      </span>
+      <span class="logo-word">You<b>Tech</b></span>
     </a>
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <a href="#solutions">Solutions</a>
+      <a href="#academy">Academy</a>
+      <a href="#services">Services</a>
+      <a href="#approche">Approche</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="header-cta">
+      <a href="tel:+224629225312" class="btn btn-secondary">629 22 53 12</a>
+      <a href="#contact" class="btn btn-primary">Nous contacter</a>
+      <button class="nav-toggle" aria-controls="nav" aria-expanded="false" aria-label="Ouvrir le menu">
+        <svg class="icon"><use href="#i-menu"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
 
-    <ul class="nav-links">
-      <li><a href="#produits">Produits</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#pourquoi">Pourquoi nous</a></li>
-      <li><a href="#apropos">À propos</a></li>
+<main id="top">
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow"><span class="gn-bar" aria-hidden="true"><span></span><span></span><span></span></span>Logiciels &amp; formation · Conakry</span>
+      <h1>Des logiciels fiables.<br>Des formations <em>qui préparent au terrain.</em></h1>
+      <p class="hero-lead">YOUTECH conçoit des logiciels de gestion pour les organisations guinéennes et forme aux réseaux informatiques sur du vrai matériel Cisco.</p>
+      <div class="hero-actions">
+        <a href="#academy" class="btn btn-primary">Formation CCNA <svg class="icon icon-sm"><use href="#i-arrow"/></svg></a>
+        <a href="#solutions" class="btn btn-secondary">Découvrir EcoleGN</a>
+      </div>
+      <ul class="hero-points">
+        <li><svg class="icon"><use href="#i-check"/></svg>Membre Cisco Networking Academy</li>
+        <li><svg class="icon"><use href="#i-check"/></svg>Logiciels en production</li>
+        <li><svg class="icon"><use href="#i-check"/></svg>Équipe à Conakry</li>
+      </ul>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-photo">
+        <img src="assets/labo-rack.jpg" alt="Baie du laboratoire YouTech Academy : switchs et routeurs Cisco" width="920" height="730" fetchpriority="high" />
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-icon"><svg class="icon"><use href="#i-calendar"/></svg></div>
+        <div>
+          <strong>Formation CCNA</strong>
+          <span>Début des cours le samedi 5 décembre 2026</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ TRUST ══════════ -->
+<section class="trust" aria-label="En bref">
+  <div class="container">
+    <ul class="trust-list">
+      <li><svg class="icon"><use href="#i-cap"/></svg><div><strong>Cisco Networking Academy</strong>Membre du programme</div></li>
+      <li><svg class="icon"><use href="#i-server"/></svg><div><strong>Laboratoire équipé</strong>Switchs et routeurs Cisco</div></li>
+      <li><svg class="icon"><use href="#i-pin"/></svg><div><strong>Basés à Conakry</strong>République de Guinée</div></li>
+      <li><svg class="icon"><use href="#i-chat"/></svg><div><strong>Support en français</strong>Réponse sous 24 h</div></li>
     </ul>
-
-    <div class="nav-actions">
-      <a href="#contact" class="nav-btn-demo">Demander une démo</a>
-      <a href="#contact" class="nav-btn-contact">Nous contacter →</a>
-    </div>
-
-    <div class="hamburger" id="hamburger" role="button" tabindex="0" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </div>
-  </div>
-
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#produits" class="mobile-link">Produits</a>
-    <a href="#services" class="mobile-link">Services</a>
-    <a href="#pourquoi" class="mobile-link">Pourquoi nous</a>
-    <a href="#apropos" class="mobile-link">À propos</a>
-    <a href="#contact" class="m-cta mobile-link">Nous contacter →</a>
-  </div>
-</nav>
-
-
-<!-- ═══════════════════════════════════════════════
-     HERO — Split layout
-═══════════════════════════════════════════════ -->
-<section id="accueil" class="hero">
-  <div class="hero-grid"></div>
-  <canvas id="heroCanvas" aria-hidden="true"></canvas>
-
-  <div class="hero-inner">
-
-    <!-- Texte gauche -->
-    <div class="hero-text">
-
-      <div class="hero-pill fade-up visible">
-        <span class="pill-dot"></span>
-        Académie Cisco Agréée &nbsp;·&nbsp; Conakry, Guinée
-      </div>
-
-      <h1 class="hero-title fade-up delay-1 visible">
-        Des logiciels sérieux.<br>
-        Des formations <em>reconnues.</em>
-      </h1>
-
-      <p class="hero-sub fade-up delay-2 visible">
-        YOU TECHNOLOGY conçoit des applications web professionnelles et des formations Cisco certifiantes —
-        pensées pour les équipes qui veulent performer à l'ère numérique.
-      </p>
-
-      <div class="hero-actions fade-up delay-3 visible">
-        <a href="#produits" class="btn btn-primary btn-lg">
-          Découvrir nos solutions
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <a href="#contact" class="btn btn-outline-white btn-lg">
-          Demander une démo
-        </a>
-      </div>
-
-      <div class="hero-trust fade-up delay-4 visible">
-        <div class="hero-trust-item">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3" stroke="rgba(255,255,255,0.5)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span>Ingénierie rigoureuse</span>
-        </div>
-        <div class="hero-trust-sep"></div>
-        <div class="hero-trust-item">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2C4.2 2 2 4.2 2 7s2.2 5 5 5 5-2.2 5-5-2.2-5-5-5z" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/><path d="M5 7l1.5 1.5L9 5" stroke="rgba(255,255,255,0.5)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span>Support local</span>
-        </div>
-        <div class="hero-trust-sep"></div>
-        <div class="hero-trust-item">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1C4 1 2 5 2 5s2 4 5 4 5-4 5-4-2-4-5-4z" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/><circle cx="7" cy="5" r="1.5" fill="rgba(255,255,255,0.5)"/></svg>
-          <span>Made in Guinea</span>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Mockup droite -->
-    <div class="hero-visual fade-up delay-3 visible" aria-hidden="true">
-      <div class="mockup-wrap">
-
-        <!-- Notification flottante haut droit -->
-        <div class="mockup-float mockup-float-2">
-          <div class="float-icon blue">🎓</div>
-          <div class="float-text">
-            <strong>CCNA Certified</strong>
-            <small>Cisco Networking Academy</small>
-          </div>
-        </div>
-
-        <!-- Fenêtre navigateur -->
-        <div class="mockup-browser">
-          <div class="mockup-titlebar">
-            <div class="titlebar-dots">
-              <span></span><span></span><span></span>
-            </div>
-            <div class="titlebar-url">ecole.youtech.tech</div>
-          </div>
-          <div class="mockup-app">
-            <!-- Sidebar -->
-            <div class="mock-sidebar">
-              <div class="mock-logo-mark">EGN</div>
-              <div class="mock-nav-sep"></div>
-              <div class="mock-nav-item active" title="Tableau de bord">📊</div>
-              <div class="mock-nav-item" title="Élèves">🎓</div>
-              <div class="mock-nav-item" title="Paiements">💰</div>
-              <div class="mock-nav-item" title="Emploi du temps">📅</div>
-              <div class="mock-nav-item" title="Paramètres">⚙️</div>
-            </div>
-            <!-- Contenu principal -->
-            <div class="mock-main">
-              <div class="mock-topbar">
-                <span class="mock-topbar-title">Tableau de bord</span>
-                <div class="mock-topbar-right">
-                  <div class="mock-notif">🔔</div>
-                  <div class="mock-avatar">AD</div>
-                </div>
-              </div>
-              <div class="mock-body">
-                <div class="mock-stats">
-                  <div class="mock-stat-card">
-                    <div class="mock-stat-val">247</div>
-                    <div class="mock-stat-label">Élèves inscrits</div>
-                    <span class="mock-stat-pill g">+12 ce mois</span>
-                  </div>
-                  <div class="mock-stat-card">
-                    <div class="mock-stat-val">94%</div>
-                    <div class="mock-stat-label">Paiements</div>
-                    <span class="mock-stat-pill b">À jour</span>
-                  </div>
-                  <div class="mock-stat-card">
-                    <div class="mock-stat-val">18</div>
-                    <div class="mock-stat-label">Classes actives</div>
-                    <span class="mock-stat-pill o">Actives</span>
-                  </div>
-                </div>
-                <div class="mock-list-label">Inscriptions récentes</div>
-                <div class="mock-list">
-                  <div class="mock-list-row">
-                    <div class="mock-av c1">AD</div>
-                    <div class="mock-row-info">
-                      <span>Alpha Diallo</span>
-                      <small>Terminale A · IPAC</small>
-                    </div>
-                    <span class="mock-row-badge ok">✓ Inscrit</span>
-                  </div>
-                  <div class="mock-list-row">
-                    <div class="mock-av c2">FB</div>
-                    <div class="mock-row-info">
-                      <span>Fatoumata Bah</span>
-                      <small>6ème · Lycée Privé</small>
-                    </div>
-                    <span class="mock-row-badge ok">✓ Inscrit</span>
-                  </div>
-                  <div class="mock-list-row">
-                    <div class="mock-av c3">MK</div>
-                    <div class="mock-row-info">
-                      <span>Mamadou Kouyaté</span>
-                      <small>CM1 · École Primaire</small>
-                    </div>
-                    <span class="mock-row-badge pending">⏳ En attente</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Notification flottante bas gauche -->
-        <div class="mockup-float mockup-float-1">
-          <div class="float-icon green">✓</div>
-          <div class="float-text">
-            <strong>Paiement reçu</strong>
-            <small>F. Camara — 450 000 GNF</small>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
   </div>
 </section>
 
-
-<!-- ═══════════════════════════════════════════════
-     TRUST BAR
-═══════════════════════════════════════════════ -->
-<div class="trust-bar">
-  <div class="trust-bar-inner">
-    <div class="trust-item">
-      <div class="trust-icon">🏙️</div>
-      <div class="trust-text">
-        <strong>Basé à Conakry</strong>
-        <span>Guinée, Afrique de l'Ouest</span>
-      </div>
-    </div>
-    <div class="trust-item">
-      <div class="trust-icon">🎓</div>
-      <div class="trust-text">
-        <strong>Cisco Academy Agréée</strong>
-        <span>Partenaire officiel Netacad</span>
-      </div>
-    </div>
-    <div class="trust-item">
-      <div class="trust-icon">☁️</div>
-      <div class="trust-text">
-        <strong>100% Cloud</strong>
-        <span>Accessible depuis tout appareil</span>
-      </div>
-    </div>
-    <div class="trust-item">
-      <div class="trust-icon">🔒</div>
-      <div class="trust-text">
-        <strong>Données sécurisées</strong>
-        <span>Hébergement professionnel</span>
-      </div>
-    </div>
-    <div class="trust-item">
-      <div class="trust-icon">💬</div>
-      <div class="trust-text">
-        <strong>Support francophone</strong>
-        <span>Équipe réactive, disponible</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════════════
-     PRODUITS
-═══════════════════════════════════════════════ -->
-<section id="produits">
+<!-- ══════════ SOLUTIONS ══════════ -->
+<section class="section" id="solutions">
   <div class="container">
-
-    <div class="section-header center fade-up">
-      <p class="section-eyebrow">Nos produits</p>
-      <h2 class="section-title">Des outils conçus pour votre quotidien</h2>
-      <p class="section-sub">Chaque solution répond à un besoin concret, identifié sur le terrain, avec une connaissance directe des usages guinéens et africains.</p>
+    <div class="section-head reveal">
+      <span class="eyebrow">Nos solutions</span>
+      <h2>Des logiciels conçus pour les réalités locales</h2>
+      <p>Chaque produit répond à un besoin observé sur le terrain : connexion instable, paiements en plusieurs tranches, équipes qui travaillent depuis leur téléphone.</p>
     </div>
-
-    <div class="products-grid">
-
-      <!-- EcoleGN -->
-      <div class="product-card fade-up delay-1">
-        <div class="product-card-accent"></div>
-        <div class="product-card-body">
-          <div class="product-header">
-            <div class="product-icon-wrap orange">🎓</div>
-            <span class="product-status live">Disponible</span>
-          </div>
-          <h3 class="product-name">EcoleGN</h3>
-          <p class="product-desc">La plateforme complète de gestion scolaire pour les établissements privés — de la maternelle à l'université. Accessible sur n'importe quel téléphone ou ordinateur.</p>
-          <ul class="product-features">
-            <li>Inscriptions, dossiers élèves et bulletins automatisés</li>
-            <li>Suivi des paiements de scolarité en temps réel</li>
-            <li>Emplois du temps, absences et notes par matière</li>
-            <li>Communication parent-école intégrée</li>
-            <li>Module université avec GPA et crédits ECTS</li>
-          </ul>
-          <a href="https://ecole.youtech.tech" target="_blank" rel="noopener" class="product-cta">
-            Accéder à EcoleGN <span class="arrow">→</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Boutique -->
-      <div class="product-card coming fade-up delay-2">
-        <div class="product-card-accent coming"></div>
-        <div class="product-card-body">
-          <div class="product-header">
-            <div class="product-icon-wrap gray">🛒</div>
-            <span class="product-status soon">Bientôt disponible</span>
-          </div>
-          <h3 class="product-name">Boutique</h3>
-          <p class="product-desc">Votre boutique en ligne clé en main, pensée pour les entrepreneurs et PME guinéennes. Vendez, gérez vos stocks et encaissez en ligne sans compétence technique.</p>
-          <ul class="product-features">
-            <li>Boutique personnalisable, opérationnelle en heures</li>
-            <li>Gestion des commandes et des stocks en temps réel</li>
-            <li>Intégration paiements mobiles (Orange Money, MTN)</li>
-            <li>Tableau de bord analytics et rapports de vente</li>
-            <li>Suivi des livraisons et gestion des retours</li>
-          </ul>
-          <span class="product-cta disabled">
-            Rejoindre la liste d'attente <span class="arrow">→</span>
-          </span>
-        </div>
-      </div>
-
-      <!-- Cisco Academy -->
-      <div class="product-card academy fade-up delay-3">
-        <div class="product-card-accent academy"></div>
-        <div class="product-card-body">
-          <div class="product-header">
-            <div class="product-icon-wrap blue">🏅</div>
-            <span class="product-status cisco">Académie Officielle</span>
-          </div>
-          <h3 class="product-name">YOU TECHNOLOGY Academy</h3>
-          <p class="product-desc">Formations certifiantes en réseaux et cybersécurité, dispensées via la plateforme officielle Cisco Networking Academy. Des certifications reconnues mondialement, depuis Conakry.</p>
-          <div class="cisco-partner-badge">
-            <span>🔵</span> Partenaire officiel Cisco Networking Academy
-          </div>
-          <ul class="product-features">
-            <li>CCNA — Cisco Certified Network Associate</li>
-            <li>Cours 100% en ligne sur Netacad</li>
-            <li>Instructeurs certifiés Cisco</li>
-            <li>Labs pratiques avec Packet Tracer</li>
-            <li>Certification reconnue à l'international</li>
-          </ul>
-          <a href="https://www.netacad.com" target="_blank" rel="noopener" class="product-cta">
-            Accéder à Netacad <span class="arrow">→</span>
-          </a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══════════════════════════════════════════════
-     SERVICES
-═══════════════════════════════════════════════ -->
-<section id="services">
-  <div class="container">
-
-    <div class="section-header center fade-up">
-      <p class="section-eyebrow">Nos services</p>
-      <h2 class="section-title">Des services numériques<br>pour avancer plus vite</h2>
-      <p class="section-sub">De la conception d'applications à la sécurisation de vos systèmes, nous accompagnons les organisations dans leurs projets numériques avec des solutions concrètes, fiables et adaptées au terrain.</p>
-    </div>
-
-    <div class="services-grid">
-
-      <!-- 1. Applications web & SaaS -->
-      <div class="service-card fade-up delay-1">
-        <div class="service-icon">💻</div>
-        <h3 class="service-title">Applications web &amp; SaaS</h3>
-        <p class="service-desc">Nous concevons des applications web professionnelles et des plateformes SaaS accessibles en ligne — portails métiers, tableaux de bord, outils de gestion — pensés pour les usages réels de vos équipes.</p>
-        <ul class="service-points">
-          <li>Plateformes de gestion sur mesure</li>
-          <li>Interfaces adaptées à vos processus</li>
-          <li>Déploiement web, accessible depuis tout appareil</li>
-        </ul>
-      </div>
-
-      <!-- 2. Digitalisation des processus -->
-      <div class="service-card fade-up delay-2">
-        <div class="service-icon">🔄</div>
-        <h3 class="service-title">Digitalisation des processus</h3>
-        <p class="service-desc">Nous aidons les organisations à remplacer les procédures manuelles — fichiers Excel, formulaires papier, validations en chaîne — par des workflows numériques traçables et plus fiables.</p>
-        <ul class="service-points">
-          <li>Formulaires et validations numériques</li>
-          <li>Automatisation des flux de données</li>
-          <li>Tableaux de suivi et rapports intégrés</li>
-        </ul>
-      </div>
-
-      <!-- 3. Automatisation & IA -->
-      <div class="service-card fade-up delay-3">
-        <div class="service-icon">⚡</div>
-        <h3 class="service-title">Automatisation &amp; IA</h3>
-        <p class="service-desc">Nous exploitons les outils modernes d'automatisation et d'intelligence artificielle pour réduire les tâches répétitives et améliorer la productivité — de façon encadrée, utile et professionnelle.</p>
-        <ul class="service-points">
-          <li>Génération automatique de rapports</li>
-          <li>Intégration d'assistants IA dans vos processus</li>
-          <li>Automatisation Microsoft 365 / Power Automate</li>
-        </ul>
-      </div>
-
-      <!-- 4. Systèmes, réseaux & cloud -->
-      <div class="service-card fade-up delay-4">
-        <div class="service-icon">🌐</div>
-        <h3 class="service-title">Systèmes, réseaux &amp; cloud</h3>
-        <p class="service-desc">Nous accompagnons les organisations dans la mise en place et l'amélioration de leurs infrastructures : comptes, accès, services réseau, messagerie, sauvegardes et environnements cloud.</p>
-        <ul class="service-points">
-          <li>Configuration réseau et serveurs</li>
-          <li>Déploiement Microsoft 365 et cloud</li>
-          <li>Sauvegardes et continuité de service</li>
-        </ul>
-      </div>
-
-      <!-- 5. Cybersécurité -->
-      <div class="service-card fade-up delay-1">
-        <div class="service-icon">🔒</div>
-        <h3 class="service-title">Cybersécurité</h3>
-        <p class="service-desc">Nous aidons les organisations à renforcer leur sécurité numérique par des pratiques concrètes — sans promettre une protection absolue, mais en réduisant les risques de façon méthodique et durable.</p>
-        <ul class="service-points">
-          <li>Gestion des accès et durcissement des systèmes</li>
-          <li>Sensibilisation et bonnes pratiques</li>
-          <li>Journalisation et supervision des incidents</li>
-        </ul>
-      </div>
-
-      <!-- 6. Formation professionnelle -->
-      <div class="service-card fade-up delay-2">
-        <div class="service-icon">📚</div>
-        <h3 class="service-title">Formation professionnelle</h3>
-        <p class="service-desc">Nous formons et accompagnons les équipes pour leur permettre de mieux utiliser les outils numériques, comprendre les bonnes pratiques et gagner en autonomie opérationnelle.</p>
-        <ul class="service-points">
-          <li>Réseaux, Cisco, cybersécurité, cloud</li>
-          <li>Bureautique avancée et outils IA</li>
-          <li>Formations adaptées au niveau de l'équipe</li>
-        </ul>
-      </div>
-
-      <!-- 7. Conseil & accompagnement numérique -->
-      <div class="service-card fade-up delay-3">
-        <div class="service-icon">🗺️</div>
-        <h3 class="service-title">Conseil &amp; accompagnement</h3>
-        <p class="service-desc">Nous accompagnons les organisations dans leurs décisions technologiques : diagnostic de l'existant, choix des outils adaptés, cahier des charges, plan de déploiement et suivi opérationnel.</p>
-        <ul class="service-points">
-          <li>Diagnostic et audit numérique</li>
-          <li>Aide au choix de solutions adaptées</li>
-          <li>Plan de digitalisation et suivi</li>
-        </ul>
-      </div>
-
-      <!-- 8. Support & maintenance -->
-      <div class="service-card fade-up delay-4">
-        <div class="service-icon">🔧</div>
-        <h3 class="service-title">Support &amp; maintenance</h3>
-        <p class="service-desc">Nous ne livrons pas seulement des outils : nous assurons leur suivi dans le temps — assistance structurée, corrections, mises à jour et amélioration continue après déploiement.</p>
-        <ul class="service-points">
-          <li>Assistance technique structurée</li>
-          <li>Corrections et mises à jour régulières</li>
-          <li>Amélioration continue des solutions</li>
-        </ul>
-      </div>
-
-    </div>
-
-    <!-- CTA section services -->
-    <div class="services-bottom fade-up">
-      <a href="#contact" class="btn btn-primary" onclick="setTimeout(()=>{document.getElementById('sujet').value='prestation'},350)">
-        Discuter de votre besoin
-        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-      <span class="services-bottom-note">Notre équipe vous répond sans engagement sous 24h.</span>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- ═══════════════════════════════════════════════
-     SECTION PLATEFORME
-═══════════════════════════════════════════════ -->
-<section id="plateforme">
-  <div class="platform-inner">
-    <div class="platform-image">
-      <img src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Espace de travail numérique — ordinateur portable" loading="lazy" />
-    </div>
-    <div class="platform-text">
-      <p class="section-eyebrow">Nos plateformes en ligne</p>
-      <h2 class="section-title">Accessibles partout,<br>conçus pour durer.</h2>
-      <p>Nos logiciels fonctionnent directement depuis votre navigateur — sur téléphone, tablette ou ordinateur. Même avec une connexion limitée. Chaque fonctionnalité répond à un besoin réel, pas à une tendance venue d'ailleurs.</p>
-      <div class="platform-pills">
-        <span class="platform-pill"><span class="platform-pill-dot"></span>Multi-établissements</span>
-        <span class="platform-pill"><span class="platform-pill-dot"></span>Mobile-first</span>
-        <span class="platform-pill"><span class="platform-pill-dot"></span>Données sécurisées</span>
-        <span class="platform-pill"><span class="platform-pill-dot"></span>Mises à jour continues</span>
-        <span class="platform-pill"><span class="platform-pill-dot"></span>Support francophone</span>
-        <span class="platform-pill"><span class="platform-pill-dot"></span>Déploiement rapide</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══════════════════════════════════════════════
-     POURQUOI NOUS
-═══════════════════════════════════════════════ -->
-<section id="pourquoi">
-  <div class="container">
-
-    <div class="section-header fade-up">
-      <p class="section-eyebrow">Pourquoi nous choisir</p>
-      <h2 class="section-title">L'expertise technique<br>au service de votre terrain.</h2>
-      <p class="section-sub">Nous ne vendons pas de logiciels génériques. Nous concevons des solutions adaptées à votre réalité, avec des standards qui n'ont rien à envier aux meilleures boîtes tech mondiales.</p>
-    </div>
-
-    <div class="why-grid fade-up delay-1">
-
-      <div class="why-card">
-        <div class="why-card-top">
-          <span class="why-num">01</span>
-          <div class="why-icon-wrap">🌍</div>
-        </div>
-        <h3 class="why-title">Expertise locale</h3>
-        <p class="why-desc">Nos équipes sont à Conakry. Nous connaissons les contraintes réelles du terrain : connectivité variable, usages mobiles dominants, contextes économiques divers. Nos produits en tiennent compte.</p>
-      </div>
-
-      <div class="why-card">
-        <div class="why-card-top">
-          <span class="why-num">02</span>
-          <div class="why-icon-wrap">⚙️</div>
-        </div>
-        <h3 class="why-title">Ingénierie rigoureuse</h3>
-        <p class="why-desc">Nos logiciels sont construits avec des technologies modernes, des pratiques d'ingénierie éprouvées et une attention au détail qui garantit robustesse, sécurité et maintenabilité dans la durée.</p>
-      </div>
-
-      <div class="why-card">
-        <div class="why-card-top">
-          <span class="why-num">03</span>
-          <div class="why-icon-wrap">🤝</div>
-        </div>
-        <h3 class="why-title">Support de proximité</h3>
-        <p class="why-desc">Un accompagnement humain, en français, par une équipe joignable et disponible. Nous sommes là à chaque étape — de la configuration initiale jusqu'à la montée en charge de votre organisation.</p>
-      </div>
-
-      <div class="why-card">
-        <div class="why-card-top">
-          <span class="why-num">04</span>
-          <div class="why-icon-wrap">☁️</div>
-        </div>
-        <h3 class="why-title">Cloud & fiabilité</h3>
-        <p class="why-desc">Infrastructure cloud moderne avec haute disponibilité. Vos données sont sécurisées, sauvegardées en continu et accessibles depuis n'importe où, sans installation ni maintenance côté client.</p>
-      </div>
-
-      <div class="why-card">
-        <div class="why-card-top">
-          <span class="why-num">05</span>
-          <div class="why-icon-wrap">💰</div>
-        </div>
-        <h3 class="why-title">Tarification accessible</h3>
-        <p class="why-desc">Des abonnements flexibles pensés pour démarrer sereinement et évoluer à votre rythme — sans frais cachés, sans engagement long terme ni infrastructure à financer vous-même.</p>
-      </div>
-
-      <div class="why-card">
-        <div class="why-card-top">
-          <span class="why-num">06</span>
-          <div class="why-icon-wrap">🚀</div>
-        </div>
-        <h3 class="why-title">Mise en route rapide</h3>
-        <p class="why-desc">Configuration en quelques heures, prise en main immédiate. Nos interfaces réduisent le temps de formation au minimum et accélèrent l'adoption par vos équipes dès le premier jour.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══════════════════════════════════════════════
-     À PROPOS
-═══════════════════════════════════════════════ -->
-<section id="apropos">
-  <div class="container">
-    <div class="apropos-inner">
-
-      <div class="apropos-text fade-up">
-        <p class="section-eyebrow">À propos</p>
-        <h2 class="section-title">Un studio tech sérieux,<br>ancré à Conakry.</h2>
-        <p class="section-sub">YOU TECHNOLOGY est une entreprise guinéenne fondée avec une ambition claire : concevoir des logiciels de qualité professionnelle, durables et adaptés à notre réalité.</p>
-
-        <div class="apropos-values">
-          <div class="apropos-value">
-            <div class="apropos-value-icon">🎯</div>
-            <h4>Notre mission</h4>
-            <p>Construire des outils numériques fiables qui font gagner du temps et améliorent la performance des organisations.</p>
-          </div>
-          <div class="apropos-value">
-            <div class="apropos-value-icon">🔭</div>
-            <h4>Notre vision</h4>
-            <p>Être le partenaire technologique de référence pour les organisations qui veulent passer à la vitesse supérieure.</p>
-          </div>
-          <div class="apropos-value">
-            <div class="apropos-value-icon">⭐</div>
-            <h4>Nos valeurs</h4>
-            <p>Excellence technique, transparence totale et impact positif sur les organisations que nous servons.</p>
-          </div>
-          <div class="apropos-value">
-            <div class="apropos-value-icon">📍</div>
-            <h4>Notre ancrage</h4>
-            <p>Fièrement basés à Conakry, ouverts sur le monde. Standards internationaux, réalité locale.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="apropos-image-side fade-up delay-2">
-        <div class="apropos-image-wrap">
-          <img src="https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Développement logiciel — code à l'écran" loading="lazy" />
-          <div class="apropos-image-overlay"></div>
-          <div class="apropos-image-footer">
-            <div class="apropos-stat-line">
-              <div class="apropos-stat">
-                <strong><span class="stat-val" data-target="2">0</span><span>+</span></strong>
-                <small>Produits conçus</small>
-              </div>
-              <div class="apropos-stat">
-                <strong><span class="stat-val" data-target="100">0</span><span>%</span></strong>
-                <small>Made in Guinea</small>
-              </div>
-              <div class="apropos-stat">
-                <strong style="font-size:1.15rem;letter-spacing:-.3px;font-weight:800;">Cisco</strong>
-                <small>Academy agréée</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Floating badge -->
-        <div class="apropos-badge">
-          <div class="apropos-badge-icon">🎓</div>
+    <div class="solutions-grid">
+      <article class="card reveal">
+        <div class="product-ecole">
           <div>
-            <strong>Cisco Networking Academy</strong>
-            <small>Partenaire officiel agréé</small>
+            <div class="product-top">
+              <h3 class="product-name">EcoleGN</h3>
+              <span class="tag tag-live">En production</span>
+            </div>
+            <p class="product-desc">La gestion complète des écoles privées, de la maternelle à l'université. Accessible depuis un téléphone ou un ordinateur.</p>
+            <ul class="checklist">
+              <li><svg class="icon"><use href="#i-check"/></svg>Inscriptions, dossiers élèves et bulletins</li>
+              <li><svg class="icon"><use href="#i-check"/></svg>Scolarité : mensualités, caisse et relances</li>
+              <li><svg class="icon"><use href="#i-check"/></svg>Notes, absences et emplois du temps</li>
+              <li><svg class="icon"><use href="#i-check"/></svg>Notifications aux parents par e-mail, SMS et WhatsApp</li>
+            </ul>
+            <a href="https://ecole.youtech.tech" target="_blank" rel="noopener" class="product-link">Accéder à EcoleGN <svg class="icon icon-sm"><use href="#i-arrow"/></svg></a>
+          </div>
+          <div class="mock" aria-hidden="true">
+            <div class="mock-bar"><i></i><i></i><i></i><code>ecole.youtech.tech</code></div>
+            <div class="mock-stats">
+              <div class="mock-stat"><b>247</b><span>Élèves</span></div>
+              <div class="mock-stat"><b>94 %</b><span>Payé</span></div>
+              <div class="mock-stat"><b>18</b><span>Classes</span></div>
+            </div>
+            <div class="mock-row"><div><b>Alpha Diallo</b><small>Terminale A</small></div><span class="pill pill-ok">Inscrit</span></div>
+            <div class="mock-row"><div><b>Fatoumata Bah</b><small>6e année</small></div><span class="pill pill-ok">Payé</span></div>
+            <div class="mock-row"><div><b>Mamadou Kouyaté</b><small>CM1</small></div><span class="pill pill-wait">Relance</span></div>
           </div>
         </div>
-      </div>
-
+      </article>
+      <article class="card reveal">
+        <div class="product-top">
+          <h3 class="product-name">Boutique</h3>
+          <span class="tag tag-soon">Bientôt disponible</span>
+        </div>
+        <p class="product-desc">Une boutique en ligne clé en main pour les commerçants et PME. Vendez, suivez vos stocks et vos commandes sans compétence technique.</p>
+        <ul class="checklist">
+          <li><svg class="icon"><use href="#i-check"/></svg>Catalogue et commandes en temps réel</li>
+          <li><svg class="icon"><use href="#i-check"/></svg>Paiements mobiles (Orange Money, MTN)</li>
+          <li><svg class="icon"><use href="#i-check"/></svg>Suivi des livraisons et rapports de vente</li>
+        </ul>
+        <a href="#contact" class="product-link" data-subject="ecommerce">Rejoindre la liste d'attente <svg class="icon icon-sm"><use href="#i-arrow"/></svg></a>
+      </article>
     </div>
   </div>
 </section>
 
-
-<!-- ═══════════════════════════════════════════════
-     BANDEAU CTA
-═══════════════════════════════════════════════ -->
-<div class="cta-banner">
-  <div class="cta-banner-inner">
-    <h2 class="fade-up visible">Prêt à moderniser votre organisation ?</h2>
-    <p class="fade-up delay-1 visible">Que vous cherchiez à digitaliser une école, lancer votre boutique en ligne ou certifier vos équipes — nous avons la solution. Échangeons.</p>
-    <div class="cta-banner-actions">
-      <a href="#contact" class="btn-white">
-        <span>Parler à notre équipe</span>
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-      <a href="https://ecole.youtech.tech" target="_blank" rel="noopener" class="btn-outline-white-cta">
-        Voir EcoleGN en direct
-      </a>
-    </div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════════════
-     CONTACT
-═══════════════════════════════════════════════ -->
-<section id="contact">
+<!-- ══════════ ACADEMY ══════════ -->
+<section class="section academy" id="academy">
   <div class="container">
-
-    <div class="section-header fade-up">
-      <p class="section-eyebrow">Contact</p>
-      <h2 class="section-title">Parlons de votre projet.</h2>
-      <p class="section-sub">Une question sur nos produits ? Un projet à discuter ? Notre équipe vous répond rapidement et sans engagement.</p>
+    <div class="section-head reveal">
+      <span class="eyebrow">YouTech Academy</span>
+      <h2>Apprendre les réseaux sur du vrai matériel Cisco</h2>
+      <p>Des cours en direct avec un formateur, des travaux pratiques sur notre laboratoire, et une préparation sérieuse à la certification.</p>
     </div>
-
-    <div class="contact-inner">
-
-      <div class="contact-left fade-up delay-1">
-        <h3>Nous joindre</h3>
-        <p>Que vous soyez à Conakry ou ailleurs, nous sommes disponibles pour répondre à vos questions et vous accompagner dans votre démarche.</p>
-
-        <div class="contact-response-badge">Réponse garantie sous 24h</div>
-
-        <div class="contact-items">
-          <div class="contact-item">
-            <div class="contact-icon">📧</div>
-            <div class="contact-item-body">
-              <strong>Email</strong>
-              <span><a href="mailto:contact@youtech.tech">contact@youtech.tech</a></span>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">📍</div>
-            <div class="contact-item-body">
-              <strong>Localisation</strong>
-              <span>Conakry, République de Guinée</span>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">🌐</div>
-            <div class="contact-item-body">
-              <strong>Site web</strong>
-              <span><a href="https://youtech.tech">youtech.tech</a></span>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">🎓</div>
-            <div class="contact-item-body">
-              <strong>EcoleGN</strong>
-              <span><a href="https://ecole.youtech.tech" target="_blank" rel="noopener">ecole.youtech.tech</a></span>
-            </div>
-          </div>
+    <div class="academy-grid">
+      <article class="course-card reveal">
+        <div class="course-head">
+          <h3>Formation <em>CCNA</em></h3>
+          <span class="start-badge">Début : samedi 5 décembre 2026</span>
         </div>
-      </div>
+        <p class="course-sub">Réseaux informatiques · Préparation à la certification Cisco CCNA</p>
+        <div class="facts">
+          <div class="fact"><span>Durée</span><b>3 mois · environ 90 h en direct</b></div>
+          <div class="fact"><span>Format</span><b>Visioconférence en direct</b></div>
+          <div class="fact"><span>Replay</span><b>Tous les cours enregistrés</b></div>
+          <div class="fact"><span>Pratique</span><b>Vrai matériel Cisco</b></div>
+          <div class="fact fact-wide"><span>Horaires</span><b>Mardi et jeudi 17 h 30 – 19 h 30 · Samedi 14 h – 17 h</b></div>
+        </div>
+        <div class="price">
+          <div class="price-row" data-offer-until="2026-11-28">
+            <span class="price-now">2 200 000 GNF</span>
+            <span class="price-old">2 500 000 GNF</span>
+          </div>
+          <p class="price-note" data-offer-until="2026-11-28"><strong>Offre de lancement</strong> pour les inscriptions jusqu'au samedi 28 novembre.</p>
+          <div class="price-row" data-offer-after="2026-11-28" hidden>
+            <span class="price-now">2 500 000 GNF</span>
+          </div>
+          <ul class="perks">
+            <li>Aucun frais d'inscription</li>
+            <li>Paiement en 3 tranches</li>
+            <li>Satisfait ou remboursé la 1<sup>re</sup> semaine</li>
+          </ul>
+        </div>
+        <div class="course-actions">
+          <a href="tel:+224629225312" class="btn btn-yellow"><svg class="icon icon-sm"><use href="#i-phone"/></svg>S'inscrire : 629 22 53 12</a>
+          <a href="#contact" class="btn btn-ghost-light" data-subject="formation">Poser une question</a>
+        </div>
+        <p class="course-foot">Présentiel possible sur demande, 6 apprenants maximum par groupe. Frais d'examen officiel non inclus.</p>
+      </article>
 
-      <!-- Formulaire -->
-      <div class="contact-right fade-up delay-2">
-        <form class="contact-form" id="contactForm" novalidate>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="nom">Nom complet</label>
-              <input type="text" id="nom" name="nom" placeholder="Votre nom" required />
-            </div>
-            <div class="form-group">
-              <label for="email">Adresse e-mail</label>
-              <input type="email" id="email" name="email" placeholder="vous@exemple.com" required />
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="sujet">Sujet</label>
-            <select id="sujet" name="sujet">
-              <option value="">Sélectionnez un sujet</option>
-              <option value="ecologn">EcoleGN — Démo / Informations</option>
-              <option value="ecommerce">Boutique e-commerce</option>
-              <option value="prestation">Conseil / Prestation de service</option>
-              <option value="formation">Formation Cisco / Tech</option>
-              <option value="autre">Autre demande</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" placeholder="Décrivez votre projet ou votre question..." required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary btn-full">
-            <span>Envoyer le message</span>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <p class="form-note">En envoyant ce formulaire, vous acceptez d'être contacté par notre équipe.</p>
-        </form>
+      <div class="lab reveal">
+        <h3>Notre laboratoire</h3>
+        <p>Nous avons monté le labo de A à Z : installation de la baie, câblage, mise en service des switchs et routeurs. Chaque notion vue en cours est démontrée sur l'équipement.</p>
+        <div class="lab-grid">
+          <figure class="tall"><img src="assets/labo-baie.jpg" alt="Switchs et routeurs Cisco dans la baie du laboratoire" loading="lazy" width="481" height="317" /></figure>
+          <figure><img src="assets/labo-montage.jpg" alt="Installation de la baie réseau" loading="lazy" width="474" height="318" /></figure>
+          <figure><img src="assets/labo-postes.jpg" alt="Salle de formation avec postes de travail" loading="lazy" width="474" height="317" /></figure>
+        </div>
+        <ul class="lab-tags">
+          <li><svg class="icon"><use href="#i-network"/></svg>Switchs</li>
+          <li><svg class="icon"><use href="#i-server"/></svg>Routeurs</li>
+          <li><svg class="icon"><use href="#i-cable"/></svg>Câblage</li>
+          <li><svg class="icon"><use href="#i-video"/></svg>Démos en direct</li>
+        </ul>
+        <p class="cisco-note"><span class="gn-bar" aria-hidden="true"><span></span><span></span><span></span></span>Membre du programme Cisco Networking Academy</p>
       </div>
-
     </div>
   </div>
 </section>
 
+<!-- ══════════ SERVICES ══════════ -->
+<section class="section" id="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Services</span>
+      <h2>Nous accompagnons aussi vos projets</h2>
+      <p>De l'idée au logiciel en service, et de l'infrastructure à sa sécurité.</p>
+    </div>
+    <div class="services-grid reveal">
+      <div class="service"><div class="service-icon"><svg class="icon"><use href="#i-app"/></svg></div><h3>Applications web &amp; SaaS</h3><p>Portails métiers, tableaux de bord et outils de gestion sur mesure.</p></div>
+      <div class="service"><div class="service-icon"><svg class="icon"><use href="#i-flow"/></svg></div><h3>Digitalisation</h3><p>Remplacer fichiers Excel et formulaires papier par des processus traçables.</p></div>
+      <div class="service"><div class="service-icon"><svg class="icon"><use href="#i-spark"/></svg></div><h3>Automatisation &amp; IA</h3><p>Automatiser les tâches répétitives et exploiter vos données.</p></div>
+      <div class="service"><div class="service-icon"><svg class="icon"><use href="#i-network"/></svg></div><h3>Réseaux &amp; cloud</h3><p>Conception, déploiement et sauvegarde de vos infrastructures.</p></div>
+      <div class="service"><div class="service-icon"><svg class="icon"><use href="#i-shield"/></svg></div><h3>Cybersécurité</h3><p>Audit, durcissement des systèmes et sensibilisation des équipes.</p></div>
+      <div class="service"><div class="service-icon"><svg class="icon"><use href="#i-cap"/></svg></div><h3>Formation en entreprise</h3><p>Programmes adaptés à vos équipes techniques et métiers.</p></div>
+      <div class="service"><div class="service-icon"><svg class="icon"><use href="#i-compass"/></svg></div><h3>Conseil</h3><p>Diagnostic de l'existant et feuille de route numérique réaliste.</p></div>
+      <div class="service"><div class="service-icon"><svg class="icon"><use href="#i-tool"/></svg></div><h3>Support &amp; maintenance</h3><p>Corrections, mises à jour et assistance après la mise en service.</p></div>
+    </div>
+  </div>
+</section>
 
-<!-- FOOTER -->
+<!-- ══════════ APPROACH ══════════ -->
+<section class="section section-soft" id="approche">
+  <div class="container approach-grid">
+    <div class="section-head reveal">
+      <span class="eyebrow">Notre approche</span>
+      <h2>Une équipe locale, des standards internationaux</h2>
+      <p>YOUTECH est une entreprise guinéenne. Nous construisons des outils durables, adaptés à notre contexte, et nous restons présents après la livraison.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="step-num">01</div><h3>Écouter le terrain</h3><p>Nous partons de vos usages réels avant d'écrire la moindre ligne de code.</p></div>
+      <div class="step reveal"><div class="step-num">02</div><h3>Construire solide</h3><p>Technologies éprouvées, code maintenable, données sauvegardées.</p></div>
+      <div class="step reveal"><div class="step-num">03</div><h3>Mettre en route vite</h3><p>Déploiement progressif et prise en main accompagnée de vos équipes.</p></div>
+      <div class="step reveal"><div class="step-num">04</div><h3>Rester disponibles</h3><p>Un support en français, joignable à Conakry, avec un tarif accessible.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CONTACT ══════════ -->
+<section class="section" id="contact">
+  <div class="container contact-grid">
+    <div class="reveal">
+      <span class="eyebrow">Contact</span>
+      <h2 style="font-size:clamp(28px,3.4vw,38px);margin:14px 0">Parlons de votre projet</h2>
+      <p>Une démo d'EcoleGN, une inscription à la formation ou un projet sur mesure : nous répondons sous 24 h.</p>
+      <ul class="contact-list">
+        <li><span class="service-icon"><svg class="icon"><use href="#i-phone"/></svg></span><div><small>Téléphone</small><a href="tel:+224629225312">629 22 53 12</a></div></li>
+        <li><span class="service-icon"><svg class="icon"><use href="#i-mail"/></svg></span><div><small>E-mail</small><a href="mailto:contact@youtech.tech">contact@youtech.tech</a></div></li>
+        <li><span class="service-icon"><svg class="icon"><use href="#i-pin"/></svg></span><div><small>Adresse</small><b>Conakry, République de Guinée</b></div></li>
+      </ul>
+    </div>
+    <div class="card reveal">
+      <form class="form" id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="field"><label for="nom">Nom complet</label><input type="text" id="nom" name="nom" autocomplete="name" required /></div>
+          <div class="field"><label for="email">E-mail</label><input type="email" id="email" name="email" autocomplete="email" required /></div>
+        </div>
+        <div class="field">
+          <label for="sujet">Sujet</label>
+          <select id="sujet" name="sujet">
+            <option value="">Choisir un sujet</option>
+            <option value="ecologn">EcoleGN : démo ou informations</option>
+            <option value="formation">Formation CCNA / YouTech Academy</option>
+            <option value="ecommerce">Boutique en ligne</option>
+            <option value="prestation">Projet sur mesure / conseil</option>
+            <option value="autre">Autre demande</option>
+          </select>
+        </div>
+        <div class="field"><label for="message">Message</label><textarea id="message" name="message" rows="5" required></textarea></div>
+        <p class="form-error" id="formError" role="alert">Merci de remplir votre nom, votre e-mail et votre message.</p>
+        <button type="submit" class="btn btn-primary">Envoyer le message <svg class="icon icon-sm"><use href="#i-arrow"/></svg></button>
+        <p class="form-note">Le message s'ouvre dans votre application e-mail, prêt à être envoyé.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ══════════ FOOTER ══════════ -->
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
-
       <div class="footer-brand">
-        <div class="footer-logo">
-          <span class="logo-you">YOU</span><span class="logo-tech">TECH</span>
-        </div>
-        <p>Studio de développement logiciel basé à Conakry. Nous concevons des solutions numériques adaptées au contexte guinéen et africain.</p>
-        <div class="footer-socials">
-          <a href="mailto:contact@youtech.tech" aria-label="Email" class="footer-social-link">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="m2 7 10 7 10-7" stroke="currentColor" stroke-width="1.8"/></svg>
-          </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn" class="footer-social-link">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="4" stroke="currentColor" stroke-width="1.8"/><path d="M8 11v5M8 8v.5M12 16v-5m0 0c0-1.5 1-2 2-2s2 .5 2 2v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-          </a>
-        </div>
+        <span class="logo-word">You<b>Tech</b></span>
+        <p>Logiciels de gestion et formations réseau, conçus à Conakry pour les organisations guinéennes et africaines.</p>
+        <p style="margin-top:16px"><span class="gn-bar" aria-hidden="true"><span></span><span></span><span></span></span></p>
       </div>
-
-      <div class="footer-col">
-        <h4>Produits</h4>
+      <div>
+        <h4>Solutions</h4>
         <ul>
-          <li><a href="#produits">EcoleGN</a></li>
-          <li><a href="#produits">E-Commerce</a></li>
-          <li><a href="#produits">Cisco Academy</a></li>
+          <li><a href="https://ecole.youtech.tech" target="_blank" rel="noopener">EcoleGN</a></li>
+          <li><a href="#solutions">Boutique</a></li>
+          <li><a href="#academy">YouTech Academy</a></li>
         </ul>
       </div>
-
-      <div class="footer-col">
+      <div>
         <h4>Services</h4>
         <ul>
           <li><a href="#services">Applications &amp; SaaS</a></li>
-          <li><a href="#services">Digitalisation</a></li>
-          <li><a href="#services">Automatisation</a></li>
+          <li><a href="#services">Réseaux &amp; cloud</a></li>
           <li><a href="#services">Cybersécurité</a></li>
-          <li><a href="#services">Formation</a></li>
+          <li><a href="#services">Conseil</a></li>
         </ul>
       </div>
-
-      <div class="footer-col">
-        <h4>Entreprise</h4>
+      <div>
+        <h4>Contact</h4>
         <ul>
-          <li><a href="#pourquoi">Pourquoi nous</a></li>
-          <li><a href="#apropos">À propos</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="https://ecole.youtech.tech" target="_blank" rel="noopener">EcoleGN</a></li>
+          <li><a href="tel:+224629225312">629 22 53 12</a></li>
+          <li><a href="mailto:contact@youtech.tech">contact@youtech.tech</a></li>
+          <li>Conakry, Guinée</li>
         </ul>
       </div>
-
     </div>
-
     <div class="footer-bottom">
-      <p>© <span id="footerYear"></span> YOU TECHNOLOGY. Tous droits réservés.</p>
-      <p>Conçu et développé à Conakry, Guinée 🇬🇳</p>
+      <p>© <span id="year">2026</span> YOUTECH. Tous droits réservés.</p>
+      <p>YouTech Academy · Membre du programme Cisco Networking Academy</p>
     </div>
   </div>
 </footer>
 
-<!-- Scroll to top -->
-<button class="scroll-top" id="scrollTop" aria-label="Retour en haut">
-  <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 15V5M5 10l5-5 5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-</button>
-
-<style>
-.contact-inner { display: grid; grid-template-columns: 1fr 1.4fr; gap: 56px; align-items: start; }
-.contact-left h3 { font-size: 1.35rem; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
-.contact-left p { color: var(--gray-500); line-height: 1.7; margin-bottom: 24px; }
-.contact-response-badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0;
-  border-radius: 20px; padding: 6px 14px; font-size: .82rem; font-weight: 600;
-  margin-bottom: 28px;
-}
-.contact-items { display: flex; flex-direction: column; gap: 20px; }
-.contact-item { display: flex; align-items: flex-start; gap: 14px; }
-.contact-icon { font-size: 1.3rem; line-height: 1; padding-top: 2px; flex-shrink: 0; }
-.contact-item-body { display: flex; flex-direction: column; gap: 2px; }
-.contact-item-body strong { font-size: .9rem; font-weight: 600; color: var(--navy); }
-.contact-item-body span { font-size: .87rem; color: var(--gray-500); }
-.contact-item-body a { color: var(--orange); text-decoration: none; }
-.contact-item-body a:hover { text-decoration: underline; }
-.contact-form { background: white; border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 36px; box-shadow: var(--shadow); }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
-.form-group label { font-size: .84rem; font-weight: 600; color: var(--navy); }
-.form-group input, .form-group select, .form-group textarea {
-  padding: 10px 14px; border: 1.5px solid var(--gray-200); border-radius: var(--radius);
-  font-size: .9rem; color: var(--navy); background: var(--gray-50);
-  transition: border-color var(--transition), box-shadow var(--transition);
-  font-family: inherit; outline: none;
-}
-.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-  border-color: var(--orange); box-shadow: 0 0 0 3px rgba(255,109,0,.1); background: white;
-}
-.form-group textarea { resize: vertical; min-height: 120px; }
-.btn-full { width: 100%; justify-content: center; }
-.form-note { font-size: .78rem; color: var(--gray-400); text-align: center; margin-top: 12px; }
-.footer { background: var(--navy); color: rgba(255,255,255,.7); padding: 72px 0 32px; }
-.footer-grid { display: grid; grid-template-columns: 1.8fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 56px; }
-.footer-brand .footer-logo { display: flex; gap: 0; font-size: 1.4rem; font-weight: 900; letter-spacing: -1px; margin-bottom: 16px; }
-.footer-brand .logo-you { color: white; }
-.footer-brand .logo-tech { color: var(--orange); }
-.footer-brand p { font-size: .87rem; line-height: 1.7; color: rgba(255,255,255,.55); max-width: 280px; }
-.footer-socials { display: flex; gap: 12px; margin-top: 20px; }
-.footer-social-link {
-  width: 36px; height: 36px; border-radius: 8px; border: 1px solid rgba(255,255,255,.15);
-  display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.6);
-  transition: all var(--transition);
-}
-.footer-social-link:hover { background: var(--orange); border-color: var(--orange); color: white; }
-.footer-col h4 { font-size: .88rem; font-weight: 700; color: white; margin-bottom: 16px; text-transform: uppercase; letter-spacing: .6px; }
-.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-.footer-col ul li a { font-size: .87rem; color: rgba(255,255,255,.55); text-decoration: none; transition: color var(--transition); }
-.footer-col ul li a:hover { color: var(--orange); }
-.footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding-top: 28px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; font-size: .82rem; color: rgba(255,255,255,.35); }
-.scroll-top {
-  position: fixed; bottom: 28px; right: 28px; z-index: 900;
-  width: 44px; height: 44px; border-radius: 50%;
-  background: var(--orange); color: white; border: none; cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 4px 16px rgba(255,109,0,.35);
-  opacity: 0; transform: translateY(12px); pointer-events: none;
-  transition: opacity .3s, transform .3s;
-}
-.scroll-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
-.scroll-top:hover { background: var(--orange-dark); }
-@media (max-width: 960px) {
-  .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
-}
-@media (max-width: 640px) {
-  .contact-inner { grid-template-columns: 1fr; gap: 32px; }
-  .form-row { grid-template-columns: 1fr; }
-  .contact-form { padding: 24px; }
-  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
-  .footer-bottom { flex-direction: column; text-align: center; }
-}
-</style>
-
 <script>
-document.getElementById('footerYear').textContent = new Date().getFullYear();
+document.documentElement.classList.add('js');
+document.getElementById('year').textContent = new Date().getFullYear();
 
-const nav = document.querySelector('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 20);
-}, { passive: true });
-
-const scrollTopBtn = document.getElementById('scrollTop');
-window.addEventListener('scroll', () => {
-  scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
-}, { passive: true });
-scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+// Mobile menu
+(function () {
+  var toggle = document.querySelector('.nav-toggle');
+  var nav = document.getElementById('nav');
+  toggle.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
   });
-}, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
-
-function animateCount(el) {
-  const target = +el.dataset.target;
-  const duration = 1600;
-  const start = performance.now();
-  const step = (now) => {
-    const p = Math.min((now - start) / duration, 1);
-    const ease = p < 0.5 ? 2*p*p : -1+(4-2*p)*p;
-    el.textContent = Math.floor(ease * target);
-    if (p < 1) requestAnimationFrame(step); else el.textContent = target;
-  };
-  requestAnimationFrame(step);
-}
-const countObs = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) { e.target.querySelectorAll('.stat-val').forEach(animateCount); countObs.unobserve(e.target); }
+  nav.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () { nav.classList.remove('open'); toggle.setAttribute('aria-expanded', false); });
   });
-}, { threshold: 0.3 });
-document.querySelectorAll('.apropos-stat-line').forEach(el => countObs.observe(el));
-
-(function() {
-  const canvas = document.getElementById('heroCanvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let W, H, particles = [], raf;
-  const N = 55, MAX_DIST = 130;
-  function resize() { W = canvas.width = canvas.offsetWidth; H = canvas.height = canvas.offsetHeight; }
-  function Particle() {
-    this.x = Math.random()*W; this.y = Math.random()*H;
-    this.vx = (Math.random()-.5)*.4; this.vy = (Math.random()-.5)*.4;
-    this.r = Math.random()*2+1;
-  }
-  function init() { resize(); particles = Array.from({length:N}, () => new Particle()); }
-  function draw() {
-    ctx.clearRect(0,0,W,H);
-    particles.forEach(p => {
-      p.x+=p.vx; p.y+=p.vy;
-      if(p.x<0||p.x>W) p.vx*=-1; if(p.y<0||p.y>H) p.vy*=-1;
-      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-      ctx.fillStyle='rgba(255,255,255,0.45)'; ctx.fill();
-    });
-    for(let i=0;i<N;i++) for(let j=i+1;j<N;j++) {
-      const dx=particles[i].x-particles[j].x, dy=particles[i].y-particles[j].y;
-      const d=Math.sqrt(dx*dx+dy*dy);
-      if(d<MAX_DIST) {
-        ctx.beginPath(); ctx.moveTo(particles[i].x,particles[i].y); ctx.lineTo(particles[j].x,particles[j].y);
-        ctx.strokeStyle=`rgba(255,255,255,${.18*(1-d/MAX_DIST)})`; ctx.lineWidth=.7; ctx.stroke();
-      }
-    }
-    raf = requestAnimationFrame(draw);
-  }
-  const heroEl = document.querySelector('.hero');
-  const pauseObs = new IntersectionObserver(([e]) => {
-    if(e.isIntersecting){if(!raf)draw();} else {cancelAnimationFrame(raf);raf=null;}
-  }, {threshold:0});
-  if(heroEl) pauseObs.observe(heroEl);
-  window.addEventListener('resize', resize, {passive:true});
-  init(); draw();
 })();
 
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const nom=document.getElementById('nom').value.trim();
-  const email=document.getElementById('email').value.trim();
-  const sujet=document.getElementById('sujet').value;
-  const message=document.getElementById('message').value.trim();
-  if(!nom||!email||!message){alert('Merci de remplir les champs obligatoires.');return;}
-  const body=encodeURIComponent(`Nom: ${nom}\nEmail: ${email}\nSujet: ${sujet}\n\n${message}`);
-  window.location.href=`mailto:contact@youtech.tech?subject=Contact YouTech — ${encodeURIComponent(sujet||'Demande')}&body=${body}`;
+// Launch offer: show the discounted price only until its end date (inclusive)
+(function () {
+  var today = new Date(); today.setHours(0, 0, 0, 0);
+  function parse(s) { var p = s.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
+  document.querySelectorAll('[data-offer-until]').forEach(function (el) {
+    if (today > parse(el.dataset.offerUntil)) el.hidden = true;
+  });
+  document.querySelectorAll('[data-offer-after]').forEach(function (el) {
+    if (today > parse(el.dataset.offerAfter)) el.hidden = false;
+  });
+})();
+
+// Links that pre-select a subject in the contact form
+document.querySelectorAll('[data-subject]').forEach(function (a) {
+  a.addEventListener('click', function () { document.getElementById('sujet').value = a.dataset.subject; });
 });
 
-(function(){
-  const toggle=document.querySelector('.nav-toggle');
-  const links=document.querySelector('.nav-links');
-  if(!toggle||!links) return;
-  toggle.addEventListener('click',()=>{const open=links.classList.toggle('open');toggle.setAttribute('aria-expanded',open);});
-  links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{links.classList.remove('open');toggle.setAttribute('aria-expanded',false);}));
+// Reveal on scroll
+(function () {
+  var els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(function (e) { io.observe(e); });
 })();
-</script>
 
+// Contact form → opens the visitor's e-mail app
+document.getElementById('contactForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  var nom = document.getElementById('nom').value.trim();
+  var email = document.getElementById('email').value.trim();
+  var sel = document.getElementById('sujet');
+  var sujet = sel.value ? sel.options[sel.selectedIndex].text : 'Demande';
+  var message = document.getElementById('message').value.trim();
+  var err = document.getElementById('formError');
+  if (!nom || !email || !message) { err.style.display = 'block'; return; }
+  err.style.display = 'none';
+  var body = encodeURIComponent('Nom : ' + nom + '\nE-mail : ' + email + '\nSujet : ' + sujet + '\n\n' + message);
+  window.location.href = 'mailto:contact@youtech.tech?subject=' + encodeURIComponent('Contact YOUTECH — ' + sujet) + '&body=' + body;
+});
+</script>
 </body>
 </html>
