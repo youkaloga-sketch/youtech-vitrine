@@ -212,6 +212,9 @@ ul { margin: 0; padding: 0; list-style: none; }
 .perks li { font-size: 13px; color: #DCE6F2; border: 1px solid rgba(66,165,245,.35); border-radius: 999px; padding: 5px 12px; }
 .course-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
 .course-foot { font-size: 13px; color: #8FA2BC; margin-top: 14px; }
+.course-login { font-size: 14.5px; color: #C9D4E3; margin-top: 14px; }
+.course-login a { color: var(--blue-400); font-weight: 600; }
+.nav-academy { display: none; }
 .lab h3 { font-size: 22px; margin-bottom: 10px; }
 .lab p { color: #AFC0D6; margin-bottom: 20px; }
 .lab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
@@ -299,6 +302,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   }
   .nav.open a { padding: 12px 0; border-bottom: 1px solid var(--line); }
   .nav.open a:last-child { border-bottom: 0; }
+  .nav.open .nav-academy { display: block; font-weight: 600; color: var(--blue-600); }
   .hero { padding: 48px 0 56px; }
   .hero-grid { grid-template-columns: 1fr; gap: 40px; }
   .hero-card { left: 12px; bottom: 12px; }
@@ -365,9 +369,10 @@ ul { margin: 0; padding: 0; list-style: none; }
       <a href="#services">Services</a>
       <a href="#approche">Approche</a>
       <a href="#contact">Contact</a>
+      <a href="https://academy.youtech.tech/connexion" class="nav-academy">Espace apprenant</a>
     </nav>
     <div class="header-cta">
-      <a href="tel:+224629225312" class="btn btn-secondary">629 22 53 12</a>
+      <a href="https://academy.youtech.tech/connexion" class="btn btn-secondary">Espace apprenant</a>
       <a href="#contact" class="btn btn-primary">Nous contacter</a>
       <button class="nav-toggle" aria-controls="nav" aria-expanded="false" aria-label="Ouvrir le menu">
         <svg class="icon"><use href="#i-menu"/></svg>
@@ -515,9 +520,10 @@ ul { margin: 0; padding: 0; list-style: none; }
           </ul>
         </div>
         <div class="course-actions">
-          <a href="tel:+224629225312" class="btn btn-yellow"><svg class="icon icon-sm"><use href="#i-phone"/></svg>S'inscrire : 629 22 53 12</a>
-          <a href="#contact" class="btn btn-ghost-light" data-subject="formation">Poser une question</a>
+          <a href="https://academy.youtech.tech/formations/ccna" class="btn btn-yellow">S'inscrire en ligne <svg class="icon icon-sm"><use href="#i-arrow"/></svg></a>
+          <a href="tel:+224629225312" class="btn btn-ghost-light"><svg class="icon icon-sm"><use href="#i-phone"/></svg>629 22 53 12</a>
         </div>
+        <p class="course-login">Déjà inscrit ? <a href="https://academy.youtech.tech/connexion">Accéder à mon espace apprenant →</a></p>
         <p class="course-foot">Présentiel possible sur demande, 6 apprenants maximum par groupe. Frais d'examen officiel non inclus.</p>
       </article>
 
@@ -634,7 +640,7 @@ ul { margin: 0; padding: 0; list-style: none; }
         <ul>
           <li><a href="https://ecole.youtech.tech" target="_blank" rel="noopener">EcoleGN</a></li>
           <li><a href="#solutions">Boutique</a></li>
-          <li><a href="#academy">YouTech Academy</a></li>
+          <li><a href="https://academy.youtech.tech">YouTech Academy</a></li>
         </ul>
       </div>
       <div>
